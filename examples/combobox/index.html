@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Combobox</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" /> 
+			<head>
+
+     	<link href="css/modals.css" rel="stylesheet">
+      	<link href="css/app.css" rel="stylesheet">
+      	<link href="css/bootstrap.css" rel="stylesheet">
+
+			<style>
+			#container {
+				padding: 0 1em;
+				
+			}
+			* {
+				-moz-box-sizing: border-box;
+			}
+			.content {
+				margin: 1em auto;
+				max-width: 600px;
+				text-align: center;
+			}
+
+			.gblMHeader .outer {
+				background: url("https://www.paypalobjects.com/webstatic/i/sparta/scr/scr_gray-bkgd.png") repeat scroll 0 0 #6E6D71;
+				height: 44px;
+			}
+			.gblMHeader li {padding-left: 9px;}
+			.gblMHeader a{color:#fff;}
+			.gblMHeader .skip a {
+				padding: 0 10px;
+				position: absolute;
+				top: -99999px;
+			}
+			.gblMHeader  .skip a:focus {
+				background-color: #333333;
+				display: inline;
+				top: 0;
+			}
+			footer li { padding-left: 9px;}
+			.options { list-style: none; }
+
+			</style>
+</head>
+<body>
+    <div class="container elem">
+    	<div class="content">
+    		<div  tabindex="0" data-toggle="modal" data-target="myModal" href="#myModal" role="Combobox">
+    			From >
+    		</div>
+
+        <div id="myModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div role=document tabindex=0>
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">x<span class="offscreen">close</span></button>
+                  <h3 id="myModalLabel">From</h3>
+                </div>
+                <div class="modal-body">
+                  <h4>From</h4>
+                  	<ul id="options" class="options" role="listbox">
+                  		<li> PayPal Balance $1.00 USD</li>
+                  		<li> PayPal Balance $1.00 INR</li>
+                  		<li> PayPal Balance $1.00 EUR</li>
+                  	</ul>
+                  		
+                </div>
+                <div class="modal-footer">
+                  <button class="btn" data-dismiss="modal">Close</button>
+                  <button class="btn btn-primary">Save changes</button>
+                </div>
+            </div>  
+          </div>
+
+
+    	</div>
+    <div>
+	
+    </div>
+    <script src="js/modals-combobox.js"></script>
+
+<script>
+	var showOptions = function(e) {
+		alert('open dialog')
+	}
+
+</script>
+</body>
+</html>
