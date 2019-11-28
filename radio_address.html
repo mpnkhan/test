@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en">
 <head>
-
+<title>Text Splitting</title>
 </head>
 <body>
 
@@ -8,30 +8,34 @@
 
 <a href="...">PayPal <strong>San Jose</strong> now</a>
 
-Explicit Label (line break):<br/>
+<h1><span role=”text”>PayPal  <br> Inc </span></h1>
+<a href="..."> <span role=”text”>PayPal <strong>San Jose</strong> now </span> </a>
+
+
+<br> Explicit Label (line break):<br/>
 
   <form>
-    <input type="radio" name="cc" value="Visa" id="cc1"><label for="cc1">Visa  <br/> card </label> <br>
-    <input type="radio" name="cc" value="Master" id="cc2"><label for="cc2">Master <br/>card</label><br>
-    <input type="radio" name="cc" value="Amex" id="cc3"><label for="cc3">Amex <br/> card</label>
+      <div> <input type="radio" name="cc" value="Visa" id="cc1"><label for="cc1">Visa  <br/> card </label> </div>
+    <div> <input type="radio" name="cc" value="Master" id="cc2"><label for="cc2">Master <br/>card</label></div>
+     <div> <input type="radio" name="cc" value="Amex" id="cc3"><label for="cc3">Amex <br/> card</label></div>
   </form>
   <br><br>
 
-Explicit Label (line break but role=text):<br/>
+<br> Explicit Label (line break but role=text):<br/>
 
   <form>
-    <input type="radio" name="cc" value="Visa" id="cc1"><label for="cc1"> <span role="text"> Visa  <br/> card </span> </label> <br>
-    <input type="radio" name="cc" value="Master" id="cc2"><label for="cc2">  <span role="text">Master <br/>card </span> </label><br>
-    <input type="radio" name="cc" value="Amex" id="cc3"><label for="cc3">  <span role="text">Amex <br/> card </span> </label>
+    <div> <input type="radio" name="cc" value="Visa" id="cc1"><label for="cc1"> <span role="text"> Visa  <br/> card </span> </label> </div>
+    <div> <input type="radio" name="cc" value="Master" id="cc2"><label for="cc2">  <span role="text">Master <br/>card </span> </label></div>
+    <div> <input type="radio" name="cc" value="Amex" id="cc3"><label for="cc3">  <span role="text">Amex <br/> card </span> </label></div>
   </form>
   <br><br>
 
-Implicit Label <br/>
+<br> Implicit Label <br/>
 
   <form>
-    <label><input type="radio" name="cc" value="Visa" id="cc1">Visa  card </label> <br>
-    <label><input type="radio" name="cc" value="Master" id="cc2">Master card</label><br>
-    <label><input type="radio" name="cc" value="Amex" id="cc3">Amex card</label>
+    <div><label><input type="radio" name="cc" value="Visa" id="cc1">Visa  card </label> </div>
+    <div><label><input type="radio" name="cc" value="Master" id="cc2">Master card</label> </div>
+    <div> <label><input type="radio" name="cc" value="Amex" id="cc3">Amex card</label> </div>
   </form>
   <br><br>
 
