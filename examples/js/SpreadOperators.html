@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<title>Test</title>
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/xcode.css">
+
+		<style type="text/css">
+			pre  {
+			    font-size: 1em;
+			    line-height: 1.2;
+			    overflow: hidden;
+			    text-align: left;
+			}
+			pre code{
+				max-height: 500px;
+				position: relative;
+			    width: 90%;
+			    margin: 20px auto;
+			    font-family: monospace;
+			    word-wrap: break-word;
+			    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);				
+			}
+		</style>	
+</head>
+<body>
+<p>
+		D I S P L A Y
+	<pre> 
+		<code class="hljs stylus" contenteditable="true">
+//Spread operator a.k.a. "Three-dots" tricks <3
+
+//convert a string to array
+const str = 'kitty';
+const newArr = [...str]; 
+console.log(newArr);   // ['k', 'i', 't', 't', 'y'];
+
+//concat two arrays (yeah, con"cat"!)
+const arr1 = ['solid', 'bicolor', 'tabby'];
+const arr2 = ['calico', 'tortoiseshell'];
+const concatArr = [...arr1, ...arr2]; 
+console.log(concatArr)   // ['solid', 'bicolor', 'tabby', 'calico', 'tortoiseshell']
+
+
+//find the largest
+const catWeight = [10, 9, 6, 12];
+const max = Math.max(...catWeight); 
+console.log(max);   // 12
+
+//cloning
+const allCatNames = ['chewie', 'leia', 'yoda', 'chewie', 'luke', 'leia'];
+const allCatNamesCopy = [...allCatNames];
+
+//if you want to copy sans duplicates, use the Set object!
+const catNames = [...new Set(allCatNames)]; //['chewie', 'leia', 'yoda', 'luke'];
+console.log(catNames)		
+	</code></pre>
+
+	J S 
+<script>
+	
+//Spread operator a.k.a. "Three-dots" tricks <3
+
+//convert a string to array
+const str = 'kitty';
+const newArr = [...str]; 
+console.log('newArr', newArr);   // ['k', 'i', 't', 't', 'y'];
+
+
+//concat two arrays (yeah, con"cat"!)
+const arr1 = ['solid', 'bicolor', 'tabby'];
+const arr2 = ['calico', 'bicolor', 'tortoiseshell'];
+const concatArr = [...arr1, ...arr2]; 
+console.log('concatArr', concatArr)   // ["solid", "bicolor", "tabby", "calico", "bicolor", "tortoiseshell"]
+
+
+//find the largest
+const catWeight = [10, 9, 6, 12];
+const max = Math.max(...catWeight); 
+console.log('max', max);   // 12
+
+//cloning
+const allCatNames = ['chewie', 'leia', 'yoda', 'chewie', 'luke', 'leia'];
+const allCatNamesCopy = [...allCatNames];
+
+//if you want to copy sans duplicates, use the Set object!
+const catNames = [...new Set(allCatNames)]; //['chewie', 'leia', 'yoda', 'luke'];
+console.log('catNames', catNames)
+
+
+</script>
+<script type="text/javascript" src="lib/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</p>
+</body>
+</html>
