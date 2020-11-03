@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<title>Test</title>
+</head>
+<body>
+  <p>
+    <form>
+      <label for="livetext">Dynamic content</label>
+      <input type="text" id="livetext" value="Lets check if this is spoken" style="width: 200px"> &nbsp; &nbsp; &nbsp;
+      <input type="button" value="Add Content" id="addBtn"> &nbsp; <input type="button" value="Clear Content" id="clrBtn">
+    </form>
+  </p>
+<p>
+<div id="update" role="region" aria-live="polite" aria-label="Theme selected" style="border:3px dotted red; width: 300px">
+  Test
+</div>
+
+</p>
+<script type="text/javascript">
+document.getElementById('addBtn').addEventListener('click', function(){
+    document.getElementById('update').innerHTML += '<br>' + document.getElementById('livetext').value
+
+})
+document.getElementById('clrBtn').addEventListener('click', function(){
+    document.getElementById('update').innerHTML = 'Test'
+
+})
+
+
+</script>
+</body>
+</html>
