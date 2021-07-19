@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.all-browsers {
+  margin: 0;
+  padding: 5px;
+  background-color: lightgray;
+}
+
+.all-browsers > h1, .browser {
+  margin: 10px;
+  padding: 5px;
+}
+
+.browser {
+  background: white;
+}
+
+.browser > h2, p {
+  margin: 4px;
+  font-size: 90%;
+}
+#complementary {float:left;width:15%;height:400px;background:#4682b4}
+  #contentinfo {clear:both;height:100px;background:#ffb6c1}
+  #search {background:#ffff00;font-size:small;}
+  #form {background:#fafad2;font-size:medium;}
+  
+</style>
+</head>
+<body>
+
+<h1>The article element - Styled with CSS</h1>
+
+<article class="all-browsers">
+  <h1>Most Popular Browsers</h1>
+  <article class="browser">
+    <h2>Google Chrome</h2>
+    <p>Google Chrome is a web browser developed by Google, released in 2008. Chrome is the world's most popular web browser today!</p>
+  </article>
+  <article class="browser">
+    <h2>Mozilla Firefox</h2>
+    <p>Mozilla Firefox is an open-source web browser developed by Mozilla. Firefox has been the second most popular web browser since January, 2018.</p>
+  </article>
+  <article class="browser">
+    <h2>Microsoft Edge</h2>
+    <p>Microsoft Edge is a web browser developed by Microsoft, released in 2015. Microsoft Edge replaced Internet Explorer.</p>
+  </article>
+</article>
+
+<article class="all-browsers">
+  <header>
+    <h2>Blog Post</h2>
+  </header>
+  <section class="browser">
+    <p>A very interesting post</p>
+  </section>
+  <section class="browser">
+    <div class="comment" role="article">
+      <p>Meaningful comment</p>
+    </div>
+    <div class="comment" role="article">
+      <p>Positive comment</p>
+    </div>
+  </section>
+</article>
+
+<div id="complementary" role="complementary" class="browser"> complementary
+  <div role="form" id="form"> form
+    <div id="search" role="search">search</div>
+  </div>
+</div>
+
+<div id="contentinfo" role="contentinfo" class="browser">contentinfo</div>
+
+
+
+</body>
+</html>
