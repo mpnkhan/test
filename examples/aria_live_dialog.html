@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Alert Test</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+</head>
+<body>
+		<div id="ToastTest"></div>
+		<div id="wrapper">
+			<!-- <div id="header"><a href="https://www.paypal.com"> &times; Paypal.com </a></div> <br><br> -->
+
+			<div id="content">
+
+			<button onClick="return showToast('ToastTest','Attaching Toast to Body')"> Document Body</button> <br><br>
+				
+			<button onClick="return showDialog()"> Show sheet</button>
+				
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+
+
+		function showDialog(){
+
+		    var pane= document.createElement('dialog');
+		    pane.id = "dialogDiv";
+
+		    var dialogContent = "<h2>Dialog Title</h2><p>Dialog Description</p>";
+		    pane.style.cssText="z-index: 50000;background-color: #f9f1f1;";
+		    document.body.insertBefore(pane, document.body.children[0]);
+
+			var toast = `
+			    <p><label>Favorite animal:
+			      <select>
+			        <option></option>
+			        <option>Brine shrimp</option>
+			        <option>Red panda</option>
+			        <option>Spider monkey</option>
+			      </select>
+			    </label></p>
+			    <button onClick="return showToast('ToastTest','Attaching Toast to Body')"> To Body</button> <br><br>
+			    <button onClick="return showToast('dialogDiv','Attaching Toast to Sheet')"> To Sheet</button>
+
+			`;
+
+		    pane.innerHTML = toast + dialogContent;
+		    pane.showModal();
+
+		    return false;
+		}
+
+		function showToast( container,content ){
+
+			var cont = document.getElementById(container);
+			var toast = `
+						<div id="sheet_toast" class="ppvx_toast-container___1-7-21-beta-0 ppvx_toast-container--show___1-7-21-beta-0"  aria-live="polite" aria-atomic="true">
+							<div class="ppvx_toast___1-7-21-beta-0 ppvx_toast--type_success___1-7-21-beta-0 ppvx_toast--type_success-with-svg-icon___1-7-21-beta-0">
+								<span class="ppvx_icon--svg___6-7-17-beta-0 ppvx_icon--size_md___6-7-17-beta-0 ppvx_toast__success-icon___1-7-21-beta-0">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="1em" height="1em" fill="currentColor">
+									<path d="M7.448 10.818l4.82-5.19a1 1 0 0 1 1.465 1.36l-5.57 6a1 1 0 0 1-1.482-.018l-2.43-2.749a1 1 0 1 1 1.498-1.325l1.7 1.922zM9 1a8 8 0 0 0-8 8 8 8 0 0 0 8 8A8 8 0 1 0 9 1z">
+									</path>
+								</svg>
+								</span>
+								${content}
+							</div>
+						</div>
+			`;
+			cont.innerHTML= toast + cont.innerHTML;
+			
+			setTimeout(function(){
+				document.getElementById('sheet_toast').innerHTML = ' ' + document.getElementById('sheet_toast').innerHTML;
+			},50);
+
+			return false;
+		}
+
+
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Currency</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+    <style type="text/css">
+    	.currenCont:focus{
+    		border: 2px dotted blue;
+    	}
+    	.currenCont:hover {
+    		cursor: pointer;
+    	} 
+
+    	.showval1{
+    		padding: 20px;
+    	}
+
+    </style>
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"></div>
+			<div id="content">
+
+
+					<div class="currenCont" tabindex="-1"> 
+						<span id="symbol">$</span>
+						<span id="showval1"   tabindex="-1" style="display: none;" onclick="showCurrency(this)">10.00</span>
+						<span id="inputCont" style="display: inline;">
+							<input id="currency1" type="number"  min="1" step="any"  aria-label="Currency" placeholder="Currency" />
+							&nbsp;&nbsp;
+							<button onclick="update(this)">Update</button>
+						</span>
+					</div>
+				    
+
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+		let update = (e) => {
+			document.getElementById('showval1').innerHTML = document.getElementById('currency1').value;
+			document.getElementById('inputCont').style.display='none';
+			document.getElementById('showval1').style.display='inline';
+			e.parentElement.parentElement.focus();
+		}
+
+		let showCurrency = (e) =>{
+			document.getElementById('currency1').innerHTML = document.getElementById('showval1').value;
+			document.getElementById('inputCont').style.display='inline';
+			document.getElementById('showval1').style.display='none';
+			document.getElementById('currency1').focus();		
+		}
+	</script>
+	
+</body>
+</html>

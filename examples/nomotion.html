@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>No Motion</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+
+    <style type="text/css">
+    	
+.animation {
+  animation: pulse 1s linear infinite both;
+}
+
+/* Tone down the animation to avoid vestibular motion triggers like scaling or panning large objects. */
+@media (prefers-reduced-motion) {
+  .animation {
+    animation-name: dissolve;
+  }
+}
+
+.animation {
+  background-color: #306;
+  color: #fff;
+  font: 1.2em sans-serif;
+  width: 10em;
+  padding: 1em;
+  border-radius: 1em;
+  text-align: center;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  25% { transform: scale(.9); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes dissolve {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+    </style>
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><h2>Please honor reduced motion preferences</h2></div>
+			<div id="content">
+
+				<div class="animation">animated box</div>
+
+
+				<picture>
+					<source srcset="../img/horse.jpg" media="(prefers-reduced-motion: reduce)">
+					<img srcset="../img/horse.gif" alt="brick wall"/>
+				</picture>
+
+        <!--
+          Intuit says its designers create two different versions of nearly every animation they publish, including TurboTax's odometer graphic. The animation on the right is shown to users who have ‘reduced motion’ activated on their device.
+        -->
+
+					
+        <p>
+          Note: The impact of animation on people with vestibular disorders can be quite severe. Triggered reactions include nausea, migraine headaches, and potentially needing bed rest to recover.
+        </p>
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+<footer>
+  <a href="https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions.html">https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions.html</a>
+</footer>
+	
+</body>
+</html>

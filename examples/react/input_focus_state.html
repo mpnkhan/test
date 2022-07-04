@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>setFocus on state change</title>
+    <script src="lib/react.js"></script>
+    <script src="lib/react-dom.js"></script>
+    <script src="lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+    class Focusinput extends React.Component {
+
+       constructor(props) {
+          super(props);
+          const id = Math.floor((Math.random()*1000)+1);
+          this.state = {id: id, value: ''};
+          this.handleChange = this.handleChange.bind(this);
+        }
+
+        handleChange(event) {
+            this.setState({value: event.target.value});
+          }
+
+       componentDidMount() {
+          this.timerID = setInterval(
+            () => this.ajaxUpdate(),
+            3000
+          );          
+        }
+
+        componentWillUnmount() {
+          clearInterval(this.timerID);
+        }
+
+        ajaxUpdate() {
+          const id = Math.floor((Math.random()*1000)+1);
+          this.setState({ id: id }, () => {
+            // const element = ReactDOM.findDOMNode(this);
+            // element.querySelector('input').focus();
+            this.nameInput.focus();
+          });
+        }
+
+        render() {
+          return (
+            <form onSubmit={this.handleSubmit}>
+              <label htmlFor={this.state.id}> Name: {this.state.id} <br/></label>
+              <input id={this.state.id} ref={(input) => { this.nameInput = input; }} type="text" value={this.state.value} onChange={this.handleChange}/>
+
+            </form>
+          );
+        }
+
+    }
+
+    ReactDOM.render(
+      <Focusinput />,
+      document.getElementById('root')
+    );
+
+    </script>
+  </body>
+</html>

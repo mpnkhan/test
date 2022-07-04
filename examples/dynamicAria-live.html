@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Dynamic -Aria-live</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+    <style type="text/css">
+div[aria-live="assertive"] {
+  border: 1px solid red
+}
+
+body {
+  max-width: 90%;
+  font-family: sans-serif;
+}
+
+.works {
+  color: #008800;
+}
+
+.doesnt-work {
+  color: #cc0000;
+}
+
+.results span {
+  color: black;
+  display: inline-block;
+  padding: .2em .3em;
+}
+
+.results .works {
+  background-color: #ccffcc;
+}
+
+.results .doesnt-work {
+  background-color: #ffcccc;
+}
+
+#msg4_1 {
+  display: none;
+}
+
+#msg4_2 {
+  display: none;
+}
+
+    </style>
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><a href="https://www.paypal.com">PayPal</a></div>
+			<div id="content">
+
+
+<h1>Testing <code>aria-live="assertive"</code> dynamically</h1>
+
+<p>Test versions: JAWS 2021, IE Edge, NVDA 2021.3.3, VoiceOver 12.4</p>
+
+<h2>1: Adding a <em>new element</em> with <code>aria-live="assertive"</code> to the DOM dynamically: <span class="doesnt-work">does NOT work</span></h2>
+
+<p>Clicking the button below adds a new div with <code>aria-live="assertive"</code> directly to the DOM. This is to check whether screen reader supports them being added dynamically, or if they have to be in the DOM already and have their contents changed later to be read out (like aria live regions do on some browsers).</p>
+
+
+<pre><code>el.insertAdjacentHTML('afterend', '&lt;div F&gt;You need to fill in your username&lt;/div&gt;');</code></pre>
+
+<button id="open1">Open an alert</button>
+
+<p class="results">
+  <div class="works">Works : VO + Chrome, VO + Safari </div>
+  <div class="doesnt-work">NOT working: Jaws+IE, Jaws + Chrome, NVDA + Chrome, NVDA + Firefox</div>
+</p>
+
+<hr>
+
+<h2>2: Adding <code>aria-live="assertive"</code> to an existing element (which doesn't have that role) dynamically: <span class="doesnt-work">does NOT work</span></h2>
+
+<pre><code>errorMsg.setAttribute("role", "alert");</code></pre>
+
+<button id="open2">Open an alert</button>
+<div id="msg2">You need to fill in your username.</div>
+
+<p class="results">
+  <div class="works">Works : VO + Chrome</div>
+  <div class="doesnt-work">NOT working: Jaws+IE, Jaws + Chrome, NVDA + Chrome, NVDA + Firefox, VO + Safari</div>
+</p>
+
+
+<hr>
+
+<h2>3: modifying the innerHTML of a <code>aria-live="assertive"</code> element already in the DOM: <span class="works">WORKS</span></h2>
+
+<pre><code>errorMsg.innerHTML = "You need to fill in your password.";</code></pre>
+
+<button id="open3">Open an alert</button>
+<div aria-live="assertive" id="msg3"></div>
+
+<p class="results"><span class="works">Works in JAWS + IE, JAWS + Chrome, VO + Safari, VO + Chrome, NVDA + Firefox.</span></p>
+
+<hr>
+
+<h2>4: Making an invisible (<code>display: none</code>) element already in the DOM visible: <span class="doesnt-work">does NOT work</span></h2>
+
+<h3><!--span class="works">Works when</span--> the <code>element.style.display</code> property is directly altered in JS</h3>
+
+<pre><code>&lt;div aria-live="assertive" style="display: none"&gt;Please enter your postcode&lt;/div&gt;
+...
+errorMsg.style.display = "block";</code></pre>
+
+
+<button id="open4">Open an alert</button>
+<div aria-live="assertive" id="msg4" style="display: none">Please enter your postcode</div>
+
+<p>(This also works if the div's style is initially set in a stylesheet rather than inline; what's important is that the <strong>modification needs to be done at the JS level</strong>)</p>
+
+<p class="results">
+  <div class="works">Works : Jaws+IE, Jaws + Chrome, VO + Safari, VO + Firefox</div>
+  <div class="doesnt-work">NOT working: NVDA + Chrome, NVDA + Firefox</div>
+</p>
+
+<p class="results">
+  <div class="works">Works : Jaws+IE, Jaws + Chrome, VO + Safari, VO + Firefox</div>
+  <div class="doesnt-work">NOT working: NVDA + Chrome, NVDA + Firefox</div>
+</p>
+
+<h3><!--span class="doesnt-work">Does not work</span--> when new CSS is written to the page</h3>
+
+<pre><code>&lt;style id="myStyleElement"&gt;&lt;/style&gt;
+
+myStyleElement.innerHTML = "#errorMsg { display: block; }";</code></pre>
+
+<button id="open4_2">Open an alert</button>
+<div aria-live="assertive" id="msg4_2">Please enter your postcode</div>
+<style id="style4_2"></style>
+
+<p>Notice the difference: we're modifying CSS only, but not via JS. This does not trigger the alert in JAWS.</p>
+
+<p class="results">
+  <div class="works">Works : Jaws+IE, Jaws + Chrome, VO + Safari, VO+ Firefox</div>
+  <div class="doesnt-work">NOT working: NVDA + Chrome, NVDA + Firefox</div>
+</p>
+
+<hr>
+
+<h2>5: Making an invisible (<code>[hidden]</code> attribute) element already in the DOM visible: <span class="works">WORKS</span></h2>
+
+<pre><code>errorMsg.removeAttribute("hidden");</code></pre>
+
+<button id="open5">Open an alert</button>
+<div aria-live="assertive" id="msg5" hidden>Please enter your city</div>
+
+<p class="results">
+  <div class="works">Works : Jaws + IE, Jaws + Chrome, VO, NVDA + Chrome, NVDA + Firefox, VO + Safari, VO + Firefox</div>
+</p>			
+
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+
+// Adding an element to the DOM dynamically
+var open1 = document.getElementById("open1");
+
+open1.addEventListener("click", function() {
+  open1.insertAdjacentHTML('afterend', '<div aria-live="assertive">You need to fill in your username</div>');
+});
+
+// Adding role=alert to an existing element
+var open2 = document.getElementById("open2");
+var msg2 = document.getElementById("msg2");
+
+open2.addEventListener("click", function() {
+  msg2.setAttribute("aria-live", "assertive");
+});
+
+// Changing innerHTML of an existing element
+var open3 = document.getElementById("open3");
+var msg3 = document.getElementById("msg3");
+
+open3.addEventListener("click", function() {
+  msg3.innerHTML = "You need to fill in your password.";
+});
+
+// Removing display: none
+var open4 = document.getElementById("open4");
+var msg4 = document.getElementById("msg4");
+
+open4.addEventListener("click", function() {
+  msg4.style.display = "block";
+});
+
+  // Variant: when set in stylesheet
+  //   var open4_1 = document.getElementById("open4_1");
+  //   var msg4_1 = document.getElementById("msg4_1");
+
+  //   open4_1.addEventListener("click", function() {
+  //     msg4_1.style.display = "block";
+  //   });
+
+  // Variant: set in CSS rather than JS
+  var open4_2 = document.getElementById("open4_2");
+  var style4_2 = document.getElementById("style4_2");
+
+  open4_2.addEventListener("click", function() {
+    style4_2.innerHTML = "#msg4_2 { display: block; }";
+  });
+
+// Removing the hidden attribute
+var open5 = document.getElementById("open5");
+var msg5 = document.getElementById("msg5");
+
+open5.addEventListener("click", function() {
+  msg5.removeAttribute("hidden");
+});
+
+
+
+	</script>
+	<p>Test script from https://codepen.io/vloux/pen/exYQKR </p>
+</body>
+</html>

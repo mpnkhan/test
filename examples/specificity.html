@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en" id="top" class="step0">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>CSS Specificity Demo - Manuel Matuzović</title>
+
+    
+
+    <meta name="description" content="An interactive demo that illustrates how specificity in CSS works">
+    <meta property="og:title" content="CSS Specificity Demo">
+    <meta property="og:description" content="An interactive demo that illustrates how specificity in CSS works">
+    <meta property="og:image" content="https://res.cloudinary.com/dp3mem7or/image/upload/w_1200/articles/sm_specificity.jpg">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:type" content="website">
+
+    <meta property="og:site_name" content="CSS Specificity Demo">
+    <meta name="author" content="Manuel Matuzović"> 
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#36b1bf">
+
+  
+  </head>
+
+  <body class="body" id="body">
+
+
+    <section class="banner" aria-labelledby="banner_heading">
+      <h2 id="banner_heading">This site is updating in the open</h2>
+      <p>Things might look unstyled because they probably are.</p>
+    </section>
+
+    <main id="content" class="">
+      
+      
+<article class="post rich-text">
+    <h1 class="post-heading">CSS Specificity Demo</h1>
+
+    <p>
+      posted on <time datetime="2022-01-26">January 26., 2022</time>
+    </p>
+
+  
+
+  
+
+  
+
+  
+    <p>I built an interactive demo to illustrate how specificity in CSS works.</p>
+
+  
+
+  
+    <p>Press the “Add selector” and “Remove selector” buttons to add or remove a selector in the list of declarations and see how the background color changes accordingly. Each selector will be added to the top of the list to prove that it has a higher specificity than the previous selector.</p>
+<div role="alert" class="u-vh"></div>
+<button id="remove" disabled type="button">
+  Remove selector
+</button>
+<button id="add" type="button">
+  Add selector
+</button>
+<script>
+  let step = 0;
+
+  const messages = [
+    'Selector: :where(body), background-color: gray',
+    'Selector: body, background-color: red',
+    'Selector: .body, background-color: blue',
+    'Selector: body.body, background-color: green',
+    'Selector: .body.body, background-color: orange',
+    'Selector: #body, background-color: brown',
+    'Selector: body#body, background-color: fuchsia',
+    'Selector: .body#body, background-color: salmon',
+    'Selector: #body#body, background-color: aqua',
+    'Selector: #body:is(#body, #bla#bla), background-color: hotpink',
+    'Selector: div with animated background-color, background-color: yellow',
+    'Selector: body with !important, background-color: rebeccapurple'
+  ]
+  
+  const remove = document.getElementById('remove');
+  const add = document.getElementById('add');
+
+  remove.addEventListener('click', () => {
+    if (step > 0) {
+      add.removeAttribute('disabled')
+      step--;
+      document.documentElement.className = `step${step}`
+      document.querySelector('[role="alert"]').textContent = messages[step]
+    }
+
+    if (step === 0) {
+      remove.setAttribute('disabled', 'disabled')
+    }
+  })
+
+  add.addEventListener('click', () => {
+    if (step < messages.length) {
+      remove.removeAttribute('disabled')
+      step++;
+      document.documentElement.className = `step${step}`
+      document.querySelector('[role="alert"]').textContent = messages[step]
+    }
+    
+    if (step ===  messages.length - 1) {
+      add.setAttribute('disabled', 'disabled')
+    }
+  })
+</script>
+<style>
+  button {
+    background: #80d2db;
+    border: 2px solid #153a51;
+    color: #153a51;
+    padding: 0.7em 0.8em 0.5em;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  button:not([disabled]):hover {
+    background: #153a51;
+    color: #fff;
+  }
+
+  button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  pre[class*="language-"] {
+    margin-top: 0;
+    padding: 1rem;
+    border: none;
+  }
+
+  pre[class*="language-"]:not(:last-of-type) {
+    margin-bottom: 0;
+  }
+
+  header {
+    background: #efefef;
+  }
+
+  .banner {
+    background: #d9dddf;
+  }
+
+  main {
+    background: #fafafa;
+  }
+
+  pre[class*="language-"] {
+    display: none;
+  }
+
+  @keyframes bg {
+    to {
+      background: yellow;
+    }
+  }
+
+  .step11 body { background: rebeccapurple !important; }
+  .step10 body { animation: bg 0s forwards; }
+  .step9 #body:is(#body, #bla#bla) { background: hotpink; }
+  .step8 #body#body { background: aqua; }
+  .step7 .body#body { background: salmon; }
+  .step6 body#body { background: fuchsia; }
+  .step5 #body { background: brown; }
+  .step4 .body.body { background: orange; } 
+  .step3 body.body { background: green; }
+  .step2 .body { background: blue; }
+  .step1 body { background: red; }
+  .step0 :where(body) { background: #efefef; }
+
+  .step0 pre[class*="language-"]:nth-last-of-type(1),
+  .step1 pre[class*="language-"]:nth-last-of-type(-n+2),
+  .step2 pre[class*="language-"]:nth-last-of-type(-n+3),
+  .step3 pre[class*="language-"]:nth-last-of-type(-n+4),
+  .step4 pre[class*="language-"]:nth-last-of-type(-n+5),
+  .step5 pre[class*="language-"]:nth-last-of-type(-n+6),
+  .step6 pre[class*="language-"]:nth-last-of-type(-n+7),
+  .step7 pre[class*="language-"]:nth-last-of-type(-n+8),
+  .step8 pre[class*="language-"]:nth-last-of-type(-n+9),
+  .step9 pre[class*="language-"]:nth-last-of-type(-n+10),
+  .step10 pre[class*="language-"]:nth-last-of-type(-n+11),
+  .step11 pre[class*="language-"]:nth-last-of-type(-n+12) {
+    display: block;
+  }
+
+  body {
+    transition: background 0.5s;
+  }
+
+</style>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* !important overwrites everything */</span><br><span class="token selector">body</span> <span class="token punctuation">{</span><br>  <span class="token property">background</span><span class="token punctuation">:</span> rebeccapurple <span class="token important">!important</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* Animation declarations take precedence over normal<br> declarations */</span><br><span class="token selector">body</span> <span class="token punctuation">{</span><br>  <span class="token property">animation</span><span class="token punctuation">:</span> bg 0s forwards<span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token atrule"><span class="token rule">@keyframes</span> bg</span> <span class="token punctuation">{</span><br>  <span class="token selector">to</span> <span class="token punctuation">{</span><br>    <span class="token property">background</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* any selector with higher specificity, even if it doesn't <br>match any element, inside :is() overwrites id + id */</span><br><span class="token selector">#body:is(#body, #bla#bla)</span> <span class="token punctuation">{</span><br>  <span class="token property">background</span><span class="token punctuation">:</span> hotpink<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* id + id overwrites id + class */</span><br><span class="token selector">#body#body</span> <span class="token punctuation">{</span><br>  <span class="token property">background</span><span class="token punctuation">:</span> aqua<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* id + class overwrites id + tag */</span><br><span class="token selector">.body#body</span> <span class="token punctuation">{</span><br>  <span class="token property">background</span><span class="token punctuation">:</span> salmon<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* id + tag overwrites id */</span><br><span class="token selector">body#body</span> <span class="token punctuation">{</span><br>  <span class="token property">background</span><span class="token punctuation">:</span> fuchsia<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* id overwrites classes */</span><br><span class="token selector">#body</span> <span class="token punctuation">{</span><br>  <span class="token property">background</span><span class="token punctuation">:</span> brown<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* class + class overwrites tag + class */</span><br><span class="token selector">.body.body</span> <span class="token punctuation">{</span><br>  <span class="token property">background</span><span class="token punctuation">:</span> orange<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* tag + class overwrites class */</span><br><span class="token selector">body.body</span> <span class="token punctuation">{</span><br>  <span class="token property">background</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* class overwrites tag */</span><br><span class="token selector">.body</span> <span class="token punctuation">{</span><br>  <span class="token property">background</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* tag selector overwrites universal :where() selector */</span><br><span class="token selector">body</span> <span class="token punctuation">{</span><br>  <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* universal :where() selector */</span><br><span class="token selector">:where(body)</span> <span class="token punctuation">{</span><br>  <span class="token property">background</span><span class="token punctuation">:</span> #efefef<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/css-cascade-5/#cascade-origin">Cascade Sorting Order</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:where">:where() on MDN</a></li>
+<li><a href="https://codepen.io/t_afif/pen/QWOWKXY">specificity animation hack</a></li>
+<li><a href="https://specifishity.com/">SpeciFISHity</a></li>
+<li><a href="https://wattenberger.com/blog/css-cascade#specificity">The CSS Cascade</a></li>
+</ul>
+
+  
+</article>
+
+    </main>
+
+    <footer>
+  <small>&copy; 2019 - 2022</small>
+
+  <ul>
+    <li><a href="/legal">legal</a></li>
+    <li><a href="https://twitter.com/mmatuzo" rel="noopener">twitter</a></li>
+  </ul>
+
+  <a href="#top" class="js-scroll-top">
+    <span class="u-vh">Back to</span> top
+  </a>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><title>Pay US Tax</title></head>
+                <body class="vsc-initialized">
+                    <script data-uid="uid_sgfvtzxbnznvjnaismnvtnhvqejrfv">
+        const ALLOWED_ATTRS = [
+            "data-amount",
+            "data-client-token",
+            "data-merchant-id",
+            "data-partner-attribution-id",
+            "data-enable-3ds",
+            "data-sdk-integration-source",
+            "data-client-metadata-id",
+            "data-uid",
+            "data-csp-nonce"
+        ];
+
+        function retrieveSDKMeta() {
+
+            const parameters = grabQueryParameters()
+            if (parameters['sdkMeta']) {
+                return parameters['sdkMeta']
+            }
+            return null;
+        }
+
+        function grabQueryParameters() {
+            return window.location.search.substr(1).split("&").reduce(function (acc, param){
+                const splitParams = param.split("="); 
+                acc[splitParams[0]] = splitParams[1]
+                return acc; 
+            }, {})
+        }
+
+        function getSDKScriptAttributes(allAttrs){ 
+            const attrs = {};
+
+            Object.keys(allAttrs).forEach(function (key) {
+                if (ALLOWED_ATTRS.indexOf(key) > -1) {
+                    attrs[key] = allAttrs[key];
+                }
+            });
+
+            return attrs;
+        }
+
+        const sdkPath = "https://www.paypal.com/sdk/js"
+        const sdkMeta = retrieveSDKMeta();
+
+        let parsedSdkMeta = null;
+        let clientSideUrl = null;
+        let attrs = null;
+        let sdkQueryParams = null;
+
+        try {
+            parsedSdkMeta = JSON.parse(atob(decodeURIComponent(sdkMeta)))
+            clientSideUrl = parsedSdkMeta.url
+            attrs = parsedSdkMeta.attrs
+        } catch (error) {
+            throw new Error("Invalid sdkMeta")
+        }
+        if (!parsedSdkMeta || !clientSideUrl || !attrs) {
+            throw new Error("Invalid sdkMeta")
+        }
+        
+        var a = document.createElement("a");
+        a.href=clientSideUrl;
+        sdkQueryParams = a.search
+
+        if (!sdkQueryParams) {
+            throw new Error('Invalid sdkMeta'); 
+        }
+
+        const validAttrs = getSDKScriptAttributes(attrs);
+
+        const baseAttrs = {
+            nonce: "undefined",
+            src: sdkPath + sdkQueryParams
+        };
+
+        let script = "<script "
+
+        Object.keys(baseAttrs).forEach(function (key) {
+            script = script + key + '="' + baseAttrs[key] + '" '
+        })
+
+        Object.keys(validAttrs).forEach(function (key) {
+            script = script + key + '="' + validAttrs[key] + '" '
+        })
+
+        script = script + "><" + "/script>";
+
+        document.write(script)
+    </script><script nonce="" src="https://www.paypal.com/sdk/js?client-id=AUu2V_AquVyzUQp4j1a3a1h98j8w6C0lHc0DEE-Q2uoRltgqL52r5hGfHvwJLHyD88-_FWgn95vVPS6r&amp;currency=USD&amp;components=messages&amp;disable-funding=card&amp;commit=false" data-uid="uid_sgfvtzxbnznvjnaismnvtnhvqejrfv"></script> <script src="https://www.paypalobjects.com/upstream/bizcomponents/js/versioned/smart-credit-message@1.27.1.js"></script> <script>
+                if (typeof window.crc === 'undefined') {
+                    document.write('<script src="https:&#x2F;&#x2F;www.paypalobjects.com&#x2F;upstream&#x2F;bizcomponents&#x2F;js&#x2F;smart-credit-message.js"><'+'/script>');
+                }
+            </script> <script>
+            function fromBinary(binary) {
+  const bytes = new Uint8Array(binary.length);
+
+  for (let i = 0; i < bytes.length; i++) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+
+  return String.fromCharCode.apply(null, new Uint16Array(bytes.buffer));
+}
+            var parsedData = JSON.parse(fromBinary(atob(document.firstChild.nodeValue)));
+            crc.setupMessage(parsedData);
+        </script><button type="button" aria-label="PayPal Pay Later Message" style="display: block; background: transparent; padding: 0px; border: none; outline: none; text-align: left; font-family: inherit; font-size: inherit;"><div role="button" class="message"><style class="styles__global">* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    color: #2d2d2d;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.message__logo--svg {
+    position: relative;
+}
+
+.message__logo img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* IE will not properly scale a SVG element, but will scale a canvas element */
+.message__logo canvas {
+    display: block;
+    width: 100%;
+    visibility: hidden;
+}
+
+/* Sizing will be handled by the iframe container */
+html,
+body,
+button {
+    height: 100%;
+}
+
+.message {
+    cursor: pointer;
+}
+
+.message .br {
+    display: inline-block;
+}
+
+.message .em {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+
+.message__container,
+.message__foreground,
+.message__content,
+.message__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+button:focus .message__content,
+button:focus .message__content span.br {
+    text-decoration: underline;
+}
+
+.message__headline,
+.message__sub-headline,
+.message__disclaimer {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 300;
+}
+
+.message__headline {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+.message__headline .weak {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 300;
+}
+
+.message__disclaimer > span:not(.multi),
+.message__disclaimer > span.multi:last-of-type {
+    font-weight: 300;
+    text-decoration: underline;
+    white-space: nowrap;
+}
+
+.message__background {
+    z-index: -1;
+}
+
+.message__messaging {
+    font-size: 0;
+}
+
+/* Not a valid style option ratio, but used as the mobile base for 8x1 and 20x1 */
+
+.message__content {
+    display: flex;
+    padding-right: 1rem;
+    align-items: center;
+}
+
+.message__logo-container {
+    flex: 0 0 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message__logo {
+    width: 60%;
+}
+
+.message__messaging {
+    position: relative;
+    flex: 1 1 100%;
+    display: block;
+}
+
+.message__messaging > * {
+    width: 100%;
+}
+
+.message__headline {
+    font-size: 5vw;
+    line-height: 1;
+    margin-bottom: 0.2em;
+}
+
+.message__sub-headline {
+    display: none;
+}
+
+.message__promo-container {
+    display: inline;
+}
+
+.message__headline span.multi:nth-of-type(2) {
+    display: none;
+}
+
+.message__disclaimer {
+    font-size: 10px;
+    line-height: 1.1;
+    display: inline;
+}
+
+@media (max-aspect-ratio: 61/10) and (min-width: 400px) {
+    .message__logo-container {
+        flex: 0 0 25%;
+    }
+
+    .message__headline {
+        font-size: 4vw;
+        margin-bottom: 0.5rem;
+    }
+
+    .message__sub-headline {
+        font-size: 3vw;
+        display: inline;
+    }
+
+    .message__sub-headline > span {
+        margin-right: 1rem;
+    }
+}
+
+@media (max-aspect-ratio: 61/10) and (min-width: 520px) {
+    .message__logo-container {
+        flex: 0 0 25%;
+    }
+
+    .message__headline {
+        line-height: 1.1;
+    }
+
+    .message__disclaimer {
+        font-size: 0.85rem;
+    }
+
+    .message__headline span.multi:nth-of-type(2) {
+        display: inline;
+    }
+
+    .message__headline span.multi:nth-of-type(1) {
+        display: none;
+    }
+}
+
+@media (max-aspect-ratio: 61/10) and (min-width: 640px) {
+    .message__headline {
+        font-size: 1.7rem;
+    }
+}
+
+@media (min-aspect-ratio: 200/11) {
+    .message__logo-container {
+        flex: 1 0 20%;
+    }
+
+    .message__logo {
+        width: 50%;
+    }
+
+    .message__messaging {
+        flex: 1 1 85%;
+        display: flex;
+        align-items: center;
+    }
+
+    .message__headline {
+        flex: 1 1 60%;
+        font-size: 0.7rem;
+        line-height: 1;
+        margin: 0;
+        display: inline;
+    }
+
+    .message__sub-headline {
+        display: none;
+    }
+
+    .message__disclaimer {
+        flex: 0 0 auto;
+        width: auto;
+        max-width: 12rem;
+        padding: 0;
+        font-size: 8px;
+        line-height: 1.1;
+    }
+}
+
+@media (min-aspect-ratio: 200/11) and (min-width: 400px) {
+    .message__headline {
+        font-size: 1rem;
+    }
+}
+
+@media (min-aspect-ratio: 200/11) and (min-width: 600px) {
+    .message__logo-container {
+        flex: 1 0 10%;
+    }
+
+    .message__logo {
+        width: 60%;
+    }
+
+    .message__headline {
+        font-size: 1.8vw;
+    }
+
+    .message__headline span.multi:nth-of-type(2) {
+        display: inline;
+    }
+
+    .message__headline span.multi:nth-of-type(1) {
+        display: none;
+    }
+
+    .message__disclaimer {
+        padding-right: 1rem;
+        font-size: 0.75rem;
+        line-height: 1.2;
+    }
+
+    .message__sub-headline {
+        font-size: 1.6vw;
+        line-height: 1.3em;
+        margin-left: 2vw;
+        display: inline;
+    }
+}
+
+@media (min-aspect-ratio: 200/11) and (min-width: 1000px) {
+    .message__disclaimer {
+        font-size: 0.9rem;
+        max-width: 14rem;
+    }
+}
+
+.message__content {
+    color: white;
+}
+
+.message__background {
+    background: #023188;
+}
+</style><style class="styles__locale"></style><style class="styles__mutations"></style><style class="styles__misc"></style><style class="styles__customFont">.message__messaging,
+.message__messaging .message__headline span,
+.message__messaging .message__sub-headline span,
+.message__messaging .message__disclaimer span{ font-size: undefinedpx;  }</style><div class="message__container locale--US"><div class="message__foreground"></div><div class="message__content"><div class="message__logo-container"><div class="message__logo message__logo--svg"><img src="https://www.paypalobjects.com/upstream/assets/logos/US/ppc_wh_pri.svg" alt="PayPal Credit logo"><canvas height="152" width="453"></canvas></div></div><div class="message__messaging"><div class="message__promo-container"><h5 class="message__headline"><span class="tag--xsmall multi"><span class="">Buy now. Pay over time.</span></span> <span class="tag--medium multi"><span class=" br">No Interest if paid in full in 6 months</span> <span class="weak br">on purchases of $99+.</span></span></h5> <h6 class="message__sub-headline"></h6></div> <p class="message__disclaimer"><span class="tag--xsmall "><span class="">Learn more</span></span></p></div></div><div class="message__background"></div></div></div></button>
+                
+            </body></html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Set Focus on componentDidMount</title>
+    <script src="lib/react.js"></script>
+    <script src="lib/react-dom.js"></script>
+    <script src="lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+    class Focusinput extends React.Component {
+      componentDidMount(){
+        this.nameInput.focus();
+      }
+      render() {
+        return(
+          <div>
+            <input aria-label="input1" defaultValue="Won't focus" 
+            />
+            <input aria-label="input2"
+              ref={(input) => { this.nameInput = input; }} 
+              defaultValue="will focus"
+            />
+          </div>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <Focusinput />,
+      document.getElementById('root')
+    );
+
+    </script>
+  </body>
+</html>

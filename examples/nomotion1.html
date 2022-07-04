@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>No Motion</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+
+    <style type="text/css">
+    	
+
+/*
+ inject a stylesheet with the following CSS into every web page
+ https://web.dev/prefers-reduced-motion/#(bonus)-forcing-reduced-motion-on-all-websites
+ */
+
+ @media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
+
+.animation {
+  animation: pulse 1s linear infinite both;
+  background-color: #306;
+  color: #fff;
+  font: 1.2em sans-serif;
+  width: 10em;
+  padding: 1em;
+  border-radius: 1em;
+  text-align: center;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  25% { transform: scale(.9); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes dissolve {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+    </style>
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><h2>Please honor reduced motion preferences (Css in header method)</h2></div>
+			<div id="content">
+
+				<div class="animation">animated box</div>
+
+
+        <img srcset="../img/horse.gif" alt="brick wall"/>
+
+					
+        <p>
+          Note: This works only for css animations and not gif animations
+        </p>
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+
+	</script>
+	
+</body>
+</html>

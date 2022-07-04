@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Set Focus to element on Ajax fetch</title>
+    <script src="lib/react.js"></script>
+    <script src="lib/react-dom.js"></script>
+    <script src="lib/babel.min.js"></script>
+    <script src="lib/axios.min.js"></script>
+
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+     class FetchDemo extends React.Component {
+      constructor(props) {
+        super(props);
+
+        this.state = {
+          posts: []
+        };
+      }
+
+      componentDidMount() {
+         // Cross-Origin Resource Sharing policy
+        // axios.get(`http://www.reddit.com/r/${this.props.subreddit}.json`)
+        axios.get('reactjs.json')
+          .then(res => {
+            const posts = res.data.data.children.map(obj => obj.data);
+            this.setState({ posts });
+            const element = ReactDOM.findDOMNode(this);
+            console.log(element)
+            // element.querySelector('li').focus();
+            element.querySelectorAll('li')[2].focus();
+          });
+      }
+
+      render() {
+        return (
+          <div>
+            <h1>{`/r/${this.props.subreddit}`}</h1>
+            <ul>
+              {this.state.posts.map(post =>
+                <li tabIndex="-1" key={post.id}>{post.title}</li>
+              )}
+            </ul>
+          </div>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <FetchDemo subreddit="reactjs"/>,
+      document.getElementById('root')
+    );
+
+    </script>
+  </body>
+</html>

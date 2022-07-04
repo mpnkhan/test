@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Color contrast</title>
+		<style>
+			body{text-align:center}
+			#container{width:1020px;margin:0 auto; text-align:left ;overflow:hidden}	
+			.hide { display:none}
+			.sr-only {
+			  position: absolute !important;
+			  height: 1px; width: 1px; 
+			  overflow: hidden;
+			  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+			  clip: rect(1px, 1px, 1px, 1px);
+			}
+			#container label{display: block; margin-top: 10px;}
+
+		</style>  
+</head>
+<body>
+<div id='container'>
+	<h1> Input Types</h1>
+	
+<label><input type="number">Number</label>
+<label><input type="tel">Telephone </label>
+
+<label><input type="color"> Color </label>
+<label><input type="date"> Date </label>
+<label><input type="datetime-local"> Date Time Local </label>
+<label><input type="email"> Email </label>
+<label><input type="file"> File </label>
+
+
+<label><input type="month"> Month </label>
+
+<label><input type="range"> Range </label>
+
+<label><input type="search"> Search </label>
+
+<label><input type="time"> Time </label>
+<label><input type="url"> URL </label>
+<label><input type="week">Week </label>
+
+<hr style="1px dotted red">
+
+<label><input type="text"> Text </label>
+<label><input type="password"> Password </label>
+<label><input type="button">Button </label>
+<label><input type="radio"> Radio </label>
+<label><input type="checkbox">Checkbos </label>
+<label><input type="hidden"> Hidden </label>
+<label><input type="submit"> Submit </label>
+<label><input type="reset"> Reset </label>
+<label><input type="image"> Image </label>
+
+</div>
+	<script>
+
+	</script>
+	
+</body>
+</html>

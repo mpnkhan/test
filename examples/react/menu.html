@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dropdown menu</title>
+  
+    <link href="lib/bootstrap.css" rel="stylesheet">
+
+    <script src="lib/react.js"></script>
+    <script src="lib/react-dom.js"></script>
+    <script src="lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+
+  <script type="text/babel">
+
+
+    class Menu extends React.Component {
+      constructor(props) {
+        super(props);
+       this.handleKeyDown = this.handleKeyDown.bind(this);
+      }
+      
+    handleKeyDown = event => {
+      var menu = ReactDOM.findDOMNode(this);
+      var items = menu.getElementsByTagName('li');
+      var index = Array.prototype.indexOf.call(items, event.target);
+      if (!~index)                                      index = 0
+      
+      switch (event.key) {
+        case 'ArrowDown':
+          index++;
+          if (index == items.length) index = 0;
+          items.item(index).focus();
+          //console.log(items.item(index).children[0]);
+          break;
+        case 'ArrowUp':
+          index--;
+          if (index < 0) index = items.length - 1;
+          items.item(index).focus();
+          break;
+        case 'Enter':
+        case ' ':
+          items.item(index).children[0].click();
+          break;          
+        case 'Escape':
+          //console.log(this.props.toggle);
+          this.props.toggle.state = {isToggleOn: false};
+          const cont = menu.parentNode;
+          cont.className = 'dropdown';
+          const btn = cont.querySelector('[role=button]');
+          btn.setAttribute('aria-expanded','false');
+          btn.focus();
+      }	             
+    }      
+      
+      render() {
+        return(
+              <ul className="dropdown-menu" role="menu" aria-labelledby="drop1">
+              {this.props.items.map(item =>
+                <li tabIndex="-1"  key={item.id.toString()} role="presentation" onKeyDown={this.handleKeyDown}>
+                  <a key={item.id} role="menuitem"  tabIndex="-1" href={item.link}>{item.content}</a>
+                </li>
+              )}
+            </ul>
+        );
+      }
+    }
+    class Button extends React.Component{
+       constructor(props) {
+        super(props);
+        this.state = {isToggleOn: false};
+        this.handleClick = this.handleClick.bind(this);
+       }
+       handleClick(e) {
+          this.setState(prevState => ({
+            isToggleOn: !prevState.isToggleOn
+          }    
+       ));         
+      }
+      componentDidUpdate() {
+          const element = ReactDOM.findDOMNode(this);
+          element.querySelector('li').focus();      
+        }      
+      render() {
+        return(
+           <nav  className={this.state.isToggleOn ? 'dropdown open' : 'dropdown'} key="2">
+            <a id="drop1" key="3" aria-haspopup="true" aria-expanded={this.state.isToggleOn} href="#" role="button" onClick={this.handleClick} className="dropdown-toggle btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">Dropdown <b className="caret"></b></a>
+            <Menu toggle={this} items={this.props.items}/>
+           </nav>  
+        );
+      }         
+    }
+
+	var sports =[
+			{'id':1, 'content':'Cricket','link':'http://sports.yahoo.com'}, 
+			{'id':2, 'content':'Tennis','link':'http://www.bbc.com/sport'},
+			{'id':3, 'content':'Badminton','link':'http://bwfbadminton.com/'}
+			]
+    ReactDOM.render(
+      <Button key="1" items={sports}/>,
+      document.getElementById('container')
+    );
+
+    </script> 
+
+  </body>
+</html>
+
+
+
+ 
+

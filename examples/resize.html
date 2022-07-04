@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Example of resizing input with CSS</title>
+	<style media="all" type="text/css">
+		h1 { font-size: 2em; }
+		p, label, input { font-size: 1em; }
+
+		.pp {font-family:  Helvetica Neue,Arial,sans-serif, font-weight: 400;color: #2c2e2f;}
+
+		.ios{font: -apple-system-body;font-family:  Helvetica Neue,Arial,sans-serif, font-weight: normal}
+
+        #cont{width:300px; border: 1px solid red; padding: 40px;}
+       #Submit{width: 30%; white-space: normal;}
+
+      .apple-system-body{font:-apple-system-body;}
+      .apple-system-headline{font:-apple-system-headline;}
+      .apple-system-subheadline{font:-apple-system-subheadline}
+      .apple-system-caption1{font:-apple-system-caption1}
+      .apple-system-caption2{font:-apple-system-caption2}
+      .apple-system-footnote{font:-apple-system-footnote}
+      .apple-system-short-body{font:-apple-system-short-body}
+      .apple-system-short-headline{font:-apple-system-short-headline}
+      .apple-system-short-subheadline{font:-apple-system-short-subheadline}
+      .apple-system-short-caption1{font:-apple-system-short-caption1}
+      .apple-system-short-footnote{font:-apple-system-short-footnote}
+      .apple-system-tall-body{font:-apple-system-tall-body}
+
+
+	</style>
+</head>
+
+<body>
+
+<h1>Home Page</h1>
+
+<p class="apple-system-tall-body"> Try this on mobile safari and increase the font size to 200%</p>
+
+<p class="pp">Whether you're shopping or selling with PayPal, we make it faster, safer and easier for everyone to shop or sell globally with confidence.</p>
+
+<div id="cont">
+<form class="ios" style="">
+	<p><label for="fname">First Name: </label><input type="text" name="fname" id="fname"  value="Prem Nawaz Khan"/></p>
+	<p><label for="lname">Last Name: </label><input type="text" name="lname" id="lname"  value="Maraikayar"/></p>
+	<p><label for="phone">Telephone: </label><input type="text" name="phone" id="phone" value="+91 8754020099"/></p>
+  <p><label for="email">Email: </label><input type="text" name="email" id="email" value ="abcdefgh@gmail.com"/></p>
+	<p><label for="btntxt">Button text: </label><input type="text" name="btntxt" id="btntxt" value ="Submit" onkeydown="document.getElementById('Submit').value =this.value"></p>
+	<input type="submit" name="Submit" value="Request Money this  arabic   button transparency" id="Submit" />
+</form>
+</div>
+
+<p style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis; width: 350px; padding: 3px; border: 1px solid black;">This is a block of text which should be limited to one line, and only a small portion of it visible, but the whole of it should be read by the screen reader.</p>
+
+
+<p class="ios">
+	Wherever you shop online worldwide, a PayPal account lets you check out safer, faster and easier. That’s why we are accepted in over 200 markets and trusted by over 346 million accounts . View this on iOS device
+</p>
+
+
+  <div class="apple-system-headline">-apple-system-headline</div>
+  <div class="apple-system-subheadline">-apple-system-subheadline</div>
+  <div class="apple-system-caption1">-apple-system-caption1</div>
+  <div class="apple-system-caption2">-apple-system-caption2</div>
+  <div class="apple-system-footnote">-apple-system-footnote</div>
+  <div class="apple-system-short-body">-apple-system-short-body</div>
+  <div class="apple-system-short-headline">-apple-system-short-headline</div>
+  <div class="apple-system-short-subheadline">-apple-system-short-subheadline</div>
+  <div class="apple-system-short-caption1">-apple-system-short-caption1</div>
+  <div class="apple-system-short-footnote">-apple-system-short-footnote</div>
+  <div class="apple-system-tall-body">-apple-system-tall-body</div>
+  
+  <p>
+
+  </p>  
+
+</body>
+</html>

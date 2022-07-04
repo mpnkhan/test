@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<title>Button Copying</title>
+<style type="text/css">
+	
+.sr-only {
+  position: absolute !important;
+  height: 1px; width: 1px; 
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+@-webkit-keyframes spinner-border {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner-border {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-border {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: spinner-border .75s linear infinite;
+  animation: spinner-border .75s linear infinite;
+}
+
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.2em;
+}
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+</style>
+</head>
+<body>
+  <p><label>FirstName</label><input type="text" name="firstname"></p>
+<p>
+
+	<button id="btn1" class="btn btn-primary" type="button"  onClick="displayLoader()" >
+    
+    <span id="btnLbl1">Submit</span>
+		 <span id="statusLbl" role="status" class="sr-only"></span>
+		<span id="spinner" class="spinner-border spinner-border-sm"  style="display:none"></span>
+	</button>	
+
+</p>
+<p>
+
+
+	<button id="btn2" onClick="copy2()" style="width:150px;height: 50px; background-color:teal;color:white;font-weight: bold" aria-live="polite">
+		Copy
+	</button>
+
+</p>
+<script>
+	let displayLoader = () =>{ 
+
+    document.getElementById('btn1').setAttribute('aria-pressed',"true");
+    document.getElementById('btnLbl1').innerHTML='';  
+    document.getElementById('spinner').style.display="block";
+    document.getElementById('statusLbl').innerHTML='Loading';
+
+    window.setTimeout(() => {
+    document.getElementById('btnLbl1').innerHTML='Submit';     /*Put back the label text after spinner display */
+    document.getElementById('statusLbl').innerHTML='Submit';     /* If the initial state needs to be re-announced, otherwise no */
+    document.getElementById('spinner').style.display="none";
+
+	}, 5000);
+
+}
+
+let copy2 = () =>{ 
+	document.getElementById('btn2').innerHTML='Copied';
+	document.getElementById('btn2').setAttribute('aria-pressed',"true");
+	window.setTimeout(() => document.getElementById('btn2').innerHTML ='Copy', 1200);
+	// setTimeout (function(){ alert("Hello"); }, 3000);
+}	
+	
+</script>
+
+
+
+</body>
+</html>

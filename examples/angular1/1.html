@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <style type="text/css">
+      ul li {line-height: 3em;}
+    </style>
+    <script src="lib/angular.js"></script>
+  </head>
+  <body>
+    
+    <div ng-app ng-init="qty=1;cost=2">
+      <b>Invoice:</b>
+      <div>
+        Quantity: <input type="number" min="0" ng-model="qty">
+      </div>
+      <div>
+        Costs: <input type="number" min="0" ng-model="cost">
+      </div>
+      <!-- <div aria-live="assertive"  aria-atomic="true"> -->
+       <div role="alert">
+        <b>Total:</b> {{qty * cost | currency}}
+      </div>
+    </div>
+
+  </body>
+</html>

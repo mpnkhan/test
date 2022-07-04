@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Audio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" /> 
+			<head>
+			<style>
+			#container {
+				padding: 0 1em;
+			}
+			* {
+				-moz-box-sizing: border-box;
+			}
+			.content {
+				margin: 1em auto;
+				max-width: 600px;
+			}
+			
+			
+button.audio {
+    background-color: #777;
+    background-position: 48% 93.5%;
+	cursor:pointer;
+}
+button.audio {
+    background-image: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 44px;
+    width: 43%;
+}
+button.audio:focus { outline:2px dotted blue}
+			
+			
+			 @media screen and (min-width:600px) {
+				nav.elem {
+					float: left;
+					width: 25%;
+				}
+				section {
+					margin-left: 25%;
+				}
+				header,footer li {display: inline;}
+			}
+			@media screen and (max-width:599px) {
+				nav.elem li {
+					display: inline;
+				}
+				
+
+			} 
+
+			body {
+			  margin-bottom: 70px;
+			}
+			.label {
+				left: 0;
+				padding: 0 3px 3px 0;
+				top: 0;
+			}
+			.endlabel {
+				bottom: 0;
+				padding: 3px 0 0 3px;
+				right: 0;
+			}
+
+			.gblMHeader .outer {
+				background: url("https://www.paypalobjects.com/webstatic/i/sparta/scr/scr_gray-bkgd.png") repeat scroll 0 0 #6E6D71;
+				height: 44px;
+			}
+			.gblMHeader li {padding-left: 9px;}
+			.gblMHeader a{color:#fff;}
+			.gblMHeader .skip a {
+				padding: 0 10px;
+				position: absolute;
+				top: -99999px;
+			}
+			.gblMHeader  .skip a:focus {
+				background-color: #333333;
+				display: inline;
+				top: 0;
+			}
+			footer li { padding-left: 9px;}
+			</style>
+</head>
+<body>
+    <div class="container elem">
+		<div class="textInput lap left medium hasError error-empty">
+			<label for="captchaInput" class="">Code</label>
+			<input type="text" aria-required="true" required="required" maxlength="127" autocomplete="off" name="captcha" id="captchaInput" aria-invalid="true" class="">
+		</div>
+	
+		<!--div class="audio button small light captchaAudio" tabindex="0" onclick="play()"-->
+			
+			<button class="audio button small light captchaAudio"  onclick="play()" aria-label="Listen to the code"><audio src="secret.mp3" id="captchaAud"  preload ></audio></button>
+		<!--/div-->   
+    </div>
+<script>
+	function play(){
+		document.getElementById('captchaAud').play()
+	}
+</script>
+</body>
+</html>

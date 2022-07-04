@@ -1,0 +1,72 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			-webkit-box-sizing:border-box;
+			-moz-box-sizing:border-box;
+			box-sizing:border-box;
+			border:none;
+			background-color:transparent
+		}
+		body,form,input,select{
+			position:absolute;
+			top:0;
+			left:0;
+			height:100%;
+			width:100%
+		}
+		input.autofill-field{
+			width:2px;
+			z-index:-1;
+			left:-2px;
+			opacity:0
+		}
+		input.focus-intercept{
+			border:none!important;
+			display:block!important;
+			height:1px!important;
+			left:-1px!important;
+			opacity:0!important;
+			position:absolute!important;
+			top:-1px!important;
+			width:1px!important;
+			padding:1px!important
+		}
+		label{
+			position:absolute;
+			left:-9999px
+		}
+		:focus{
+			outline:0
+		}
+
+	</style>
+</head>
+
+	<body>
+
+	<form novalidate="true" action="#">
+		<label for="cardholder-name">Cardholder Name</label>
+		<input autocomplete="off" type="text" autocorrect="off" autocapitalize="none" spellcheck="false" class="cardholderName" data-braintree-name="cardholderName" name="cardholder-name" id="cardholder-name" placeholder="Name as it appears on your card" maxlength="255" aria-describedby="field-description-cardholderName">
+			<div id="field-description-cardholderName" class=" field-description" style="height: 1px; width: 1px; overflow: hidden;"></div>
+		
+		<label aria-hidden="true" for="credit-card-number-autofill-field">credit-card-number</label>
+		<input aria-hidden="true" id="credit-card-number-autofill-field" class="autofill-field" type="text" name="credit-card-number" autocomplete="cc-number" tabindex="-1">
+			
+		<label aria-hidden="true" for="expiration-month-autofill-field">expiration-month</label>
+		<input aria-hidden="true" id="expiration-month-autofill-field" class="autofill-field" type="text" name="expiration-month" autocomplete="cc-exp-month" tabindex="-1">
+
+		<label aria-hidden="true" for="expiration-year-autofill-field">expiration-year</label>
+		<input aria-hidden="true" id="expiration-year-autofill-field" class="autofill-field" type="text" name="expiration-year" autocomplete="cc-exp-year" tabindex="-1">
+
+		<label aria-hidden="true" for="cvv-autofill-field">cvv</label>
+		<input aria-hidden="true" id="cvv-autofill-field" class="autofill-field" type="text" name="cvv" autocomplete="cc-csc" tabindex="-1">
+
+	</form>
+
+
+	</body>
+</html>

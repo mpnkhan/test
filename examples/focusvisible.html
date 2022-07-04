@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Focus Visbile CSS</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    
+    <style type="text/css">
+    	:root {
+  			--focus-gold: #ffbf47;
+		}
+		button {padding: 10px}
+
+    	button.default:focus {outline: 0;}
+    	button.default:focus-visible  {    		
+    		 outline: 3px solid var(--focus-gold);
+    		 box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.1);
+    	}
+
+	@supports selector(:focus-visible) {
+	    button.support:focus {outline: 0 }
+	    button.support:focus-visible { 
+	    	outline: 3px solid var(--focus-gold);
+	    }
+	}
+
+	button.negation:focus:not(:focus-visible) {
+	  outline: none !important;
+	}
+	button.negation:focus-visible {
+		outline: 3px solid var(--focus-gold);
+	}		
+
+	#accordion:focus-visible {
+		outline: 3px solid var(--focus-gold);
+	}	
+
+	  @media (hover: hover) {
+	    button:hover {
+	      background-color: hotpink;
+	    }
+	  }
+
+	/* Best approarch is to use negation to remove focus styles rather than supports*/
+	/*
+	*:focus:not(:focus-visible) {		
+	  outline: none !important;
+	}
+	*/
+		.show{
+			display: block;
+			margin-top: 30px;
+		}
+
+		.hide{
+			display: none;
+		}
+
+    </style>
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><a href="https://www.paypal.com">PayPal</a></div> <br><br>
+			<div id="content">
+
+
+				<button class="default">This is a long button with focus ring only for keyboard</button> <br><br>
+				
+				<button class="support">This is a long button with focus ring only for keyboard, but uses support</button> <br><br>
+
+
+				<button class="negation">This is a long button with focus ring only for keyboard, but uses negation </button> <br><br>
+
+
+				<button id="tgl" style="margin-top: 30px;"> Show accordion and set focus to accordion</button>
+				<div id="accordion" class="hide" tabindex="-1"><article>
+					A nice long article with focus outline only on keyboard. 
+				</article>
+				</div>
+
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+
+		var el = document.querySelector('#tgl');
+		console.log(el)
+		el.addEventListener('click', function (e) {
+			var accordion = document.getElementById('accordion');
+			accordion.classList.replace('hide','show');
+			accordion.focus()
+		});
+
+	</script>
+	
+</body>
+</html>

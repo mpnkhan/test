@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dropdown menu</title>
+  
+    <link href="lib/bootstrap.css" rel="stylesheet">
+
+    <script src="lib/react.js"></script>
+    <script src="lib/react-dom.js"></script>
+    <script src="lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+
+  <script type="text/babel">
+
+
+    class Menu extends React.Component {
+      constructor(props) {
+        super(props);
+      }
+      render() {
+        return(
+              <ul className="dropdown-menu" role="menu" aria-labelledby="drop1">
+              {this.props.items.map(item =>
+                <li key={item.id.toString()} role="presentation"><a key={item.id} role="menuitem"  tabIndex="-1" href="{item.link}">{item.content}</a></li>                
+              )}
+            </ul>
+        );
+      }
+    }
+    class Button extends React.Component{
+      constructor(props) {
+        super(props);
+        //this.handleFilterTextInputChange = this.handleFilterTextInputChange.bind(this);
+        //this.handleInStockInputChange = this.handleInStockInputChange.bind(this);
+      }
+      render() {
+        return(
+           <div className="dropdown" key="2">
+            <a id="drop1" key="3" href="#" role="button" className="dropdown-toggle btn btn-primary btn-lg" data-toggle="dropdown">Dropdown <b className="caret"></b></a>
+            <Menu items={this.props.items}/>
+           </div>  
+        );
+      }         
+    }
+
+  var sports =[
+      {'id':1, 'content':'Cricket','link':'http://sports.yahoo.com'}, 
+      {'id':2, 'content':'Tennis','link':'http://www.bbc.com/sport'},
+      {'id':3, 'content':'Badminton','link':'http://bwfbadminton.com/'}
+      ]
+    ReactDOM.render(
+      <Button key="1" items={sports}/>,
+      document.getElementById('container')
+    );
+
+    </script>
+    <script src="lib/jquery-3.2.1.min.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script>
+      $('.dropdown-toggle').dropdown()
+    </script>  
+
+  </body>
+</html>
+
+
+
+ 
+

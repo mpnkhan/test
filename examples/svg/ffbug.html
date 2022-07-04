@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Focus problem in FireFox</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" /> 
+	<head>
+			<style>
+			#container {
+				padding: 0 1em;
+			}
+			* {
+				-moz-box-sizing: border-box;
+			}
+			.content {
+				margin: 1em auto;
+				max-width: 600px;
+				text-align: center;
+			}
+			
+
+
+			</style>
+	</head>
+<body>
+    <div class="container elem">
+
+		<div class="content">
+		    <svg style="width: 1662px; height: 26px; " version="1.1">
+		        <g visibility="visible" transform="translate(80,0)">
+		            <g tabindex="0" focusable="true" id="test1">
+		                <image x="0" y="0" width="50" height="28" xlink:href="dragIcon.gif"></image>
+		                
+		                <rect x="0.5" y="0.5" width="125" height="26" rx="0" ry="0" stroke-width="0" fill="#000" stroke="#000" fill-opacity="0.005" stroke-opacity="0.005" transform="translate(-7,-4)"></rect>
+
+		            </g>
+		        </g>
+		    </svg>
+
+		     <span tabindex="0">Test</span>
+
+		</div>
+
+    </div>
+<script>
+      var el1 = document.getElementById('test1');
+      el1.addEventListener('focusout', function (e) {});
+</script>
+</body>
+</html>

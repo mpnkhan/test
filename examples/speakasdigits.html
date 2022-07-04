@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="" lang="en" dir="ltr">
+	<meta name="viewport" content="width=device-width" />
+   <head>
+		<title>Speak as digits</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css">
+	</head>
+	<body>
+		<div id="wrapper">
+
+			<div id="header"><a href="https://www.paypal.com">paypal</a></div>
+
+			<div id="content">
+				<div>
+					<span>PayPal Balance</span> &nbsp;&nbsp;&nbsp;
+					<span> 999</span>
+				</div>
+
+				<div>
+					<span>Visa Debit</span> &nbsp;&nbsp;&nbsp;
+				</div>
+				<div>1234</div>
+
+				<div>
+					<span>Visa Debit - Read as Digits</span>
+				</div>
+				<div class="dig">1234</div>
+
+				<div>
+					<span>Visa Debit - Read as Digits + Spell out</span>
+				</div>
+					<div class="dig spell-out">1234</div>
+
+				<div>
+					<span>Visa Debit - aria-label</span>
+				</div>
+				<div  aria-label="1 2 3 4">1234</div>
+
+				<div>
+					<span>Visa Debit - abbrevation</span>
+				</div>
+				<br><abbr title="1 2 3 4">1234</abbr> 
+
+
+				<div>
+					<span>Visa Debit - aria-label More than 5 digits and dashes</span>
+				</div>
+				<div  aria-label="1-2-3-4-5-6">123456</div>
+
+				<p>
+					VO on mac read the aria-label and abbrevation including hidden dashes as digits<br>
+					NVDA on Windows read all as words <br>
+					Jaws 2021 on windows read the dashed one alone as digits <br>
+					VO on iOS read the read the aria-label and abbrevation including hidden dashes as digits<br>
+					Talkback on Pixel3 read the last the dashed one as dash and aria-label and acronym with spaces as digits <br>
+				</p>
+				<br>
+				<br>
+				<p>
+					References:
+					<ol style="line-height:30px">
+						<li><a href="https://developer.apple.com/documentation/foundation/nsattributedstring/key/3333285-accessibilityspeechspellout">iOS accessibilityspeechspellout</a> </li>
+						<li><a href="https://www.w3.org/TR/css-speech-1/#speak-as">CSS Speech Module , Speak as property</a> </li>
+						<li><a href="https://www.levelaccess.com/zip-z-p-z-p-forcing-correct-pronunciation-screen-readers/">Article on forcing pronounciation</a></li>
+					</ol>
+				</p>
+
+			</div> <!--content-->
+
+		</div> <!--wrapper-->
+
+	</body>
+</html>
+

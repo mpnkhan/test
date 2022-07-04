@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>No Motion</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+
+    <style type="text/css">
+      
+    .day   { background: #eee; color: black; }
+    .night { background: #333; color: white; }
+
+    @media (prefers-color-scheme: dark) {
+      .day.dark-scheme   { background:  #333; color: white; }
+      .night.dark-scheme { background: black; color:  #ddd; }
+    }
+
+    @media (prefers-color-scheme: light) {
+      .day.light-scheme   { background: white; color:  #555; }
+      .night.light-scheme { background:  #eee; color: black; }
+    }
+
+    .day, .night {
+      display: inline-block;
+      padding: 1em;
+      width: 7em;
+      height: 2em;
+      vertical-align: middle;
+    }
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+      <div id="header"><h2>Please honor reduced motion preferences</h2></div>
+      <div id="content">
+
+        <div class="day">Day (initial)</div>
+        <div class="day light-scheme">Day (changes in light scheme)</div>
+        <div class="day dark-scheme">Day (changes in dark scheme)</div> <br>
+
+        <div class="night">Night (initial)</div>
+        <div class="night light-scheme">Night (changes in light scheme)</div>
+        <div class="night dark-scheme">Night (changes in dark scheme)</div>
+
+          
+
+      </div> <!--content-->
+    </div> <!--wrapper-->
+
+<footer style="margin-top: 20px;">
+  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme</a>
+</footer>
+  
+</body>
+</html>

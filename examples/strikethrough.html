@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Color contrast</title>
+		<style>
+			body{text-align:center;font-size: 1.4rem;color: #000;  background: #aabbdd}
+	
+			#container{width:1020px;margin:0 auto; text-align:left ;overflow:hidden}	
+			.hide { display:none}
+
+			.sr-only {
+			  position: absolute !important;
+			  height: 1px; width: 1px; 
+			  overflow: hidden;
+			  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+			  clip: rect(1px, 1px, 1px, 1px);
+			}
+			blockquote {
+				background: #f9f9f9;
+				border-left: 10px solid #ccc;
+				margin: 1.5em 10px;
+				padding: 0.5em 10px;
+				quotes: "\201C""\201D""\2018""\2019";
+			}
+
+			blockquote:before {
+				color: #ccc;
+				content: open-quote;
+				font-size: 4em;
+				line-height: 0.1em;
+				margin-right: 0.25em;
+				vertical-align: -0.4em;
+			}
+
+			blockquote p {
+				display: inline;
+			}
+		code {
+		  font-family: Consolas,"courier new";
+		  color: crimson;
+		  background-color: #f1f1f1;
+		  padding: 2px;
+		  font-size: 105%;
+		}
+		.del{text-decoration: line-through;}
+
+		.del:before { content: "Deleted Price: "; position:absolute; clip: rect(0 0 0 0);}
+    .ins:before { content: "Inserted Price: "; position:absolute; clip: rect(0 0 0 0);}
+
+		</style>  
+</head>
+<body>
+<div id='container'>
+
+<section>
+<h2> Strike element without any special treatement </h2>
+<p>0% Cash Back</p>
+<p><s>5% Cash Back</s></p>
+</section>
+
+	<section>
+		<h2>Strike element with screen reader only text</h2>
+		<p>
+			<span class="sr-only">Was:</span> <s>$100.00</s>
+		<span class="sr-only">Now:</span> <strong>$99.99</b></strong>
+		</p>
+
+	</section>
+
+	<section>
+		<h2>CSS text-decoration with SR only text </h2>
+
+		<p>
+			<span class="sr-only">Was:</span> <span style="text-decoration: line-through;">$100.00</span>
+			<span class="sr-only">Now:</span> <strong>$99.99</b></strong>
+		</p>
+	</section>
+
+	<section>
+		<h2>CSS Generated Content + Visually Clipped Text </h2>
+			<p>
+				<span class="del">$12.50</span> <span class="ins">$3.99</span>
+			</p>
+	</section>
+
+
+
+
+
+
+<p>
+	Paul J adam has this <a href="https://pauljadam.com/demos/css-line-through-del-ins-accessibility.html" target="_new">nice testing page</a> for <code> del </code>  and <code>ins</code> element 
+</p>
+
+<p>
+	Scott O'Hara says:
+<blockquote>
+	Naming of del and ins are not elements that you can consistently rely on to be named.   For instance, JAWS with chromium/firefox browsers will not announce the aria-labels of these elements which is correct behavior.  Similarly with iOS + VO.
+	the del/ins elements are really meant to be used specifically in the context of marking up a document for edits - much like if using google docs.  that said, nvda has implemented support for these so they will create announcements of "inserted" and "deleted"
+</blockquote>
+</p>
+
+
+</div>
+	<script>
+
+	</script>
+	
+</body>
+</html>

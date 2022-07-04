@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Step Meter</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css">
+    <style type="text/css">
+		/*Progress Meter*/
+		ul.progressMeter{margin:10px 0;padding:0;float:left;width:1020px;}
+		ul.progressMeter li{display:inline;padding-right:10px;margin:0;float:left}
+		ul.progressMeter li strong.stepNumber {font-size:15px;color:#666;}
+		ul.progressMeter li strong.stepNumber.underLn{border:1px solid #c88039;color:#c88039;padding:0 2px 0 2px;float:left}
+		ul.progressMeter li span.stepInfo, ul.progressMeter li strong.stepInfo {border-left:1px solid #ccc;padding:7px 0 7px 6px;color:#666;font-size:16px;}
+		ul.progressMeter li strong.stepInfo.specialColor{/*color:#c88039;*/margin:0px; border:none !important;font-weight:normal;padding:3px 0 0 6px!important; float:left}
+		ul.progressMeter li.stepBilling{border:none;}
+		ul.progressMeter li span.stepInfo.grayColInfo{border-left:1px solid #ccc;color:#666666;}
+		ul.progressMeter li strong.stepNumber.grayColStep{color:#666666;}
+	    
+	    /*breadcrumb*/
+	    nav.breadcrumb {padding: 0.8em 1em;border: 1px solid hsl(0deg 0% 90%);border-radius: 4px; background: hsl(300deg 14% 97%);}
+		nav.breadcrumb ol {margin: 0;padding-left: 0;list-style: none;}
+		nav.breadcrumb li {display: inline;}
+		nav.breadcrumb li + li::before {display: inline-block;margin: 0 0.25em;transform: rotate(15deg);border-right: 0.1em solid currentColor;height: 0.8em;content: "";}
+		nav.breadcrumb [aria-current="page"] {color: #000;font-weight: 700;text-decoration: none;}
+
+
+	    .sr-ony{  position: absolute;width: 1px;height: 1px;padding: 0;margin: -1px;overflow: hidden;clip: rect(0,0,0,0);border: 0;}
+
+    </style>
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><a href="https://www.paypal.com">PayPal</a></div>
+			<div id="content">
+
+             	<h2>StepMeter</h2>
+
+				<div id="progressBarDiv" class="progressBarDiv" role="group" aria-label="Step Information Meter" style="padding-bottom: 70px;">
+                    <ul class="progressMeter" id="testAccntProgressMeter">
+					    <li>
+					        <strong class="stepNumber">1</strong>
+					        <span class="stepInfo"><span class="sr-ony">Completed</span>Getting Started</span>
+					    </li>
+					    <li aria-current="step">
+					        <strong class="stepNumber underLn">2</strong>
+					        <strong class="stepInfo specialColor">Gateway Account Details</strong>
+					    </li>
+					    <li>
+					                <strong class="stepNumber">3</strong>
+					                <span class="stepInfo">Test Account Ready</span>
+					            </li>
+					        <li>
+					        	<strong class="stepNumber">4</strong>
+					        	<span class="stepInfo">Account Activated</span>
+					    	</li>
+				</ul>
+
+             </div> <!--progressBarDiv -->
+
+             <p>
+             	<h2>BreadCrumb</h2>
+
+             	A breadcrumb trail consists of a list of links to the parent pages of the current page in hierarchical order.  <br/>
+             	<a href="https://www.w3.org/TR/wai-aria-practices/#breadcrumb">Breadcrumb Pattern</a>
+             </p>
+             <p>
+				<nav aria-label="Breadcrumb" class="breadcrumb">
+				  <ol>
+				    <li>
+				      <a href="../index.html">Index</a>
+				    </li>
+				    <li>
+				      <a href="../../#aria_ex">Design Patterns</a>
+				    </li>
+				    <li>
+				      <a href="../../#breadcrumb">Breadcrumb Pattern</a>
+				    </li>
+				    <li>
+				      <a href="./index.html" aria-current="page">Breadcrumb Example</a>
+				    </li>
+				  </ol>
+				</nav>             	
+
+             </p>	
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+
+	</script>
+	
+</body>
+</html>

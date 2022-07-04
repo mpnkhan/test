@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Clickable Rows</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+    <style type="text/css">
+			table {
+				width: 100%;
+			  border: 1px solid #000;
+			}
+			table th,
+			table td {
+			  margin: 0;
+			  border: 1px solid #000;
+			}
+			table tbody tr:hover,
+			table tbody tr:focus {
+			  background: #ff0;
+			}
+    	
+    	[tabindex="0"]{
+    		cursor: pointer;
+    	}
+    	
+    </style>
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><a href="https://www.paypal.com">paypal</a></div>
+			<div id="content">
+<table>
+	<caption>Transactions January 1 through January 7</caption>
+    <thead>
+      <tr><th>Date</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr tabindex="0"  onClick="alert('1')">
+        <td><span role="button" tabindex="0" onClick="alert('1')">Oct-01-2021 </span></td>
+        <td><span role="button" tabindex="0" onClick="alert('1')">Credit </span></td>
+        <td><span role="button" tabindex="0" onClick="alert('1')">Income </span></td>
+      </tr>
+    
+      <tr tabindex="0" onClick="alert('2')">
+        <td><span role="button" tabindex="0" onClick="alert('2')">Oct-03-2021 </span></td>
+        <td><span role="button" tabindex="0" onClick="alert('2')">Deposit</span></td>
+        <td><span role="button" tabindex="0" onClick="alert('2')">Rent</span></td>
+      </tr>
+    
+      <tr tabindex="0" onClick="alert('3')">
+        <td><span role="button" tabindex="0" onClick="alert('3')">Oct-05-2021</span></td>
+        <td><span role="button" tabindex="0" onClick="alert('3')">Debit</span></td>
+        <td><span role="button" tabindex="0" onClick="alert('3')">Grocery</span></td>
+      </tr>
+    
+      <tr tabindex="0"  onClick="alert('4')">
+        <td><span role="button" tabindex="0" onClick="alert('4')">Oct-07-2021</span></td>
+        <td><span role="button" tabindex="0" onClick="alert('4')">Debit</span></td>
+        <td><span role="button" tabindex="0" onClick="alert('4')">Clothes</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+		var keyElements = document.querySelectorAll('[tabindex="0"]');
+		for (let element of keyElements) {
+		  element.addEventListener('keydown',function(e) {
+   				var keyCode = e.keyCode
+   				if (!/(13|32)/.test(keyCode)) return;
+   				if(keyCode===13 || keyCode===32)
+   					e.target.click();
+				});
+		}
+
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Color contrast</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/stylesheet.css"> 
+    <link href="../../css/fontawesome-free-5.15.4/css/all.css" rel="stylesheet"> <!--load all styles -->
+    
+    <style type="text/css">
+    	@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+		:root {
+		  --carousel-height: 300px;
+		  --slide-width: calc(100% / 3);
+		}
+
+		* {
+		  box-sizing: border-box;
+		}
+
+		body {
+		  background-color: #f5f5f5;
+		  padding: 20px;
+		  font-family: 'Merriweather', serif;
+		}
+
+		/** Wrapper **********************/
+		.carousel {
+		  position: relative;
+		  width: calc(100% - 40px);
+		  max-width: 900px;
+		  height: var(--carousel-height);
+		  margin: 0 auto;
+		  padding: 0 20px;
+		}
+
+		/** Previous/next buttons ********/
+		.previous,
+		.next {
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  
+		  padding: 5px 10px;
+		  position: absolute;
+		  top: calc(50% - 16px);
+		  cursor: pointer;
+		  font-size: 32px;
+		  
+		  border: 0;
+		  background: none;
+		}
+
+		  .previous { left: -30px; }
+		  .next { right: -30px; }
+
+
+		  .previous { left: -30px; }
+		  .next { right: -30px; }
+
+		/** Slides track ***************/
+		.slides {
+		  list-style: none;
+		  padding: 0;
+		  margin: 0;
+		  
+		  display: flex;
+		  width: 100%;
+		  overflow: hidden;
+		}
+
+		/** Individual slides ***********/
+		.slide {
+		  flex: 0 0 calc(100% / 3 - 10px);
+		  
+		  margin: 0 5px;
+		  padding: 20px;
+		  height: var(--carousel-height);
+		  
+		  display: flex;
+		  align-items: center;
+		  
+		  font-size: 18px;
+		  line-height: 26px;
+		  background-color: white;
+		}
+
+		  @media screen and (max-width: 768px) {
+		    .slide {
+		      font-size: 14px;
+		      line-height: 18px;
+		      align-items: flex-start;
+		    }
+		  }
+
+		  .slide a {
+		    color: black;
+		    font-weight: bold;
+		  }
+
+		/** Slide dots ******************/
+		.navigation {
+		  position: absolute;
+		  left: 0;
+		  bottom: -40px;
+		  
+		  list-style: none;
+		  padding: 0;
+		  margin: 0;
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  width: 100%;
+		}
+
+		  .navigation li {
+		    display: inline-block;
+		    width: 10px;
+		    height: 10px;
+		    margin: 0 5px;
+		    border-radius: 100px;
+		    background-color: black;
+		    opacity: .2;
+		    cursor: pointer;
+		  }
+
+	    /** Active slide dot */
+	    .navigation li.active {
+	      opacity: 1;
+	      width: 15px;
+	      height: 15px;
+	    }
+    </style>
+
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><a href="https://www.paypal.com">PayPal</a></div>
+			<div id="content">
+
+
+					<div class="carousel">
+    <button class="previous">
+    	<span class="fas fa-chevron-left" aria-hidden="true"></span>
+    	<span class="sr-only">Previous slides</span>
+  </button>
+
+  <ul class="slides">
+    <li class="slide">
+      <p>And I know you're saying, 'Oh Bob, you've done it this time.' And you may be right. Little short strokes. In life you need colors. <a href="https://en.wikipedia.org/wiki/Bob_Ross">Read more</a>.</p>
+    </li>
+    
+    <li class="slide">
+      <p>This painting comes right out of your heart. It's beautiful - and we haven't even done anything to it yet. In this world, everything can be happy. <a href="https://en.wikipedia.org/wiki/Bob_Ross">Read more</a></p>
+    </li>
+    
+    <li class="slide">
+      <p>We don't make mistakes we just have happy little accidents. Mountains are so simple, they're hard. You got your heavy coat out yet? <a href="https://en.wikipedia.org/wiki/Bob_Ross">Read more</a></p>
+    </li>
+    
+    <li class="slide">
+      <p>It's getting colder. You can't have light without dark. You can't know happiness unless you've known sorrow. <a href="https://en.wikipedia.org/wiki/Bob_Ross">Read more</a></p>
+    </li>
+    
+    <li class="slide">
+      <p>Exercising the imagination, experimenting with talents, being creative; these things, to me, are truly the windows to your soul. <a href="https://en.wikipedia.org/wiki/Bob_Ross">Read more</a></p>
+    </li>
+    
+    <li class="slide">
+      <p>I spend a lot of time walking around in the woods and talking to trees, and squirrels, and little rabbits and stuff. <a href="https://en.wikipedia.org/wiki/Bob_Ross">Read more</a></p>
+    </li>
+    
+    <li class="slide">
+      <p>And that's when it becomes fun - you don't have to spend your time thinking about what's happening - you just let it happen. <a href="https://en.wikipedia.org/wiki/Bob_Ross">Read more</a></p>
+    </li>
+    
+    <li class="slide">
+      <p>Let your imagination just wonder around when you're doing these things. It looks so good, I might as well not stop. Just use the old one inch brush. <a href="https://en.wikipedia.org/wiki/Bob_Ross">Read more</a></p>
+    </li>
+    
+    <li class="slide">
+      <p>This is probably the greatest thing that's ever happened in my life. You don't want to kill all your dark areas they are very important. <a href="https://en.wikipedia.org/wiki/Bob_Ross">Read more</a></p>
+    </li>
+  </ul>
+
+  <button class="next">
+    <span class="fas fa-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next slides</span>
+  </button>
+
+  <ul class="navigation">
+    <li class="active"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+	<script>
+
+var previousButton, nextButton;
+var slidesContainer, slides, slideDots;
+var leftMostSlideIndex = 0;
+var slideGap = 5;
+
+window.addEventListener('DOMContentLoaded', function(e) {
+  previousButton = document.querySelector('.previous');
+  nextButton = document.querySelector('.next');
+  slidesContainer = document.querySelector('.slides');
+  slides = slidesContainer.querySelectorAll('.slide');
+  slideDots = document.querySelectorAll('.navigation li');
+
+  // Set up previous/next button behaviors
+  previousButton.addEventListener('click', previousSlide);
+  nextButton.addEventListener('click', nextSlide);
+  
+  // Set up the slide dot behaviors
+  slideDots.forEach(function(dot) {
+    dot.addEventListener('click', function(e) {
+      goToSlide(Array.prototype.slice.call(slideDots).indexOf(e.target));
+    });
+  });
+});
+
+/** Go to previous slide */
+function previousSlide() {
+  if(leftMostSlideIndex > 0) {
+    goToSlide(leftMostSlideIndex - 1);
+  } else {
+    goToSlide(slides.length - 1);
+  }
+}
+
+/** Go to next slide */
+function nextSlide() {
+  if(leftMostSlideIndex < slides.length - 1) {
+    goToSlide(leftMostSlideIndex + 1);
+  } else {
+    goToSlide(0);
+  }
+}
+
+/** Go to a specific slide */
+function goToSlide(nextLeftMostSlideIndex) {
+  // Smoothly scroll to the requested slide
+  $(slidesContainer).animate({
+    scrollLeft: (slidesContainer.offsetWidth / 3) * nextLeftMostSlideIndex
+  }, {
+    duration: 200
+  });
+  
+  // Unset the class indicating the active slide dot
+  slideDots.forEach(function(dot) {
+    dot.classList.remove('active');
+  });
+  
+  // Add a class to the active slide dot so it can be styled differently
+  slideDots[nextLeftMostSlideIndex].classList.add('active');
+  
+  // Update the record of the left-most slide
+  leftMostSlideIndex = nextLeftMostSlideIndex;
+}
+	</script>
+	
+</body>
+</html>

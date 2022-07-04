@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Time Element</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><h1>Time Element</h1></div>
+			<div id="content">
+
+			<table width="100%" cellpadding="2px" cellspacing="2px" border="1px">
+			  <caption>History</caption>
+			  <tr>
+			  	<th>Date</th>
+			  	<th>Description</th>
+			  </tr>
+
+			  <tr>
+			  	<td><time datetime=“2021-10-28T20:55:05.081Z”>28/10/2020</time></td>
+			  	<td>Plain time element</td>
+			  </tr>	
+
+			  <tr>
+			  	<td><time datetime=“2021-10-28T20:55:05.081Z” title="28 October 2021">28/10/2020</time></td>
+			  	<td>With title</td>
+			  </tr>
+
+			  <tr>
+			  	<td><time datetime=“2021-10-28T20:55:05.081Z” aria-label="28 October 2021">28/10/2020</time></td>
+			  	<td>With aria-label</td>
+			  </tr>
+
+			  <tr>
+			  	<td><time datetime=“2021-10-28T20:55:05.081Z”><abbr aria-label="28 October 2021">28/10/2020</abbr></time></td>
+			  	<td>With aria-label on abbr element</td>
+			  </tr>
+
+
+			  <tr>
+			  	<td><time datetime=“2021-10-28T20:55:05.081Z” aria-labelledby="t1">28/10/2020</time></td>
+			  	<td>With aria-labelledby</td>
+			  </tr>
+
+			  <tr>
+			  	<td><time datetime=“2021-10-28T20:55:05.081Z” aria-describedby="t2">28/10/2020</time></td>
+			  	<td>With aria-describedby</td>
+			  </tr>
+
+			  </table>
+			  
+			  <span id="t1">28 October 2021</span> <br>
+			  <span id="t2">28 October 2021</span>
+
+			  <hr>
+			  Outside table
+			  <p>
+			  	<time datetime=“2021-10-28T20:55:05.081Z” title="28 October 2021">28/10/2020</time> <br>
+			  	<time datetime=“2021-10-28T20:55:05.081Z” aria-label="28 October 2021">28/10/2020</time><br>
+			  	<time datetime=“2021-10-28T20:55:05.081Z”><abbr aria-label="28 October 2021">28/10/2020</abbr></time>
+			  </p>
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+
+	</script>
+	
+</body>
+</html>

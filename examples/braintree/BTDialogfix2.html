@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BT Dialog Fixed</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+
+   <link href="../../lib/bs4.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    h2, h3, p {
+      font-family: aria-helvetica, sans-serif;
+      line-height:1.5;
+    }
+    q {
+      font-style:italic;
+    }
+    h2{
+      margin-top:0;
+    }
+    .modal--btn {
+      background-color:#b1ea87;
+      border: 3px solid #262626;
+      border-radius: 0.5em;
+      box-shadow: none;
+      font-size: 1rem;
+      padding: 0.5em 2em;
+      text-decoration: none;
+    }
+    .modal--btn:hover, .modal--btn:focus{
+      background-color: #262626;
+      border: 3px solid #ccc;
+      color:#fff;
+    }
+    #modal--container{
+    /*   visibility:hidden;
+      opacity:0; 
+      visibility stops focus moving to an element in the modal. Why?
+      */
+      display:none;
+    }
+    #modal--container.modal--visible {
+      display:block;
+      /*box-shadow: [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color];*/
+      box-shadow: 5px 5px 10px 1px #ccc
+    }
+    .modal--backdrop{
+      background-color: #b1ea87;
+      height: 100%;
+      left: 0;
+      opacity: 0.85;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+    }
+    @media (min-width: 30em) { 
+    .modal--container{
+    max-width:50vw
+      }
+    }
+    .modal--container{
+      background-color: #fff;
+      max-height: 94vh;
+      overflow: auto;
+      padding: 1.5em;
+      padding-bottom: 1em;
+      transition: 0.8s ease all;
+      width: 80vw;
+      z-index: 1000;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .offscreen {
+      clip: rect(1px, 1px, 1px, 1px);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap; 
+      width: 1px;
+    }
+    /*Braintree*/
+    .toast {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 9999;
+    }
+
+    .bootstrap-basic {
+      background: white;
+    }
+
+    /* Braintree Hosted Fields styling classes*/
+    .braintree-hosted-fields-focused {
+      color: #495057;
+      background-color: #fff;
+      border-color: #80bdff;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    .braintree-hosted-fields-focused.is-invalid {
+      border-color: #dc3545;
+      box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+    }
+
+    [aria-hidden="true"] {
+      display:none !important;
+    }
+
+</style>
+
+<main>
+  <h2>Modal</h2>
+  <h3>!Important: Naming the dialog</h3>
+  <p><a href="https://www.w3.org/TR/wai-aria-1.1/#dialog">Role dialog in ARIA 1.1</a> says <q>Authors SHOULD provide a dialog label, which can be done with the aria-label or aria-labelledby attribute.</q></p><p> Note that in <a href="https://www.w3.org/TR/wai-aria-1.2/#dialog">ARIA 1.2</a> SHOULD is changed to <strong>MUST</strong>. <q>Authors <strong>MUST</strong> provide an accessible name for a dialog, which can be done with the aria-label or aria-labelledby attribute.</q><p>
+    <button id="modal--btn" type="button" class="modal--btn">Braintree in a Modal Dialog</button>
+</main>
+<div role="dialog" aria-modal="true" id="modal--container" class="modal--container" aria-labelledby="modal--heading">
+  <div id="modal--Content">
+  <h2 id="modal--heading" class="modal--heading">Braintree in a modal</h2>
+  <!-- Bootstrap inspired Braintree Hosted Fields example -->
+
+
+  <button type="button" class="btn--close">Close modal</button>
+
+<div class="bootstrap-basic">
+  <form class="needs-validation" novalidate="">
+
+    <div class="row">
+      <div class="col-sm-6 mb-3">      
+        <div class="form-control" id="cc-name">
+            <iframe src="iframe1.html" frameborder="0" allowtransparency="true" scrolling="no"  title="Cardholder Name"  style="border: none; width: 100%; height: 100%; float: left;">
+            </iframe>
+        </div>
+        <small class="text-muted">Full name as displayed on card</small>
+        <div class="invalid-feedback">
+          Name on card is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 mb-3">
+        <div class="form-control" id="cc-number">
+
+        <iframe src="iframe2.html" frameborder="0" allowtransparency="true" scrolling="no" title="Card Number" style="border: none; width: 100%; height: 100%; float: left;">
+        </iframe>
+
+        </div>
+        <div class="invalid-feedback">
+          Credit card number is required
+        </div>
+      </div>
+      <div class="col-sm-3 mb-3">
+        <label for="cc-expiration">Expiration</label>
+        <div class="form-control" id="cc-expiration">
+         <input autocomplete="off" type="tel" autocorrect="off" autocapitalize="none" spellcheck="false" class="expirationDate" data-braintree-name="expirationDate" name="expiration" id="cc-expiration" maxlength="9" placeholder="MM / YY" aria-describedby="field-description-expirationDate">
+        <div id="field-description-expirationDate" class=" field-description" style="height: 1px; width: 1px; overflow: hidden;"></div>
+
+
+        </div>
+        <div class="invalid-feedback">
+          Expiration date required
+        </div>
+      </div>
+      <div class="col-sm-3 mb-3">
+        <label for="cc-expiration">CVV</label>
+        <div class="form-control" id="cc-cvv">
+          
+            <input  id="expiration" class="autofill-field" type="text" name="cvv" autocomplete="off">
+                  </div>
+        <div class="invalid-feedback">
+          Security code required
+        </div>
+      </div>
+    </div>
+
+    <hr class="mb-4">
+    <div class="text-center">
+    <button class="btn btn-primary btn-lg" type="submit">Pay with <span id="card-brand">Card</span></button>
+    </div>
+  </form>
+
+
+
+
+
+</div>
+   </div>
+</div>
+</div>
+
+<script src="../../lib/bs4.3.0/js/jquery.min.js"></script>
+<script src="../../lib/bs4.3.0/js/bootstrap.min.js"></script>
+
+
+<script>
+const modalHeading = document.getElementById('modal--heading');
+const modalButton = document.getElementById('modal--btn');
+const modalCloseButton = document.querySelector('.btn--close');
+const modalContainer = document.getElementById('modal--container');
+const modalBackdrop = document.createElement('div');
+const bodyEl = document.querySelector('body');
+const mainEl = document.querySelector('main');
+
+modalButton.onclick = function showContent() {
+  modalHeading.setAttribute('tabindex', '-1')
+  modalContainer.classList.add('modal--visible');
+  bodyEl.appendChild(modalBackdrop);
+  modalBackdrop.setAttribute("class", "modal--backdrop");
+  bodyEl.appendChild(modalBackdrop);
+  
+  //add attribute to all top level elements in body
+  const addHidden = document.querySelectorAll( 'body > *' );
+    for (var i=0; i < addHidden.length; i++) {
+      addHidden[i].setAttribute('aria-hidden','true');
+    }
+  //When HTML inert is fully supported we can use this
+ // modalContainer.removeAttribute('aria-hidden');
+  //let addInert = document.querySelectorAll( 'body > *' );
+   //for (var i=0; i < addInert.length; i++) {
+     //addInert[i].setAttribute('inert', '');
+   //}
+ modalContainer.removeAttribute('aria-hidden');
+  
+  /*The timeout fixes a focus management issue on iOS*/
+  setTimeout(function() {
+    modalHeading.focus();
+  }, 1);
+}
+
+modalHeading.onblur = function removeTI() {
+this.removeAttribute('tabindex'); 
+};
+
+modalCloseButton.onclick = function showContent() {
+  modalContainer.classList.remove('modal--visible');
+  modalBackdrop.remove();
+  
+   const clearHidden = document.querySelectorAll( 'body > *' );
+      for (var i=0; i < clearHidden.length; i++) {
+     clearHidden[i].removeAttribute('aria-hidden');
+     }
+  //When HTML inert is fully supported we can use this
+  //const clearInert = document.querySelectorAll( 'body > *' );
+     //for (var i=0; i < clearInert.length; i++) {
+    //clearInert[i].removeAttribute('inert');
+    //}
+
+  setTimeout(function() {
+         modalButton.focus();
+      }, 1);
+}
+//Set ESC key to close modal.
+document.addEventListener('keydown', function(e) {
+    let keyCode = e.keyCode;
+    if (keyCode === 27) {
+      modalContainer.classList.remove('modal--visible');
+      modalBackdrop.remove();
+      
+      //When HTML inert is fully supported we can use this
+      //let clearEscInert = document.querySelectorAll( 'body > *' );
+         //for (var i=0; i < clearEscInert.length; i++) {
+        //clearEscInert[i].removeAttribute('inert');
+        //}
+      
+      let clearEscHidden = document.querySelectorAll( 'body > *' );
+         for (var i=0; i < clearEscHidden.length; i++) {
+        clearEscHidden[i].removeAttribute('aria-hidden');
+        }
+
+      setTimeout(function() {
+         modalButton.focus();
+      }, 1);
+    }
+});
+
+//Should the modal close on outside click (No)
+
+
+//Trap keyboard focus inside the modal
+const  trapEL =
+    'button, [tabindex]:not([tabindex="-1"])';
+
+const firstTrapEL = modalContainer.querySelectorAll(trapEL)[0];
+const trapContent = modalContainer.querySelectorAll(trapEL);
+const lastTrapEL = trapContent[trapContent.length - 1];
+
+document.addEventListener('keydown', function(e) {
+  let isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+
+  if (!isTabPressed) {
+    return;
+  }
+
+  if (e.shiftKey) {
+    if (document.activeElement === firstTrapEL) {
+      lastTrapEL.focus();
+      e.preventDefault();
+    }
+  } else {
+    if (document.activeElement === lastTrapEL) {
+      firstTrapEL.focus();
+      e.preventDefault();
+    }
+  }
+});
+
+firstTrapEL.focus();
+
+</script>
+
+
+  </body>
+</html>

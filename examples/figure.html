@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Figure & FigCaption</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><input type="text" aria-label="test"></div>
+			<div id="content">
+
+			<h3>Figure and Figcaption according to spec</h3>
+
+			<figure>
+ 				 <img src="imgs/KhuuLam.png" alt="Alisha">
+  				<figcaption style="display:inline">Alisha contributed $5</figcaption>
+			</figure>
+
+
+			<h3>With aria-label</h3>
+
+			<figure aria-label="Alisha and Diego have contributed">
+ 				 <img src="imgs/KhuuLam.png" alt="Alisha">
+ 				 <img src="imgs/DiegoBurgos.png" alt="Diego">
+  				<figcaption style="display:inline">Alisha and Diego have contributed</figcaption>
+			</figure>
+
+			<h3>With aria-labelledBy</h3>
+			<figure aria-labelledby="fig1">
+ 				 <img src="imgs/KhuuLam.png" alt="Alisha">
+ 				 <img src="imgs/DiegoBurgos.png" alt="Diego">
+  				<figcaption id="fig1" style="display:inline">Alisha and Diego have contributed</figcaption>
+			</figure>
+
+
+			<h3>With aria-description</h3>
+			<figure role="figure" aria-describedby="fig2">
+ 				 <img src="imgs/KhuuLam.png" alt="Alisha">
+ 				 <img src="imgs/DiegoBurgos.png" alt="Diego">
+  				<figcaption id="fig2" style="display:inline">Alisha and Diego have contributed</figcaption>
+			</figure>
+
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+
+	</script>
+	
+</body>
+</html>

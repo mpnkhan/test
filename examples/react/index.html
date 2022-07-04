@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Home Page</title>
+    <style type="text/css">
+      ul li {line-height: 3em;}
+    </style>
+    <script src="lib/react.js"></script>
+    <script src="lib/react-dom.js"></script>
+    <script src="lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+    class Index extends React.Component {
+      render() {
+        return (
+          <div>
+            <h1>Examples</h1>
+              <ul>
+                <li><a href="input_focus_componentdidMount.html">Setting focus on component Did update </a></li>
+                <li><a href="input_focus_state.html">Setting focus on state change </a></li>
+                <li><a href="axiofetch.html">Setting focus on Ajax update </a></li>
+                <li><a href="menu.html">Menu with external JS </a></li>
+                <li><a href="menu_working.html">Menu react</a></li>
+
+                
+              </ul>
+          </div>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <Index />,
+      document.getElementById('root')
+    );
+
+    </script>
+  </body>
+</html>

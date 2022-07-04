@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title> Auto Fill </title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><h1>AUTO FILL </h1> </div>
+			<div id="content">
+				<form method="get" action="#">
+
+					<h2>Personal Info</h2>
+
+					<p><label>Name: <input type="text" name="prefix" autocomplete="honorific-prefix"><input type="text" name="name" autocomplete="name" enterkeyhint="Next"></label>
+						<!--
+							enterkeyhint : enter,done,go,next,previous,search, send.
+						-->
+					</p>
+					<p><label>First Name: <input type="text" name="fname" id="fname" autocomplete="given-name"></label></p>
+					<p><label>Middle Name: <input type="text" name="mname" id="mname" autocomplete="additional-name"></label></p>
+					<p><label>Last Name: <input type="text" name="lname" autocomplete="family-name"></label></p>
+					<p><label>Email : &nbsp; &nbsp; <input type="email" name="email"  autocomplete="email" autocapitalize="none" autocorrect="off" pattern="[^@]+@[^\.]+\..+"></label></p>
+					<p><label>Phone : &nbsp; &nbsp; <input type="tel" name="phone" id="frmPhoneNumA"  required autocomplete="tel"></label></p>
+
+					<hr>
+					<h2>Credit Card</h2>
+					<p><label>Name on Credit Card: <input name="ccname" id="frmNameCC" required autocomplete="cc-name"></label></p>
+					<p><label>Card Number <input name="cardnumber" id="frmCCNum" required autocomplete="cc-number"></label></p>
+					<p><label>CVV: <input name="cvc" id="frmCCCVC" required autocomplete="cc-csc"></label></p>
+					<p><label>Expiry: <input name="cc-exp" id="frmCCExp" required  autocomplete="cc-exp"></label></p>
+
+					<hr>
+					<h2>Address</h2>
+					<p><label>Address: <input name="ship-address" required id="frmAddressS"  autocomplete="shipping street-address">  </label></p>
+					<p><label>City: <input name="ship-city" required id="frmCityS"  autocomplete="shipping locality">  </label></p>
+					<p><label>State: <input name="ship-state" required id="frmStateS"  autocomplete="shipping region">  </label></p>
+					<p><label>Zip: <input name="ship-zip" required id="frmZipS"  autocomplete="shipping postal-code">  </label></p>
+					<p><label>Country: <input name="ship-country" required id="frmCountryS"  autocomplete="shipping country">  </label></p>
+					<p><label>Shipping phone number: <input type=tel name=shiptel autocomplete="shipping tel-national"></label>
+				
+
+					 <p><label>Deilivery Time(min and max): <input type=time name="time" min="11:00" max="21:00" step="900" name="delivery"></label></p>
+					 <p><label>Buzzer code (inputmode) : <input name="custbuzz" inputmode="numeric"></label></p>
+
+					 <button type="submit">Submit</button>
+			</form>		 
+			</div> <!--content-->
+
+			<footer>
+				<ol>
+					<li><a href="https://developer.apple.com/documentation/security/password_autofill/enabling_password_autofill_on_a_text_input_view">Article on How to autofill on iOS</a></li>
+				</ol>
+			</footer>
+		</div> <!--wrapper-->
+
+	<script>
+
+	</script>
+	
+</body>
+</html>

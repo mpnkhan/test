@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ngAria Custom Checkbox</title>
+    <style type="text/css">
+      ul li {line-height: 3em;}
+
+
+custom-checkbox {
+  cursor: pointer;
+  display: inline-block;
+}
+
+custom-checkbox .icon:before {
+  content: '\2610';
+  display: inline-block;
+  font-size: 2em;
+  line-height: 1;
+  speak: none;
+  vertical-align: middle;
+}
+
+custom-checkbox.checked .icon:before {
+  content: '\2611';
+}
+
+
+    </style>
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-aria.js"></script>
+    <script type="text/javascript">
+(function(angular) {
+  'use strict';
+angular.
+  module('ngAria_ngModelExample', ['ngAria']).
+  directive('customCheckbox', customCheckboxDirective).
+  directive('showAttrs', showAttrsDirective);
+
+function customCheckboxDirective() {
+  return {
+    restrict: 'E',
+    require: 'ngModel',
+    transclude: true,
+    template:
+        '<span class="icon" aria-hidden="true"></span> ' +
+        '<ng-transclude></ng-transclude>',
+    link: function(scope, elem, attrs, ctrl) {
+      // Overwrite necessary `NgModelController` methods
+      ctrl.$isEmpty = isEmpty;
+      ctrl.$render = render;
+
+      // Bind to events
+      elem.on('click', function(event) {
+        event.preventDefault();
+        scope.$apply(toggleCheckbox);
+      });
+      elem.on('keypress', function(event) {
+        event.preventDefault();
+        if (event.keyCode === 32 || event.keyCode === 13) {
+          scope.$apply(toggleCheckbox);
+        }
+      });
+
+      // Helpers
+      function isEmpty(value) {
+        return !value;
+      }
+
+      function render() {
+        elem[ctrl.$viewValue ? 'addClass' : 'removeClass']('checked');
+      }
+
+      function toggleCheckbox() {
+        ctrl.$setViewValue(!ctrl.$viewValue);
+        ctrl.$render();
+      }
+    }
+  };
+}
+
+function showAttrsDirective($timeout) {
+  return function(scope, elem, attrs) {
+    var pre = document.createElement('pre');
+    elem.after(pre);
+
+    scope.$watchCollection(function() {
+      return Array.prototype.slice.call(elem[0].attributes).reduce(function(aggr, attr) {
+        if (attr.name !== attrs.$attr.showAttrs) aggr[attr.name] = attr.value;
+        return aggr;
+      }, {});
+    }, function(newValues) {
+      $timeout(function() {
+        pre.textContent = angular.toJson(newValues, 2);
+      });
+    });
+  };
+}
+})(window.angular);
+    </script>
+  </head>
+
+<body ng-app="ngAria_ngModelExample">
+  <form>
+  <custom-checkbox role="checkbox" ng-model="checked" required  aria-label="Custom checkbox" show-attrs>
+    Custom checkbox
+  </custom-checkbox>
+</form>
+
+<div ng-click="toggleMenu()">Click Me</div>
+<hr />
+<b>Is checked:</b> {{ !!checked }}
+</body>
+</html>

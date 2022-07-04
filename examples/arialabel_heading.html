@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Aria-Label on heading</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+    <style type="text/css">
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.waviy {
+  position: relative;
+}
+.waviy span {
+  position: relative;
+  display: inline-block;
+  font-size: 40px;
+  color: #000;
+  text-transform: uppercase;
+  animation: flip 2s infinite;
+  animation-delay: calc(.2s * var(--i))
+}
+@keyframes flip {
+  0%,80% {
+    transform: rotateY(360deg) 
+  }
+}    	
+    </style>
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><a href="https://www.paypal.com">PayPal</a></div>
+			<div id="content">
+
+
+				<h1 class="waviy" style="margin-top: 20px;">
+					<span style="--i:1">T</span>
+					<span style="--i:2">E</span>
+					<span style="--i:3">S</span>
+					<span style="--i:4">T</span>
+					<span style="--i:5">I</span>
+					<span style="--i:6">N</span>
+					<span style="--i:7">G</span>
+
+
+				 </h1>
+
+
+				<h1 class="waviy" aria-label="Buy Now! and Pay Later" style="margin-top: 20px;">
+					<span style="--i:1" aria-hidden="true">B</span>
+					<span style="--i:2" aria-hidden="true">u</span>
+					<span style="--i:3" aria-hidden="true">y</span>
+					&nbsp;
+					<span style="--i:4" aria-hidden="true">N</span>
+					<span style="--i:5" aria-hidden="true">O</span>
+					<span style="--i:6" aria-hidden="true">w!</span>
+					&nbsp;
+
+					<span style="--i:7" aria-hidden="true">P</span>
+					<span style="--i:8" aria-hidden="true">a</span>
+					<span style="--i:9" aria-hidden="true">y</span>
+					&nbsp;
+					<span style="--i:10" aria-hidden="true">L</span>
+					<span style="--i:11" aria-hidden="true">a</span>
+					<span style="--i:12" aria-hidden="true">t</span>
+					<span style="--i:13" aria-hidden="true">e</span>
+					<span style="--i:14" aria-hidden="true">r</span>
+
+
+				 </h1>
+
+
+				<h1 class="waviy" style="margin-top: 20px;">
+					<span style="--i:7" aria-hidden="true">P</span>
+					<span style="--i:8" aria-hidden="true">a</span>
+					<span style="--i:9" aria-hidden="true">y</span>
+					&nbsp;
+
+					<span style="--i:4" aria-hidden="true">N</span>
+					<span style="--i:5" aria-hidden="true">o</span>
+					<span style="--i:6" aria-hidden="true">w!</span>
+					&nbsp;
+
+					<span style="--i:1" aria-hidden="true">B</span>
+					<span style="--i:2" aria-hidden="true">u</span>
+					<span style="--i:3" aria-hidden="true">y</span>
+					&nbsp;
+
+					<span style="--i:10" aria-hidden="true">L</span>
+					<span style="--i:11" aria-hidden="true">a</span>
+					<span style="--i:12" aria-hidden="true">t</span>
+					<span style="--i:13" aria-hidden="true">e</span>
+					<span style="--i:14" aria-hidden="true">r</span>
+
+					<span class="sr-only">Pay Now! and Buy Later</span>
+				 </h1>
+
+
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+
+	</script>
+	
+</body>
+</html>
