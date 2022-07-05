@@ -20,16 +20,32 @@
 				</p>
 
 		<p>
-			<video width="1500 px"  loop="true" autoplay="autoplay">
+			<video id="vid" width="1500 px"  loop="true" autoplay="autoplay">
 			  <source src="crypto---for=mdAsset.mp4" type="video/mp4" />
 			</video>
 
 		</p>	
-
+			<p>
+				References:
+				<ol>
+				<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/pause-stop-hide.html">Understanding Success Criterion 2.2.2: Pause, Stop, Hide</a>	
+				<li><a href="https://abilitynet.org.uk/news-blogs/why-autoplay-accessibility-issue">Why Autoplay is an accessibility issue </a>	
+			</p>
 			</div> <!--content-->
 		</div> <!--wrapper-->
 
 	<script>
+		const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+		if(mediaQuery.matches) document.getElementById('vid').removeAttribute('autoplay'); 
+	/*	mediaQuery.addEventListener('change', () => {// Stop AutoPlays.}); */
+		mediaQuery.addListener(handleReduceMotionChanged); // Note: https://webkit.org/b/168491
+
+		function handleReduceMotionChanged() {
+			const v = document.getElementById('vid');
+			console.log(mediaQuery.media, mediaQuery.matches);
+			(mediaQuery.matches)? v.pause() : v.play()
+
+		}
 
 	</script>
 	
