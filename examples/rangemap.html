@@ -1,25 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	  <title>Color contrast</title>
+	  <title>Range Map</title>
     <meta charset='utf-8' />
     <meta name="description" content="Test : testing" />
     <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
     <style type="text/css">
-    	#map {
-  			height: 30%;
-		}
+#map {
+  height: 100%;
+}
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 
+}
+
+.range-wrap {
+  position: relative;
+  margin: 0 auto 3rem;
+}
+
+.range {
+  width: 100%;
+}
+
+.bubble {
+  background: red;
+  color: white;
+  padding: 4px 12px;
+  position: absolute;
+  border-radius: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bubble::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: red;
+  top: -1px;
+  left: 50%;
+}
     </style>
+
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 </head>
 <body>
 		<div id="wrapper">
 			<div id="header"><a href="https://www.paypal.com">PayPal</a></div>
 			<div id="content">
 
+		    <label for="cityname">City Name</label> <input id="cityname" type="text" value="Hope,NY,USA">
+		    <div class="range-wrap">
+		      <input type="range" class="range" min="3" max="40" step="2">
+		      <output class="bubble"></output>
+		    </div>
 
-				 <div id="map"></div>
+		    <div id="map"></div>
+   
 
 			</div> <!--content-->
 		</div> <!--wrapper-->
@@ -28,48 +71,55 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
 	<script>
 
-const citymap = {
-  chicago: {
-    center: { lat: 41.878, lng: -87.629 },
-    population: 2714856,
-  },
-  newyork: {
-    center: { lat: 40.714, lng: -74.005 },
-    population: 8405837,
-  },
-  losangeles: {
-    center: { lat: 34.052, lng: -118.243 },
-    population: 3857799,
-  },
-  vancouver: {
-    center: { lat: 49.25, lng: -123.1 },
-    population: 603502,
-  },
-};
 
 function initMap() {
-  // Create the map.
-  const map = new google.maps.Map(document.getElementById("map"), {
+let cityCircle;
+const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 4,
-    center: { lat: 37.09, lng: -95.712 },
+    center: { lat: 43.3 , lng: -74.25},
     mapTypeId: "terrain",
   });
+const marker = new google.maps.Marker({
+    map: map,
+    position: map.getCenter(),
+    title: "name"
+  });  
 
-  // Construct the circle for each value in citymap.
-  // Note: We scale the area of the circle based on the population.
-  for (const city in citymap) {
-    // Add the circle for this city to the map.
-    const cityCircle = new google.maps.Circle({
+cityCircle = new google.maps.Circle({
       strokeColor: "#FF0000",
       strokeOpacity: 0.8,
       strokeWeight: 2,
       fillColor: "#FF0000",
       fillOpacity: 0.35,
       map,
-      center: citymap[city].center,
+      center: { lat: 43.3 , lng: -74.25},
       radius:150000,
     });
-  }
+    //circle.bindTo('center', marker, 'position');
+
+const rangeWrap =  document.getElementsByClassName("range-wrap");
+  const range = rangeWrap[0].querySelector(".range");
+  const bubble = rangeWrap[0].querySelector(".bubble");
+
+  range.addEventListener("input", () => {
+    setBubble(range, bubble);
+  });
+  setBubble(range, bubble);
+
+function setBubble(range, bubble) {
+  const val = range.value;
+  const min = range.min ? range.min : 0;
+  const max = range.max ? range.max : 100;
+  const newVal = Number(((val - min) * 100) / (max - min));
+  bubble.innerHTML = val +' mi';
+  let  newRadius = val * 10000;
+  cityCircle.setRadius(newRadius);
+  bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
+  const a11yRangeText = "Showing " + val +" miles" +"close to "+document.getElementById("map").value;
+  range.setAttribute("aria-valuetext", a11yRangeText);
+}
+
+
 }
 
 window.initMap = initMap;
