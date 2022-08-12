@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Truncate using line clamp</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> \
+    <style type="text/css">
+    	
+
+p {
+  /*border: 1px solid black;*/
+  width: 200px;
+}
+.normal {
+  background-color: yellow
+}
+.single-line-truncate {
+  overflow: hidden;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 1;
+/*  
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: lightblue
+*/  
+}
+.multi-line-truncate {
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2;
+   overflow: auto;
+}
+
+@keyframes show {
+	from {
+		height: 0;
+		opacity: 0;
+	}
+	to {
+		height: auto;
+		opacity: 1;		
+	}
+}
+@keyframes hide {
+	from {
+		height: auto;
+		opacity: 1;	
+	}
+	to {
+		height: 0;
+		opacity: 0;
+	}
+}
+.collapse{
+	height: 0;
+	opacity: 0;
+	animation:hide 1s;
+	/*display: none;*/
+}
+
+.displayed {
+	height: auto;
+	opacity: 1;
+	/*display: block;*/
+	animation:show 1s;
+}
+
+.feature-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.feature-list-item {
+    display: flex;
+    align-items: center;
+}
+    </style>
+}
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><a href="https://www.paypal.com">PayPal</a></div>
+			<div id="content">
+
+
+
+<!-- <p class="normal"> One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.</p> -->
+
+<p id="single" class="normal  multi-line-truncate"> One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.</p>
+
+
+<button type="button"  data-toggle="collapse" aria-controls="toggle1" data-target="single" >More Details</button>
+
+<div id="toggle1" class="collapse">
+	<ul>
+		<li class="feature-list-item"><span class="feature-list-item-bullet" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="check Gold"><circle cx="12" cy="12" r="12" fill="#EDEDED"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M16.6551 8.51722C17.0724 8.878 17.1174 9.50779 16.7556 9.92389L11.5533 15.907C11.3634 16.1255 11.0877 16.251 10.7978 16.251C10.5078 16.251 10.2321 16.1255 10.0422 15.907L7.24446 12.6892C6.88267 12.2731 6.92765 11.6433 7.34493 11.2825C7.76222 10.9218 8.39378 10.9666 8.75557 11.3827L10.7978 13.7316L15.2445 8.61739C15.6063 8.20129 16.2378 8.15644 16.6551 8.51722Z" fill="#515354"></path></svg></span>
+			<p class="feature-list-item-text body-text-size-body">Shop online without sharing your payment info</p>
+		</li>
+		<li class="feature-list-item"><span class="feature-list-item-bullet" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="check Gold"><circle cx="12" cy="12" r="12" fill="#EDEDED"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M16.6551 8.51722C17.0724 8.878 17.1174 9.50779 16.7556 9.92389L11.5533 15.907C11.3634 16.1255 11.0877 16.251 10.7978 16.251C10.5078 16.251 10.2321 16.1255 10.0422 15.907L7.24446 12.6892C6.88267 12.2731 6.92765 11.6433 7.34493 11.2825C7.76222 10.9218 8.39378 10.9666 8.75557 11.3827L10.7978 13.7316L15.2445 8.61739C15.6063 8.20129 16.2378 8.15644 16.6551 8.51722Z" fill="#515354"></path></svg></span>
+			<p class="feature-list-item-text body-text-size-body">Access exclusive rewards and cash back</p>
+		</li>
+		<li class="feature-list-item"><span class="feature-list-item-bullet" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="check Gold"><circle cx="12" cy="12" r="12" fill="#EDEDED"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M16.6551 8.51722C17.0724 8.878 17.1174 9.50779 16.7556 9.92389L11.5533 15.907C11.3634 16.1255 11.0877 16.251 10.7978 16.251C10.5078 16.251 10.2321 16.1255 10.0422 15.907L7.24446 12.6892C6.88267 12.2731 6.92765 11.6433 7.34493 11.2825C7.76222 10.9218 8.39378 10.9666 8.75557 11.3827L10.7978 13.7316L15.2445 8.61739C15.6063 8.20129 16.2378 8.15644 16.6551 8.51722Z" fill="#515354"></path></svg></span>
+			<p class="feature-list-item-text body-text-size-body">Manage money, discover crypto, and more</p>
+		</li>
+	</ul>
+</div>
+
+<p id="multi" class="normal multi-line-truncate"> One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.</p>
+
+<button type="button"  data-toggle="collapse" aria-controls="toggle2" data-target="multi">More Details</button>
+
+<div id="toggle2" class="collapse">
+	<ul>
+		<li class="feature-list-item"><span class="feature-list-item-bullet" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="check Gold"><circle cx="12" cy="12" r="12" fill="#EDEDED"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M16.6551 8.51722C17.0724 8.878 17.1174 9.50779 16.7556 9.92389L11.5533 15.907C11.3634 16.1255 11.0877 16.251 10.7978 16.251C10.5078 16.251 10.2321 16.1255 10.0422 15.907L7.24446 12.6892C6.88267 12.2731 6.92765 11.6433 7.34493 11.2825C7.76222 10.9218 8.39378 10.9666 8.75557 11.3827L10.7978 13.7316L15.2445 8.61739C15.6063 8.20129 16.2378 8.15644 16.6551 8.51722Z" fill="#515354"></path></svg></span>
+			<p class="feature-list-item-text body-text-size-body">Accept more forms of payment so you don’t miss a sale</p>
+		</li>
+		<li class="feature-list-item"><span class="feature-list-item-bullet" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="check Gold"><circle cx="12" cy="12" r="12" fill="#EDEDED"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M16.6551 8.51722C17.0724 8.878 17.1174 9.50779 16.7556 9.92389L11.5533 15.907C11.3634 16.1255 11.0877 16.251 10.7978 16.251C10.5078 16.251 10.2321 16.1255 10.0422 15.907L7.24446 12.6892C6.88267 12.2731 6.92765 11.6433 7.34493 11.2825C7.76222 10.9218 8.39378 10.9666 8.75557 11.3827L10.7978 13.7316L15.2445 8.61739C15.6063 8.20129 16.2378 8.15644 16.6551 8.51722Z" fill="#515354"></path></svg></span>
+			<p class="feature-list-item-text body-text-size-body">Easily integrate with the tools you use to run your business</p>
+		</li>
+		<li class="feature-list-item"><span class="feature-list-item-bullet" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="check Gold"><circle cx="12" cy="12" r="12" fill="#EDEDED"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M16.6551 8.51722C17.0724 8.878 17.1174 9.50779 16.7556 9.92389L11.5533 15.907C11.3634 16.1255 11.0877 16.251 10.7978 16.251C10.5078 16.251 10.2321 16.1255 10.0422 15.907L7.24446 12.6892C6.88267 12.2731 6.92765 11.6433 7.34493 11.2825C7.76222 10.9218 8.39378 10.9666 8.75557 11.3827L10.7978 13.7316L15.2445 8.61739C15.6063 8.20129 16.2378 8.15644 16.6551 8.51722Z" fill="#515354"></path></svg></span>
+			<p class="feature-list-item-text body-text-size-body">Do business securely with a brand customers trust</p>
+		</li>
+	</ul>
+</div>
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+		const els = document.querySelectorAll('[data-toggle="collapse"]');
+		 for (let i = 0; i < els.length; i++) {
+		    	let el= els[i];
+		     el.addEventListener("click", function(ev) {
+		     	// const elm = ev.target;
+		 		let target=document.getElementById(el.getAttribute("aria-controls"));
+		      	target.classList.toggle("displayed");
+		      	document.getElementById(el.dataset.target).classList.toggle('multi-line-truncate')
+		      	if(target.classList.contains("displayed")){ 
+		      		el.innerHTML="Less Details"
+		      	}	
+		      	else {
+		      		el.innerHTML="More Details";
+		      	}	
+		      	// console.log(document.getElementById(el.dataset.target).style.webkitLineClamp)
+		     });
+		 }
+
+		 const animEls = document.querySelectorAll('.collapse');
+		 for (let i = 0; i < animEls.length; i++) {
+		 	let animEl= animEls[i];
+			animEl.addEventListener('animationend', (e) => {
+				// console.log(animEl, e.target,  e.target.classList,e.animationName)
+		 		if(animEl.classList.contains('displayed')){
+		 			animEl.setAttribute('aria-hidden',false)
+		 		}else animEl.setAttribute('aria-hidden',true)
+
+			})	 	
+		 }	
+
+	</script>
+	
+</body>
+</html>
