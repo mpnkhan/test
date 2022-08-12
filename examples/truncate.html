@@ -91,9 +91,9 @@ p {
 <p id="single" class="normal  multi-line-truncate"> One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.</p>
 
 
-<button type="button"  data-toggle="collapse" aria-controls="toggle1" data-target="single" >More Details</button>
+<button type="button"  data-toggle="collapse" aria-controls="toggle1" aria-expanded="false" data-target="single">More Details</button>
 
-<div id="toggle1" class="collapse">
+<div id="toggle1" class="collapse" aria-hidden="true">
 	<ul>
 		<li class="feature-list-item"><span class="feature-list-item-bullet" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="check Gold"><circle cx="12" cy="12" r="12" fill="#EDEDED"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M16.6551 8.51722C17.0724 8.878 17.1174 9.50779 16.7556 9.92389L11.5533 15.907C11.3634 16.1255 11.0877 16.251 10.7978 16.251C10.5078 16.251 10.2321 16.1255 10.0422 15.907L7.24446 12.6892C6.88267 12.2731 6.92765 11.6433 7.34493 11.2825C7.76222 10.9218 8.39378 10.9666 8.75557 11.3827L10.7978 13.7316L15.2445 8.61739C15.6063 8.20129 16.2378 8.15644 16.6551 8.51722Z" fill="#515354"></path></svg></span>
 			<p class="feature-list-item-text body-text-size-body">Shop online without sharing your payment info</p>
@@ -109,9 +109,9 @@ p {
 
 <p id="multi" class="normal multi-line-truncate"> One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.</p>
 
-<button type="button"  data-toggle="collapse" aria-controls="toggle2" data-target="multi">More Details</button>
+<button type="button"  data-toggle="collapse" aria-controls="toggle2" aria-expanded="false" data-target="multi">More Details</button>
 
-<div id="toggle2" class="collapse">
+<div id="toggle2" class="collapse" aria-hidden="true">
 	<ul>
 		<li class="feature-list-item"><span class="feature-list-item-bullet" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="check Gold"><circle cx="12" cy="12" r="12" fill="#EDEDED"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M16.6551 8.51722C17.0724 8.878 17.1174 9.50779 16.7556 9.92389L11.5533 15.907C11.3634 16.1255 11.0877 16.251 10.7978 16.251C10.5078 16.251 10.2321 16.1255 10.0422 15.907L7.24446 12.6892C6.88267 12.2731 6.92765 11.6433 7.34493 11.2825C7.76222 10.9218 8.39378 10.9666 8.75557 11.3827L10.7978 13.7316L15.2445 8.61739C15.6063 8.20129 16.2378 8.15644 16.6551 8.51722Z" fill="#515354"></path></svg></span>
 			<p class="feature-list-item-text body-text-size-body">Accept more forms of payment so you don’t miss a sale</p>
@@ -138,26 +138,18 @@ p {
 		      	target.classList.toggle("displayed");
 		      	document.getElementById(el.dataset.target).classList.toggle('multi-line-truncate')
 		      	if(target.classList.contains("displayed")){ 
+		      		target.setAttribute('aria-hidden',false)
+		      		el.setAttribute("aria-expanded",true)
 		      		el.innerHTML="Less Details"
 		      	}	
 		      	else {
+		      		target.setAttribute('aria-hidden',true)
+		      		el.setAttribute("aria-expanded",false)
 		      		el.innerHTML="More Details";
 		      	}	
 		      	// console.log(document.getElementById(el.dataset.target).style.webkitLineClamp)
 		     });
 		 }
-
-		 const animEls = document.querySelectorAll('.collapse');
-		 for (let i = 0; i < animEls.length; i++) {
-		 	let animEl= animEls[i];
-			animEl.addEventListener('animationend', (e) => {
-				// console.log(animEl, e.target,  e.target.classList,e.animationName)
-		 		if(animEl.classList.contains('displayed')){
-		 			animEl.setAttribute('aria-hidden',false)
-		 		}else animEl.setAttribute('aria-hidden',true)
-
-			})	 	
-		 }	
 
 	</script>
 	
