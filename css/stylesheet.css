@@ -1,5 +1,15 @@
+  @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&family=Roboto&display=swap");
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+
       body{
         text-align:center;
+        font-family: 'Atkinson Hyperlegible', sans-serif !important;        
+        font-size: 16px;
 /*        border: 1px dotted blue;  */
       }
       div#wrapper {
@@ -43,6 +53,7 @@
 
       .page-contents-list a:hover {
         background: green;
+        color: #fff;
       }
 
       .page-contents-list a:active {

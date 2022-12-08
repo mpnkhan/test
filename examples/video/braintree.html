@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Embeded Braintree video</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><h1>Braintree  Autoplaying Video</h1></div>
+			<div id="content">
+				<p>
+					Autoplaying background video on <a href="https://www.braintreepayments.com/">https://www.braintreepayments.com/</a>
+				</p>
+				<p>
+					<ol>
+						<li>Plays for 27 seconds without controls to pause</li>
+					</ol>					
+				</p>				
+		<p>
+			<video id="vid" width="1500px"  loop="true" autoplay="autoplay">
+			  <source src="https://www.braintreepayments.com/videos/homepage-marquee-vsco.mp4" type="video/mp4" />
+			</video>
+		</p>	
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+		const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+		if(mediaQuery.matches) document.getElementById('vid').removeAttribute('autoplay'); 
+	/*	mediaQuery.addEventListener('change', () => {// Stop AutoPlays.}); */
+		mediaQuery.addListener(handleReduceMotionChanged); // Note: https://webkit.org/b/168491
+
+		function handleReduceMotionChanged() {
+			const v = document.getElementById('vid');
+			console.log(mediaQuery.media, mediaQuery.matches);
+			(mediaQuery.matches)? v.pause() : v.play()
+		}
+
+		document.addEventListener('keydown', function(e){
+			if(e.keyCode ===27) {
+				document.getElementById('vid').pause()
+			}				
+		})
+
+	</script>
+	
+</body>
+</html>
