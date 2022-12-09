@@ -4,6 +4,29 @@
 	  <title>Embeded Braintree video</title>
     <meta charset='utf-8' />
     <meta name="description" content="Test : testing" />
+    <style type="text/css">
+
+ .playbtn{
+ 	color: #fff;
+	background: #000;
+	width: 3rem;
+	height: 3rem;
+	position: absolute;
+	top: 13.5rem;
+	right: 122.5rem;
+	z-index: 3;
+	border-radius: 50%;
+	background-size: 90% auto;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: white;
+	background-image: url("../../img/pause_circle_filled-24px.svg");
+}
+
+.play {
+	background-image: url("../../img/play_circle_filled-24px.svg");
+}
+    </style>
 </head>
 <body>
 		<div id="wrapper">
@@ -14,13 +37,14 @@
 				</p>
 				<p>
 					<ol>
-						<li>Plays for 27 seconds without controls to pause</li>
+						<li>Overlay play/pause over video</li>
 						<li>Pauses when pressing Escape key (https://www.w3.org/WAI/WCAG21/Techniques/general/G187)</li>
 						<li>Disables when Reduce Motion is chosen from settings (setting enabled onLoad or after loading the page) (https://www.w3.org/WAI/WCAG21/Techniques/css/C39)</li>
 					</ol>					
 				</p>				
 		<p>
-			<video id="vid" width="1500px"  loop="true" autoplay="autoplay">
+			<button class="playbtn"  aria-label="pause"></button>
+			<video id="vid" width="1500px"  loop="true" autoplay="autoplay" muted="muted">
 			  <source src="https://www.braintreepayments.com/videos/homepage-marquee-vsco.mp4" type="video/mp4" />
 			</video>
 		</p>	
@@ -45,6 +69,26 @@
 				document.getElementById('vid').pause()
 			}				
 		})
+
+	var items = document.getElementsByClassName('playbtn');
+	for (var i = 0; i < items.length; i++) {
+	  items[i].addEventListener('click', toggleClass);
+	}
+
+	function toggleClass(e) {
+	 const el	=e.target;
+	 const v = document.getElementById('vid');
+	  // e.target.classList.toggle('play')
+		if (el.classList.contains('play')) {	//pause
+		   el.classList.remove("play");
+		   v.pause();
+		}else{		//play
+		   el.classList.add("play");
+		   v.play()
+		}
+
+	}
+
 
 	</script>
 	
