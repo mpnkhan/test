@@ -14,7 +14,9 @@
 
 					<h2>Personal Info</h2>
 
-					<p><label>Name: <input type="text" name="prefix" autocomplete="honorific-prefix"><input type="text" name="name" autocomplete="name" enterkeyhint="Next"></label>
+					<p>Name: 
+						<input type="text" name="prefix" autocomplete="honorific-prefix" aria-label="prefix">
+						<input type="text" name="name" autocomplete="name" enterkeyhint="Next" aria-label="Full Name">
 						<!--
 							enterkeyhint : enter,done,go,next,previous,search, send.
 						-->
@@ -58,7 +60,7 @@
  <p><label>Telephone: <input type=tel name="custtel"></label></p>
  <p><label>Buzzer code: <input name="custbuzz" inputmode="numeric"></label></p>
  <p><label>Email address: <input type=email name="custemail"></label></p>
-<p><label>Card Number -autocomplete off for security concerns <input name="cardnumber" required autocomplete="off"></label></p>
+<p><label>Card Number -autocomplete off for security concerns <input name="cardnumber1" required autocomplete="off"></label></p>
 
 
 					 <button type="submit">Submit</button>
