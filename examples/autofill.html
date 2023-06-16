@@ -51,6 +51,16 @@
 					 <p><label>Mational Telephone: <input type=tel name="custtel" autocomplete="tel-national"></label></p>
 					 <p><label>Email address: <input type=email name="custemail" autocomplete="shipping email"></label></p>
 
+
+<h2>No Autocomplete</h2>
+<p>Just to check if any tool is flagging this as error under 1.3.5 just because there is no autocomplete attributes</p>
+ <p><label>Customer name: <input name="custname" required></label></p>
+ <p><label>Telephone: <input type=tel name="custtel"></label></p>
+ <p><label>Buzzer code: <input name="custbuzz" inputmode="numeric"></label></p>
+ <p><label>Email address: <input type=email name="custemail"></label></p>
+<p><label>Card Number -autocomplete off for security concerns <input name="cardnumber" id="frmCCNum" required autocomplete="off"></label></p>
+
+
 					 <button type="submit">Submit</button>
 			</form>		 
 
