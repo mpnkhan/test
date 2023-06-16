@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Accessibility Violations</title>
+</head>
+
+<body>
+  <h1>Accessibility Violations</h1>
+
+  <div>
+    <h2>Image without Alt Text</h2>
+    <img src="image.jpg" alt="Image Description">
+  </div>
+
+  <div>
+    <h2>Link without Text Content</h2>
+    <a href="#" aria-label="Link Text">Link Text</a>
+  </div>
+
+  <div>
+    <h2>Missing Label for Input</h2>
+    <label for="username">Username:</label>
+    <input type="text" id="username">
+    <button>Submit</button>
+  </div>
+
+  <div>
+    <h2>Color Contrast Issues</h2>
+    <p style="color: #333;">Low Contrast Text</p>
+    <button style="background-color: #f00; color: #fff;">Red Button</button>
+  </div>
+
+  <div>
+    <h2>Empty Heading</h2>
+    <div aria-hidden="true"></div>
+  </div>
+
+  <div>
+    <h2>Multiple H1 Headings</h2>
+    <h2>Heading 1</h2>
+    <h2>Heading 2</h2>
+  </div>
+
+  <div>
+    <h2>Complex Table Structure</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Savings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>January</td>
+          <td>$100</td>
+        </tr>
+        <tr>
+          <td>February</td>
+          <td>$200</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <h2>Improper Form Labeling</h2>
+    <label for="form-name">Name:</label>
+    <input type="text" id="form-name">
+    <button>Submit</button>
+  </div>
+
+  <div>
+    <h2>Improper Use of Heading Elements</h2>
+    <div role="heading" aria-level="3">Custom Heading</div>
+  </div>
+
+  <div>
+    <h2>Missing Alternative Text for Decorative Image</h2>
+    <img src="decorative.png" alt="Decorative Image">
+  </div>
+
+</body>
+
+</html>

@@ -10,7 +10,7 @@
 		<div id="wrapper">
 			<div id="header"><h1>AUTO FILL </h1> </div>
 			<div id="content">
-				<form method="get" action="#">
+				<form method="get" action="_self">
 
 					<h2>Personal Info</h2>
 
@@ -45,13 +45,24 @@
 					 <p><label>Deilivery Time(min and max): <input type=time name="time" min="11:00" max="21:00" step="900" name="delivery"></label></p>
 					 <p><label>Buzzer code (inputmode) : <input name="custbuzz" inputmode="numeric"></label></p>
 
+
+					 <p><label>Customer name: <input name="custname" required autocomplete="shipping name"></label></p>
+					 <p><label>Telephone: <input type=tel name="custtel" autocomplete="shipping tel"></label></p>
+					 <p><label>Mational Telephone: <input type=tel name="custtel" autocomplete="tel-national"></label></p>
+					 <p><label>Email address: <input type=email name="custemail" autocomplete="shipping email"></label></p>
+
 					 <button type="submit">Submit</button>
 			</form>		 
+
+
 			</div> <!--content-->
 
 			<footer>
 				<ol>
 					<li><a href="https://developer.apple.com/documentation/security/password_autofill/enabling_password_autofill_on_a_text_input_view">Article on How to autofill on iOS</a></li>
+					<li><a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fe-autocomplete-tel-national">Allowed autofill attributes</a></li>
+					<li><a href="https://github.com/whatwg/html/issues/5353">Issue on alllowing other tel types for tel input</a></li>
+					
 				</ol>
 			</footer>
 		</div> <!--wrapper-->

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Color contrast</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    
+</head>
+<body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+		<div id="wrapper">
+			<div id="header"><a href="https://www.userway.org">Userway</a></div>
+			<div id="content">
+
+					<div id="app">
+<form action="/dataCollectionLocation" method="post" autocomplete="on">
+    <label :for="item1">Test </label>
+    <input
+      :id="item1"
+    />
+  <button type="submit">Submit</button>
+</form>
+					</div>
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+<script>
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+        message: 'Hello Vue!'
+      }
+    }
+  }).mount('#app')
+</script>
+	
+</body>
+</html>
