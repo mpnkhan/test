@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Amazing Selector</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><a href="https://www.bbc.com">BBC</a></div>
+			<div id="content">
+<textarea style="width:70%;border:3px solid blue">
+table tbody tr:nth-last-child(n+2 of :not([style*="display: none"])) td
+</textarea>
+<p>
+Select all of the table cells contained in all of the table rows starting with the 2nd to last that doesn't have 'style="display: none"` 
+(the last row has and any number of other rows in the table could have 'style="display: none"` so they need to be skipped). 
+</p>
+
+<table id="test">
+<tr><th>Id</th><th>Employee Name</th></tr>
+<tr><td id="1">1</td><td>Prem</td></tr>
+<tr><td id="2">2</td><td>Nawaz</td></tr>
+<tr><td id="3">3</td><td>Khan</td></tr>
+<tr><td id="4">4</td><td>Azraa</td></tr>
+<tr style="display:none"><td id="5">5</td><td>Ajju</td></tr>
+<tr><td id="6">6</td><td>Farhana</td></tr>
+<tr style="display:none"><td id="7">7</td><td>Farru</td></tr>
+<tr><td id="8">8</td><td>Saffiyya</td></tr>
+<tr style="display:none"><td id="9">9</td><td>Saffi</td></tr>
+<tr><td id="10">10</td><td>Aafreen</td></tr>
+</table>
+
+<script>
+	const rows= document.querySelectorAll('table tbody tr:nth-last-child(n+2 of :not([style*="display:none"])) td');
+	console.log([...rows].map((el) => el.innerHTML))
+</script>
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+
+	</script>
+	
+</body>
+</html>
