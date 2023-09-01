@@ -47,8 +47,8 @@
       }
 
       .page-contents-list a:focus {
-        background: black;
-        outline: none;
+        background: green;
+        color: #fff;
       }
 
       .page-contents-list a:hover {
