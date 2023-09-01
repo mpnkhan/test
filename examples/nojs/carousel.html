@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Carousel</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+    <style>
+body {
+  display: grid;
+  height: 100vh;
+  place-items: center;
+  background-image: radial-gradient(circle 4px at center, #ffc857 50%, #ffafcc calc(50% + 1px));
+  background-size: 20px 20px;
+  background-color: #ffafcc;
+}
+.carousel__content--wrapper {
+  display: none;
+}
+.carousel:has(input#radio0:checked) .carousel__content--wrapper:nth-child(1) {
+  display: contents;
+}
+.carousel:has(input#radio1:checked) .carousel__content--wrapper:nth-child(2) {
+  display: contents;
+}
+.carousel:has(input#radio2:checked) .carousel__content--wrapper:nth-child(3) {
+  display: contents;
+}
+.carousel__content {
+  display: grid;
+  grid-template-areas: 'p img n';
+  grid-template-columns: auto 70vmin auto;
+  place-items: center;
+}
+.carousel__nav {
+  padding: 20px;
+  line-height: 1;
+  background: #bde0fe;
+  border-radius: 0.2rem;
+  border: 1px solid;
+  box-shadow: 0.1rem 0.1rem 0 0.1rem;
+  user-select: none;
+  transition: all 40ms;
+}
+.carousel__nav:active {
+  background: color-mix(in hsl, #bde0fe, #000 20%);
+  box-shadow: inset 0.1rem 0.1rem 0 rgba(0,0,0,0.24);
+  transform: translate(0.2rem, 0.2rem);
+}
+.carousel__nav--prev {
+  grid-area: p;
+}
+.carousel__nav--next {
+  grid-area: n;
+}
+.carousel--img {
+  grid-area: img;
+  aspect-ratio: 0.666666666666667;
+  border-radius: 0.2rem;
+  border: 1px solid;
+  box-shadow: 0.1rem 0.1rem 0 0.1rem;
+  overflow: hidden;
+}
+.carousel--img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.carousel__pagination {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+}
+.carousel__pagination input {
+  appearance: none;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  background: #fff;
+  border: 2px solid #b388eb;
+  border-radius: 100%;
+  box-shadow: 0.1rem 0.1rem 0;
+}
+.carousel__pagination input:checked {
+  background: #b388eb;
+  border-color: color-mix(in hsl, #b388eb, #000 20%);
+}
+    
+    </style>
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><a href="https://www.bbc.com">BBC</a></div>
+			<div id="content">
+
+<div class="carousel">
+  <div class="carousel__content--wrapper">
+    <div class="carousel__content"> 
+      <label class="carousel__nav carousel__nav--prev" for="radio2"><</label>
+      <label class="carousel__nav carousel__nav--next" for="radio1">></label>
+      <figure class="carousel--img"><img src="https://images.unsplash.com/photo-1675426513908-75bf6aaee78c?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODY4MzU1MzV8&amp;ixlib=rb-4.0.3&amp;q=85" alt="Image Description"/></figure>
+    </div>
+  </div>
+  <div class="carousel__content--wrapper">
+    <div class="carousel__content"> 
+      <label class="carousel__nav carousel__nav--prev" for="radio0" tabindex="0"><</label>
+      <label class="carousel__nav carousel__nav--next" for="radio2"tabindex="0">></label>
+      <figure class="carousel--img"><img src="https://images.unsplash.com/photo-1684417211736-e114089d26ec?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODY4MzU1MzV8&amp;ixlib=rb-4.0.3&amp;q=85" alt="Image Description"/></figure>
+    </div>
+  </div>
+  <div class="carousel__content--wrapper">
+    <div class="carousel__content"> 
+      <label class="carousel__nav carousel__nav--prev" for="radio1"><</label>
+      <label class="carousel__nav carousel__nav--next" for="radio0">></label>
+      <figure class="carousel--img"><img src="https://images.unsplash.com/photo-1685122956432-54551948f8fe?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODY4MzU1MzV8&amp;ixlib=rb-4.0.3&amp;q=85" alt="Image Description"/></figure>
+    </div>
+  </div>
+  <div class="carousel__pagination">
+    <input type="radio" id="radio0" name="selectedImage" checked="checked"/>
+    <input type="radio" id="radio1" name="selectedImage"/>
+    <input type="radio" id="radio2" name="selectedImage"/>
+  </div>
+</div>
+
+
+
+
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+
+	</script>
+	
+</body>
+</html>

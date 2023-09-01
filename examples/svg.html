@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>SVG</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <style type="text/css">
+      .sr-only {
+        position: absolute !important;
+        height: 1px; width: 1px; 
+        overflow: hidden;
+        clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+        clip: rect(1px, 1px, 1px, 1px);
+      }
+	.gingerbread .body {
+	  fill: #cd803d;
+	}
+
+	.gingerbread .eye {
+	  fill: white;
+	}
+
+	.gingerbread .mouth {
+	  fill: none;
+	  stroke: white;
+	  stroke-width: 2px;
+	}
+
+	.gingerbread .limb {
+	  stroke: #cd803d;
+	  stroke-width: 35px;
+	  stroke-linecap: round;
+	}      
+    </style>
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"></div>
+
+			<div id="content">
+
+<ol>
+	<li>
+		Xmas Tree - No role/title -
+	<svg width="30" height="40" viewBox="-100 -100 200 200">
+    	<polygon points="0,0 80,120 -80,120" fill="#234236" />
+    	<polygon points="0,-40 60,60 -60,60" fill="#0C5C4C" />
+    	<polygon points="0,-80 40,0 -40,0" fill="#38755B" />
+    	<rect x="-20" y="120" width="40" height="30" fill="brown" />
+  </svg>
+		
+	</li>
+	<li> &lt;svg&gt; + role="img" + &lt;title&gt; -
+<svg class="wishlist-heart" role="img" width="28" height="26" viewBox="-1.5 -2 24 22">
+	<title>Green Heart</title>
+	<path stroke-width="2" d="M11.7425742,1.57332673 L10.4999603,2.80430539 L9.25745231,1.57332673 C7.13920397,-0.524442242 3.70562377,-0.524442242 1.58816987,1.57332673 C-0.529389956,3.67109569 -0.529389956,7.0726705 1.58816987,9.17117403 L2.8307308,10.4021527 L10.4999603,18 L18.1692957,10.4021527 L19.4119096,9.17117403 C21.5293635,7.0726705 21.5293635,3.67109569 19.4119096,1.57332673 C17.2944027,-0.524442242 13.8607695,-0.524442242 11.7425742,1.57332673 Z" style="fill:rgb(00,255,00);">
+	</path>
+</svg>
+</li>
+<li> &lt;svg&gt; + role="img" + &lt;title&gt; + aria-labelledBy -
+	<svg class="recently-viewed-icon" width="36" height="26" viewBox="-1 -1 28 18" aria-labelledBy="t1">
+		<title id="t1">Illuminati</title>
+		<path d="M25.8347827,7.51173203 C25.6025086,7.20494961 20.0681994,0 12.9998857,0 C5.93157207,0 0.397008976,7.20494961 0.164988765,7.51143784 C-0.0549962549,7.80248154 -0.0549962549,8.19722427 0.164988765,8.48826797 C0.397008976,8.79505039 5.93157207,16 12.9998857,16 C20.0681994,16 25.6025086,8.79500136 25.8347827,8.48851313 C26.0550724,8.19751846 26.0550724,7.80248154 25.8347827,7.51173203 Z M12.9998857,14.344836 C7.79331971,14.344836 3.28388071,9.56276641 1.94899008,7.99943615 C3.28215415,6.43473305 7.7821478,1.65516396 12.9998857,1.65516396 C18.2061979,1.65516396 22.7153322,6.43640007 24.0507814,8.00056385 C22.7176173,9.56521792 18.2176237,14.344836 12.9998857,14.344836 Z" id="Shape"></path>
+	<path d="M13,3 C10.2430511,3 8,5.2430511 8,8 C8,10.7569489 10.2430511,13 13,13 C15.7569489,13 18,10.7569489 18,8 C18,5.2430511 15.7569489,3 13,3 Z M13,11.3333004 C11.1619353,11.3333004 9.66669958,9.8380153 9.66669958,8 C9.66669958,6.1619847 11.1619847,4.66669958 13,4.66669958 C14.8380153,4.66669958 16.3333004,6.1619847 16.3333004,8 C16.3333004,9.8380153 14.8380647,11.3333004 13,11.3333004 Z" id="Shape"></path>
+	</svg>	
+</li>
+<li> &lt;svg&gt; + role="img" + &lt;text&gt;  -
+	<svg role="img" width="28" height="26" viewBox="-1.5 -2 24 22">
+		<path stroke-width="2" d="M11.7425742,1.57332673 L10.4999603,2.80430539 L9.25745231,1.57332673 C7.13920397,-0.524442242 3.70562377,-0.524442242 1.58816987,1.57332673 C-0.529389956,3.67109569 -0.529389956,7.0726705 1.58816987,9.17117403 L2.8307308,10.4021527 L10.4999603,18 L18.1692957,10.4021527 L19.4119096,9.17117403 C21.5293635,7.0726705 21.5293635,3.67109569 19.4119096,1.57332673 C17.2944027,-0.524442242 13.8607695,-0.524442242 11.7425742,1.57332673 Z" style="fill:rgb(255,00,00);">
+		</path>
+		<text font-size="0">Red Heart</text>
+	</svg>
+</li>
+
+<li> &lt;svg&gt; + role="img" + &lt;title&gt; + aria-labelledBy + aria-describedBy -
+	<a href="#">
+	<svg width="40" height="40" viewBox="-100 -100 200 200" aria-labelledBy="b1" aria-describedby="d1">
+		<title id="b1">Bell</title>
+		<desc id="d1">If you like the page, please click Bell icon</desc>
+		<g stroke="black" stroke-width="2">
+		    <circle cx="0" cy="-45" r="7" fill="#4F6D7A" />
+		    <circle cx="0" cy="50" r="10" fill="#F79257" />
+		    <path d="M -50 40 L -50 50 L 50 50 L 50 40 Q 40 40 40 10 C 40 -60 -40 -60 -40 10 Q -40 40 -50 40"
+		      fill="#FDEA96"/>
+		 </g>
+	</svg>
+	</a>
+</li>
+<br>
+<li> Hidden SVG and hidden Alt text  -
+<div>
+	<span class="sr-only">Gingerbread Figure with SVG</span>
+		<svg class="gingerbread" width="50" height="50" viewBox="-100 -100 200 200">
+		  <circle class="body" cx="0" cy="-50" r="30" />
+
+		  <circle class="eye" cx="-12" cy="-55" r="3" />
+		  <circle class="eye" cx="12" cy="-55" r="3" />
+		  <rect class="mouth" x="-10" y="-40" width="20" height="5" rx="2" />
+
+		  <line class="limb" x1="-40" y1="-10" x2="40" y2="-10" />
+		  <line class="limb" x1="-25" y1="50" x2="0" y2="-15" />
+		  <line class="limb" x1="25" y1="50" x2="0" y2="-15" />
+
+		  <circle class="button" cx="0" cy="-10" r="5" />
+		  <circle class="button" cx="0" cy="10" r="5" />
+		</svg>
+</div>
+</li>
+
+
+<br><br>
+<li>
+	Interactive SVG(slider) with Aria Role, State & Properties <br><br>
+<div  style="overflow: hidden; position: relative; text-align: left; width: 904px; height: 26px; padding: 0px; cursor: default; touch-action: none;">
+
+	<svg version="1.1" style="position: absolute; width: 1904px; height: 26px; top: 0px; left: 0px;"><desc>Slider</desc><g><path cs="100,100" d="M0.5,0.5 L1903.5,0.5 L1903.5,25.5 L0.5,25.5 Z" fill="#FFFFFF" stroke="#000000" fill-opacity="0" stroke-width="1" stroke-opacity="0"></path><path cs="100,100" d="M0.5,0.5 L1743.5,0.5 L1743.5,0.5 L0.5,0.5 L0.5,0.5 Z" fill="#FFFFFF" stroke="#000000" fill-opacity="0" stroke-width="1" stroke-opacity="0" transform="translate(80,26)"></path></g><g transform="translate(80,0)" visibility="hidden"></g><g transform="translate(80,26)"><g><path cs="100,100" d="M67.5,0.5 L67.5,0.5 L67.5,0.5" fill="none" stroke-width="1" stroke-opacity="0.15" stroke="#000000"></path></g><g><path cs="100,100" d="M201.5,0.5 L201.5,0.5 L201.5,0.5" fill="none" stroke-width="1" stroke-opacity="0.15" stroke="#000000"></path></g><g><path cs="100,100" d="M335.5,0.5 L335.5,0.5 L335.5,0.5" fill="none" stroke-width="1" stroke-opacity="0.15" stroke="#000000"></path></g><g><path cs="100,100" d="M603.5,0.5 L603.5,0.5 L603.5,0.5" fill="none" stroke-width="1" stroke-opacity="0.15" stroke="#000000"></path></g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g><g><path cs="100,100" d="M0.5,0.5 L1743.5,0.5" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000" transform="translate(0,26)"></path></g><g><path cs="100,100" d="M0.5,0.5 L0.5,26.5" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000" transform="translate(80,0)" visibility="hidden"></path></g><g><path cs="100,100" d="M0.5,0.5 L1743.5,0.5" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000" transform="translate(80,26)"></path></g></g><g></g><g><g visibility="visible" transform="translate(80,0)" style="touch-action: none;"><rect x="0.5" y="0.5" width="1744" height="26" rx="0" ry="0" stroke-width="1" fill="#fcd202" stroke="#fcd202" fill-opacity="1" stroke-opacity="1"></rect><rect x="0.5" y="0.5" width="1740" height="27" rx="0" ry="0" stroke-width="0" fill="#fcd202" stroke="#fcd202" fill-opacity="1" stroke-opacity="1" transform="translate(3,0)"></rect><g transform="translate(0,0)"><g></g><g><path cs="100,100" d="M67,9 Q84,9,101,10 Q117,11,134,12 Q151,12,168,13 Q184,14,201,14 Q218,15,235,15 Q251,15,268,15 Q285,16,302,16 Q318,16,335,16 Q352,16,369,15 Q385,15,402,15 Q419,14,436,14 Q452,14,469,14 Q486,13,503,13 Q519,13,536,13 Q553,13,570,13 Q586,12,603,12 Q620,11,637,10 Q653,9,670,8 Q687,6,704,6 Q720,5,737,6 Q754,6,771,9 Q787,12,804,15 Q821,18,838,20 Q854,23,871,23 Q888,23,905,21 Q922,18,939,15 Q955,12,972,10 Q989,7,1006,6 Q1023,6,1040,6 Q1056,7,1073,8 Q1090,9,1107,11 Q1123,12,1140,13 Q1157,14,1174,15 Q1190,16,1207,17 Q1224,17,1241,18 Q1257,19,1274,20 Q1291,20,1308,21 Q1324,22,1341,22 Q1358,23,1375,23 Q1391,23,1408,22 Q1425,21,1442,20 Q1458,18,1475,16 Q1492,14,1509,12 Q1525,10,1542,10 Q1559,9,1576,10 Q1592,11,1609,12 Q1626,13,1643,14 Q1659,15,1676,15M0,0 L0,0" fill="none" fill-opacity="0" stroke-width="1" stroke-opacity="0" stroke="#BBBBBB"></path><path cs="100,100" d="M67,9 Q84,9,101,10 Q117,11,134,12 Q151,12,168,13 Q184,14,201,14 Q218,15,235,15 Q251,15,268,15 Q285,16,302,16 Q318,16,335,16 Q352,16,369,15 Q385,15,402,15 Q419,14,436,14 Q452,14,469,14 Q486,13,503,13 Q519,13,536,13 Q553,13,570,13 Q586,12,603,12 Q620,11,637,10 Q653,9,670,8 Q687,6,704,6 Q720,5,737,6 Q754,6,771,9 Q787,12,804,15 Q821,18,838,20 Q854,23,871,23 Q888,23,905,21 Q922,18,939,15 Q955,12,972,10 Q989,7,1006,6 Q1023,6,1040,6 Q1056,7,1073,8 Q1090,9,1107,11 Q1123,12,1140,13 Q1157,14,1174,15 Q1190,16,1207,17 Q1224,17,1241,18 Q1257,19,1274,20 Q1291,20,1308,21 Q1324,22,1341,22 Q1358,23,1375,23 Q1391,23,1408,22 Q1425,21,1442,20 Q1458,18,1475,16 Q1492,14,1509,12 Q1525,10,1542,10 Q1559,9,1576,10 Q1592,11,1609,12 Q1626,13,1643,14 Q1659,15,1676,15 L1676,26 L67,26 L67,9.099999999999998" fill="#d3d3d3" fill-opacity="1" stroke-width="0" stroke-opacity="0"></path></g><g></g></g><g transform="translate(0,0)" clip-path="url(#AmChartsEl-52)"><g></g><g><path cs="100,100" d="M67,9 Q84,9,101,10 Q117,11,134,12 Q151,12,168,13 Q184,14,201,14 Q218,15,235,15 Q251,15,268,15 Q285,16,302,16 Q318,16,335,16 Q352,16,369,15 Q385,15,402,15 Q419,14,436,14 Q452,14,469,14 Q486,13,503,13 Q519,13,536,13 Q553,13,570,13 Q586,12,603,12 Q620,11,637,10 Q653,9,670,8 Q687,6,704,6 Q720,5,737,6 Q754,6,771,9 Q787,12,804,15 Q821,18,838,20 Q854,23,871,23 Q888,23,905,21 Q922,18,939,15 Q955,12,972,10 Q989,7,1006,6 Q1023,6,1040,6 Q1056,7,1073,8 Q1090,9,1107,11 Q1123,12,1140,13 Q1157,14,1174,15 Q1190,16,1207,17 Q1224,17,1241,18 Q1257,19,1274,20 Q1291,20,1308,21 Q1324,22,1341,22 Q1358,23,1375,23 Q1391,23,1408,22 Q1425,21,1442,20 Q1458,18,1475,16 Q1492,14,1509,12 Q1525,10,1542,10 Q1559,9,1576,10 Q1592,11,1609,12 Q1626,13,1643,14 Q1659,15,1676,15M0,0 L0,0" fill="none" fill-opacity="0" stroke-width="1" stroke-opacity="1" stroke="#aaa"></path><path cs="100,100" d="M67,9 Q84,9,101,10 Q117,11,134,12 Q151,12,168,13 Q184,14,201,14 Q218,15,235,15 Q251,15,268,15 Q285,16,302,16 Q318,16,335,16 Q352,16,369,15 Q385,15,402,15 Q419,14,436,14 Q452,14,469,14 Q486,13,503,13 Q519,13,536,13 Q553,13,570,13 Q586,12,603,12 Q620,11,637,10 Q653,9,670,8 Q687,6,704,6 Q720,5,737,6 Q754,6,771,9 Q787,12,804,15 Q821,18,838,20 Q854,23,871,23 Q888,23,905,21 Q922,18,939,15 Q955,12,972,10 Q989,7,1006,6 Q1023,6,1040,6 Q1056,7,1073,8 Q1090,9,1107,11 Q1123,12,1140,13 Q1157,14,1174,15 Q1190,16,1207,17 Q1224,17,1241,18 Q1257,19,1274,20 Q1291,20,1308,21 Q1324,22,1341,22 Q1358,23,1375,23 Q1391,23,1408,22 Q1425,21,1442,20 Q1458,18,1475,16 Q1492,14,1509,12 Q1525,10,1542,10 Q1559,9,1576,10 Q1592,11,1609,12 Q1626,13,1643,14 Q1659,15,1676,15 L1676,26 L67,26 L67,9.099999999999998" fill="#aaa" fill-opacity="1" stroke-width="0" stroke-opacity="0"></path></g><g></g></g>
+		<g transform="translate(0,0)"><g><path cs="100,100" d="M67.5,26.5 L67.5,26.5 L67.5,0.5" fill="none" stroke-width="1" stroke-opacity="0.7" stroke="#FFFFFF"></path></g>
+			<g><path cs="100,100" d="M201.5,26.5 L201.5,26.5 L201.5,0.5" fill="none" stroke-width="1" stroke-opacity="0.7" stroke="#FFFFFF"></path></g>
+			<g><path cs="100,100" d="M335.5,26.5 L335.5,26.5 L335.5,0.5" fill="none" stroke-width="1" stroke-opacity="0.7" stroke="#FFFFFF"></path></g>
+			<g><path cs="100,100" d="M500,26.5 L500,26.5 L500,0.5" fill="none" stroke-width="1" stroke-opacity="0.7" stroke="#FFFFFF"></path></g>
+			<g>
+			<path cs="100,100" d="M603.5,26.5 L600,26.5 L600.5,0.5" fill="none" stroke-width="1" stroke-opacity="0.7" stroke="#FFFFFF"></path></g>
+			<path cs="100,100" d="M703.5,26.5 L703.5,26.5 L703.5,0.5" fill="none" stroke-width="1" stroke-opacity="0.7" stroke="#FFFFFF"></path></g>
+			<path cs="100,100" d="M800,26.5 L800,26.5 L800,0.5" fill="none" stroke-width="1" stroke-opacity="0.7" stroke="#FFFFFF"></path></g>			
+		</g>
+	<g transform="translate(0,0)" visibility="visible">
+		<text y="5" fill="#000" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10px" opacity="1" text-anchor="middle" transform="translate(50,15)"><tspan y="5" x="0">50</tspan></text>
+		<text y="5" fill="#000" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10px" opacity="1" text-anchor="middle" transform="translate(100,15)"><tspan y="5" x="0">100</tspan></text>
+		<text y="5" fill="#000" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10px" opacity="1" text-anchor="middle" transform="translate(200,15)"><tspan y="5" x="0">200</tspan></text>
+		<text y="5" fill="#000" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10px" opacity="1" text-anchor="middle" transform="translate(300,15)"><tspan y="5" x="0">300</tspan></text>
+		<text y="5" fill="#000" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10px" opacity="1" text-anchor="middle" transform="translate(400,15)"><tspan y="5" x="0">400</tspan></text>
+		<text y="5" fill="#000" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10px" opacity="1" text-anchor="middle" transform="translate(500,15)"><tspan y="5" x="0">500</tspan></text>
+		<text y="5" fill="#000" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10px" opacity="1" text-anchor="middle" transform="translate(600,15)"><tspan y="5" x="0">600</tspan></text>
+		<text y="5" fill="#000" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10px" opacity="1" text-anchor="middle" transform="translate(700,15)"><tspan y="5" x="0">700</tspan></text>
+		<text y="5" fill="#000" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10px" opacity="1" text-anchor="middle" transform="translate(800,15)"><tspan y="5" x="0">800</tspan></text>
+	</g>
+		<rect x="0.5" y="0.5" width="1744" height="26" rx="0" ry="0" stroke-width="0" fill="#000" stroke="#000" fill-opacity="0.005" stroke-opacity="0.005"></rect>
+
+		<rect id="dragger" x="3" y="0.5" width="1740" height="26" rx="0" ry="0" stroke-width="0" fill="#000" stroke="#000" fill-opacity="0.005" stroke-opacity="0.005" aria-label="Zoom chart using cursor arrows" style="cursor: cursor: grab; cursor:-moz-grab; cursor:-webkit-grab;">
+		</rect>
+	<g id="iconLeft" aria-label="1-800" role="slider" transform="translate(0,-4)" tabIndex="0" focusable="true" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="800" aria-valuetext="Begin" visibility="visible">
+		<image x="0" y="0" width="35" height="35" xlink:href="../img/dragIconRoundBig.svg"></image><rect x="0.5" y="0.5" width="25" height="26" rx="0" ry="0" stroke-width="0" fill="#000" stroke="#000" fill-opacity="0.005" stroke-opacity="0.005" transform="translate(5,5)"></rect></g>
+	</svg>
+</div>
+
+</li>
+
+</ol>
+
+<!-- https://www.freecodecamp.org/news/svg-tutorial-learn-to-code-images/ -->
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+(()=>{
+		const dragger = document.querySelector('#dragger');
+		const iconLeft = document.querySelector('#iconLeft');
+		// console.log(dragger)
+		let step=50, initLeftPos=0,initRightPos=1904;
+		iconLeft.addEventListener('keydown', (e) => {
+        const keyCode = e.keyCode || e.which;
+        if (!/(37|39)/.test(keyCode)) return;
+ 
+        if(keyCode === 39) initLeftPos += step;
+        if(keyCode === 37) initLeftPos -= step;
+        if(initLeftPos > 800) initLeftPos=0;
+        if(initLeftPos < 0) initLeftPos=800;
+        // console.log('Pos', initLeftPos)
+
+        // if(initLeftPos > scrollWidth) initLeftPos -= step;
+
+         // dragger.setAttribute('x', initLeftPos);
+         // dragger.setAttribute('width', initRightPos - initLeftPos);
+	
+		iconLeft.setAttribute('transform', `translate(${initLeftPos},-4)`);
+        // iconLeft.setAttribute("aria-valuenow", initLeftPos);
+        iconLeft.setAttribute("aria-valuetext", initLeftPos);
+
+		});
+})();		
+		 // this.iconLeft.node.addEventListener('keydown', function(e){ _this.leftSliderKeyNav(e)});
+	</script>
+	
+</body>
+</html>

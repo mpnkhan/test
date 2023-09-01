@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Color contrast</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><a href="https://www.bbc.com">BBC</a></div>
+			<div id="content">
+				<form action="#">
+
+					<input type="text" id="fname" class="form-control" name="FirstName">
+					<br><br><br>
+					<input type="submit" name="Submit">
+				</form>
+
+		<script type="text/javascript">
+const fetchStoreVal = async (key) => {
+    return new Promise((resolve, reject) => {
+        chrome.storage.local.get(key, function(result) {
+            if(chrome.runtime.lastError) {
+                // In case of an error
+                reject(chrome.runtime.lastError);
+            } else {
+                console.log(result);
+                resolve(result[key]);
+            }
+        });
+    });
+}
+    
+	const savePageDetails = (e) =>{
+		console.log(e.target);
+		const key= e.target.id;
+		chrome.storage.local.set({ key: e.target.value }).then(() => {
+		  console.log("Value is set",key,e.target.value);
+		});		
+	}
+
+	async function myFunction() {
+	    try {
+		    const fname = document.getElementById("fname");
+		    fname.addEventListener('blur', savePageDetails);
+		    const fname_old= await fetchStoreVal(fname.id);
+		    console.log('old name', fname_old);	        	
+	    } catch (error) {
+	        console.error('Error:', error);
+	    }
+	}();	    
+		
+
+		</script>
+
+
+
+
+
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+
+	</script>
+	
+</body>
+</html>
