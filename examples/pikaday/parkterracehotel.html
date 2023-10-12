@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Pika Day</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" href="pikaday.css">
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><a href="https://www.nychotel.com">NYC Hotels</a></div>
+			<div id="content" style="text-align: center;">
+
+			<div style="width: 50%; margin: 0 auto; border: 1px solid #ccc; padding: 10px;overflow: hidden;">
+				<div class="input-wrap datepicker" style="float:left">
+					<label for="arrive-date">Check In</label>
+					<input type="text" name="arrive" id="arrive-date" class="datepicker-input" placeholder="Check-in" value="10/09/2023" readonly="" aria-label="check-in" data-uw-rm-form="fx" style="transition: all 0s ease 0s;">
+				</div>    
+				<div class="input-wrap datepicker" style="float:right">
+					<label for="check-out">Check Out</label>
+					<input type="text" name="depart" id="depart-date" class="datepicker-input" placeholder="Check-out" value="10/10/2023" readonly="" aria-label="check-out" data-uw-rm-form="fx" style="transition: all 0s ease 0s;">
+				</div>
+
+			</div>
+
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script type="text/javascript" src="jquery.js" id="jquery-js"></script>
+	<script src="moment.min.js"></script>
+    <script src="pikaday_latest.js"></script>
+	<script type="text/javascript" src="pikaday.jquery.js"></script>
+
+    
+	<script>
+    var currentDate = moment(new Date()).format("MM/DD/YYYY");
+    var futureMonth = moment(currentDate).add(13, 'months').format("MM/DD/YYYY");		
+	$('.datepicker-input').pikaday({
+		firstDay: 0,
+		format: 'MM/DD/YYYY',//'ddd MMM Do YYYY',
+    showDaysInNextAndPreviousMonths: true,
+    maxDate: moment(futureMonth).toDate(),
+		minDate: moment("2020-09-01").toDate(),
+    position: 'bottom left',
+		i18n: {
+			previousMonth: '&nbsp;',
+			nextMonth: '&nbsp;',
+			months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+			weekdays: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+			weekdaysShort: ['Su','Mo','Tu','We','Th','Fr','Sa']
+		},
+		onSelect: function() {
+      $('#arrive-date').attr("name","arrive");
+      $('#depart-date').attr("name","depart");
+			if($(this._o.trigger).attr('id') === 'arrive-date') {
+				var trigEl = $(this._o.trigger),
+				nextDepart = $('.datepicker-input').index(trigEl) + 1,
+				departPicker = $('.datepicker-input').eq(nextDepart);
+
+				departPicker.pikaday('setMinDate', moment(trigEl.val(), 'MM/DD/YYYY').add(1, 'days').toDate()).pikaday('setMoment', moment(trigEl.val(), 'MM/DD/YYYY').add(1, 'days')).pikaday('show');
+			}
+		}
+	});
+
+	$('.input-wrap.datepicker').click(function(e) {
+		e.preventDefault();
+		$(this).find('.datepicker-input').pikaday('show');
+	});
+
+
+	</script>
+	
+</body>
+</html>

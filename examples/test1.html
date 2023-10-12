@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Form Validation</title>
+    <style>
+        .form-control {
+            margin-bottom: 20px;
+        }
+        .error-list {
+            color: red;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .error-message {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <div id="error-container" role="alert" aria-live="polite">
+        <ul class="error-list"></ul>
+    </div>
+    <form id="contactForm" onsubmit="return validateForm()">
+        <div class="form-control">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name">
+        </div>
+
+        <div class="form-control">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+        </div>
+
+        <div class="form-control">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message"></textarea>
+        </div>
+
+        <div class="form-control">
+            <fieldset>
+                <legend>Gender:</legend>
+                <input type="radio" id="gender-male" name="gender" value="male">
+                <label for="gender-male">Male</label>
+                <input type="radio" id="gender-female" name="gender" value="female">
+                <label for="gender-female">Female</label>
+            </fieldset>
+        </div>
+
+        <div class="form-control">
+            <input type="checkbox" id="accept-terms" name="accept-terms" value="1">
+            <label for="accept-terms">I accept the terms and conditions</label>
+        </div>
+
+        <div class="form-control">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var acceptTerms = document.getElementById("accept-terms").checked;
+
+            var errors = [];
+
+            if (name.trim() === "") {
+                errors.push("name");
+            }
+
+            if (email.trim() === "") {
+                errors.push("email");
+            }
+
+            if (message.trim() === "") {
+                errors.push("message");
+            }
+
+            if (!gender) {
+                errors.push("gender");
+            }
+
+            if (!acceptTerms) {
+                errors.push("accept-terms");
+            }
+
+            if (errors.length > 0) {
+                displayErrors(errors);
+                return false;
+            }
+
+            return true;
+        }
+
+        function displayErrors(errors) {
+            var errorContainer = document.getElementById("error-container");
+            var errorList = document.querySelector(".error-list");
+
+            errorList.innerHTML = ""; // Clear existing errors
+
+            errors.forEach(function (fieldName, index) {
+                var listItem = document.createElement("li");
+                var errorLink = document.createElement("a");
+                errorLink.textContent = "Error in " + fieldName;
+                errorLink.className = "error-message";
+                errorLink.href = "#"; // Make it focusable
+                errorLink.id= index;
+                const errorFld= document.getElementById(fieldName);
+                if(errorFld) errorFld.setAttribute('aria-describedby',index);
+
+                errorLink.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    moveFocusToField(fieldName);
+                });
+                listItem.appendChild(errorLink);
+                errorList.appendChild(listItem);
+             }); //endForEach
+
+            errorContainer.style.display = "block"; // Show error container
+            errorList.children[0].querySelector("a").focus(); // Focus the first error link
+        }
+
+        function moveFocusToField(fieldName) {
+            var field = document.querySelector('[name="' + fieldName + '"]');
+            if (field) {
+                field.focus();
+            }
+        }
+    </script>
+</body>
+</html>

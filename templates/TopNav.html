@@ -1,0 +1,326 @@
+<!--
+	#CodePenChallenge: Sticky Navigation 
+	https://codepen.io/collection/gYBgzd?cursor=eyJwYWdlIjozfQ==
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Color contrast</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+body {
+	height: 100%;
+	font-family: sans-serif;
+}
+
+.video-wrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-bottom-right-radius: 15vw;
+  pointer-events: none;
+}
+#video-bg {
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  background-position: center center;
+  background-size: cover;
+  object-fit: cover;
+}
+
+.content {
+	width: 100%;
+	position: absolute;
+	color: #333;
+	top: 45%;
+	transform: translatey(-50%);
+	text-align: right;
+	}
+.content h1 {
+	margin-top: 50px;
+	font-size: 40px;
+	font-weight: 700;
+}
+button {
+  background-color: #003366;
+  border: 2px;
+  border-radius: 25px;
+  color: white;
+  padding: 10px;
+  width: 150px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 20px 5px;
+  cursor: pointer;
+}
+
+ .logo {
+	position: relative;
+	font-weight: bold;
+	font-size: 1em;
+	color: #333;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 5px 0;
+	overflow: hidden;
+}
+.logo span {
+	transition:0.5s;
+	display: block;
+}
+.logo span:nth-child(1){
+	position:absolute;
+	transform: translatey(-80px);
+	font-size: 1.5em;
+}
+.icon .logo span:nth-child(1) {
+	transform: translateY(-5px);
+	color: #003366;
+}
+.icon .logo span:nth-child(2){ 
+	transform: translateY(35px);
+}
+
+
+nav {
+	position:fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 60px;
+   background: linear-gradient(to bottom, #ffffcc 0%, #ffcc66 100%);
+	 backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	padding: 0 50px;
+   transition: 0.5s;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	z-index: 100000;
+}
+
+.icon {
+	background: linear-gradient(to bottom, #ffffcc 0%, #996633 100%);
+}
+
+ul {
+	display: flex;
+
+}
+ul li {
+		list-style:none;
+}
+
+ul li a {
+	position: relative;
+	color: #333;
+	text-decoration: none;
+	padding: 5px 20px;
+	font-size: 1.1em;
+	font-weight: bold;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	
+}
+
+.icon ul li a {
+	color: #003366;
+}
+ul li a span {
+  transition: 0.5s;
+  transition-delay: calc(0.05s * var(--i));
+}
+ul li a span:nth-child(2) {
+	position:absolute;
+	transform: translateY(35px);
+	font-size: 1.6em;
+}
+ul li:hover a span:nth-child(2) {
+	color: #0f0;
+}
+.icon ul li a span:nth-child(2) {
+		transform:translateY(2px);
+}
+.icon ul li a span:nth-child(1) {
+	transform: translateY(-30px);
+}
+
+section {
+  min-height: 500px;
+  height: 500px;
+  width: 100%;
+	display: grid;
+	place-items: center;
+	align-content: center;
+	font-size: 2rem;
+	color: #333;
+}
+
+}
+#home {
+	    background-color:#00c2cb;
+}
+
+#videos {
+	background-color: #9e0059;
+}
+
+#photo {
+	background-color: #00ccff;
+}
+
+#about {
+	background-color: #00c2cb;
+}
+#contact {
+	background-color: #cc99ff;
+}
+.hidden {
+	opacity: 0;
+	transition: all 1s;
+	transform: translateX(-100%);
+	filter: blur(5px);
+}
+.show {
+	opacity: 1;
+	transform: translateX(0);
+	filter: blur(0);
+}
+.image:nth-child(2) {
+	transition-delay: 200ms;
+}
+.image:nth-child(3) {
+	transition-delay: 400ms;
+}
+.image:nth-child(4) {
+	transition-delay: 600ms;
+}    	
+    </style>
+</head>
+<body>
+<div>
+<video  class="video-wrap "id="video-bg"src="https://joy1.videvo.net/videvo_files/video/free/2022-04/large_watermarked/220323_03_Laptop_4k_008_preview.mp4" autoplay muted loop></video>
+	<div class="content">
+		 <h1>EXPLORE THE WORLD</h1>
+		<div>
+			<button type="button">Explore</button>
+		</div>
+	</div>
+</div>
+	
+	<nav id ="navbar">
+		<a href="#" class="logo">
+			<span><ion-icon name="camera-outline"></ion-icon></span>
+			<span>Photography</span>
+		</a>
+	<ul class ="nav">
+		<li style="--i:0;">
+			<a href="#home">
+				<span>Home</span>
+				<span><ion-icon name="home-outline"></ion-icon></span>
+			</a>
+		</li>
+		<li style="--i:1;">
+			<a href="#videos">
+				<span>Video</span>
+				<span><ion-icon name="videocam-outline"></ion-icon></span>
+			</a>
+		</li>
+		<li style="--i:2;">
+			<a href="#photo">
+				<span>Photo</span>
+				<span><ion-icon name="images-outline"></ion-icon></span>
+			</a>
+		</li>
+		<li style="--i:3;">
+			<a href="#about">
+				<span>About</span>
+				<span><ion-icon name="person-outline"></ion-icon></span>
+			</a>
+		</li>
+		<li style="--i:4;">
+			<a href="#contact">
+				<span>Contact</span>
+				<span><ion-icon name="mail-outline"></ion-icon></span>
+			</a>
+		</li>
+	</ul>
+	</nav>
+
+<section class="hidden"id="home">
+	<h2>Home</h2>
+	<div class="image hidden">
+	<img src ="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=100"/>
+	</div>
+</section>
+<section class="hidden"id="videos">
+	<h2>Video</h2>
+		<div class="image hidden">
+	<img src ="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=100"/>
+	</div>
+</section>
+<section class="hidden" id="photo">
+	<h2>Photo</h2>
+<div class="image hidden">
+	<img src ="https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=100"/>
+	</div>
+</section>
+<section class="hidden" id="about">
+	<h2>About</h2>
+<div class="image hidden">
+	<img src ="https://images.unsplash.com/photo-1599792092050-63b1834bb89f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"/>
+	</div>
+</section>
+	<section class="hidden" id="contact">
+	<h2>Contact</h2>
+<div class="image hidden">
+	<img src ="https://images.unsplash.com/photo-1554415707-c1426270e0da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=100"/>
+	</div>
+</section>
+
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script type="text/javascript">
+let lastScrollTop = 0;
+navbar = document.getElementById("navbar");
+window.addEventListener("scroll", function(){
+	let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+	if (scrollTop > lastScrollTop) {
+		navbar.classList.add('icon');
+	} else {
+		navbar.classList.remove('icon');
+	}
+	lastScrollTop = scrollTop;
+})
+
+const observer = new IntersectionObserver((entries) => {
+	entries.forEach((entry) => {
+		console.log(entry)
+		if (entry.isIntersecting) {
+			entry.target.classList.add('show');
+		} else {
+			 entry.target.classList.remove('show');
+		}
+	});
+});
+const hiddenElements = document.querySelectorAll('.hidden');
+hiddenElements.forEach((el) => observer.observe(el));
+	
+</script>	
+</body>
+</html>

@@ -1,23 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Accessibility Checker</title>
- 
-</head>
-<body>
-  <div class="container">
+  <head>
+    <title>Form validation with messages next to controls: Code example - Accessibility Developer Guide example</title>
+    <meta charset="utf-8">
+    <style>.control, fieldset {
+  margin: 6px 0;
+}
 
-	<img src="imgs/userway_logo.jpg" alt="Userway logo" title="Userway logo" style="width:500px;height:100px">
-	<form action="userway.org" method="get">
-		<button class="slick-arrow slick-previous" type="button">Previous Button</button>
-		<button class="slick-arrow slick-next" type="button">Next Button</button>
-	
-	</form>
+label {
+  display: inline-block;
+  width: 120px;
+  vertical-align: top;
+}
+
+input + label {
+  width: auto;
+}
+
+.error {
+  color: red;
+  margin-top: 0;
+  margin-left: 120px;
+}
+
+label + .error {
+  margin-left: 0;
+}
+
+fieldset .error {
+  margin-left: 0;
+}
+.hide{
+	display: none;
+}
+</style>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+<script type="text/javascript">
+const validateForm = () => {
+    const name = document.getElementById("name");
+    const biography = document.getElementById("biography");
+    // const message = document.getElementById("message").value;
+		const gender = document.querySelector(`input[name="gender"]:checked`);
+		const acceptTerms = document.getElementById("accept_agbs");
+
+ 		let isValid = true, focusEl;
+
+    if (name.value.trim() === "") {
+        isValid = false;
+        const nameErrDesc= name.nextElementSibling;
+				name.setAttribute('aria-describedby',nameErrDesc.id);
+        nameErrDesc.classList.remove('hide');
+        focusEl=name;
+    }else name.nextElementSibling.classList.add('hide');
+
+    if (biography.value.trim() === "") {
+        isValid = false;
+        const bioErrDesc= biography.nextElementSibling;
+				biography.setAttribute('aria-describedby',bioErrDesc.id);
+        bioErrDesc.classList.remove('hide');
+        if(!focusEl) focusEl =biography;
+    }else biography.nextElementSibling.classList.add('hide');
+    
+    if (!gender) {
+        isValid = false;
+        const FldsetRadio = document.getElementById('fldSetGender');
+        const genderErrDesc= document.getElementById('gender_description');
+				FldsetRadio.setAttribute('aria-describedby', genderErrDesc.id);
+        genderErrDesc.classList.remove('hide');
+        if(!focusEl) focusEl = FldsetRadio;
+    } else document.getElementById('gender_description').classList.add('hide');
+
+  	if(!acceptTerms.checked){
+  		isValid = false;
+        const acceptTermsErrDesc= document.getElementById('accept_agbs_description');
+				acceptTerms.setAttribute('aria-describedby',acceptTermsErrDesc.id);
+        acceptTermsErrDesc.classList.remove('hide');
+
+      document.getElementById('accept_agbs_description').classList.remove('hide');
+      if(!focusEl) focusEl = acceptTerms;			
+  	}
+
+		if(focusEl) focusEl.focus();
+
+	return false;
+}
+
+</script>
+
+  </head>
+  <body>
+    <a class="chronolog-popup-link gtm-event-track-click-active" data-chronolog-popup-options="{&quot;formUrl&quot;:&quot;\/us-en\/chronolog\/order-ajax\/&quot;}" data-dyn-disable="" data-gtm-event="{&quot;event&quot;:&quot;chronologDownload&quot;}" data-popin-id="download_catalog" data-popin-title="Download the catalog" href="#" aria-label="Download the catalog" role="button" aria-haspopup="dialog" data-uw-rm-kbnav="role" tabindex="0">
+
+<div class="align-items-end d-flex flex-container"  ><div class="image p-15"  ><img alt="Chronolog" loading="lazy" src="/media/breitling/images/chronolog/asset-version-b1b647fcb0/chronolog_660.jpg" data-uw-rm-ima-original="chronolog"  > </div> <div class="bg-light-grey position-relative text"  ><div class="font-heading line-height-1 text-left text-uppercase title title-size-1"  > Download your breitling catalog </div> <div class="cta d-block"  ><svg class="bg-primary-yellow icon icon-download-alt"  ><use xlink:href="/assets/images/br-11-20/asset-version-52dc425048/symbol-defs.svg#icon-download-alt"  ></use> </svg> <span class="font-weight-bold hidden-mobile text-uppercase"  >Download</span></div></div></div> 
 
 
+</a>
 
+<form>
+	<div role="list">
+    <div role="listitem" aria-label="this is a test">
+        <div role="presentation">
+            this
+            <div role="presentation">
+                is
+                <div role="presentation">a test</div>
+            </div>
+        </div>
+    </div>
+    <div role="listitem" aria-label="this is a test2">
+        <div role="presentation">
+            this
+            <div role="presentation">
+                is
+                <div role="presentation">a test</div>
+            </div>
+        </div>
+    </div>
+    <div role="listitem" aria-label="this is a test 3">
+        <div role="presentation">
+            this
+            <div role="presentation">
+                is
+                <div role="presentation">a test</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="control">
+    <label for="name">Full name</label><input id="name" name="name" type="text">
+   <p id="name_description" class="error hide">Please enter your name!</p>
+
+ <div role=list>
+ <p role="presentation"> <a href="#" role="listitem">link 1</a></p>
+ <p role="presentation"> <a href="#" role="listitem">link 2</a></p>
+</div>
+
+ </div>
+ <div class="control">
+    <label for="biography">Biography</label><textarea id="biography" name="biography" type="text"></textarea>
+  <p id="biography_description" class="error hide">Please tell us something about your history!</p></div>
+  <fieldset id="fldSetGender" tabindex="-1">
+    <legend>Gender</legend>
+    <div class="control">
+      <input id="gender_male" name="gender" type="radio" value="male"><label for="gender_male">Male</label>
+    </div>
+    <div class="control">
+      <input id="gender_female" name="gender" type="radio" value="female"><label for="gender_female">Female</label>
+    </div>
+  <p id="gender_description" class="error hide">Please tell us your gender!</p></fieldset>
+  <div class="control">
+    <input id="accept_agbs" name="accept_agbs" type="checkbox" value="1">
+    <label for="accept_agbs">I accept the terms and conditions</label>
+  <p id="accept_agbs_description" class="error hide">You must accept our terms and conditions!</p></div>
+  <div class="control">
+    <input name="validate" type="hidden" value="1">
+    <input type="button" value="Register" onClick="return validateForm()">
   </div>
-
+</form>
 </body>
 </html>
