@@ -58,7 +58,8 @@
 				nextDepart = $('.datepicker-input').index(trigEl) + 1,
 				departPicker = $('.datepicker-input').eq(nextDepart);
 
-				departPicker.pikaday('setMinDate', moment(trigEl.val(), 'MM/DD/YYYY').add(1, 'days').toDate()).pikaday('setMoment', moment(trigEl.val(), 'MM/DD/YYYY').add(1, 'days')).pikaday('show');
+				departPicker.pikaday('setMinDate', moment(trigEl.val(), 'MM/DD/YYYY').add(1, 'days').toDate()).pikaday('setMoment', moment(trigEl.val(), 'MM/DD/YYYY').add(1, 'days'))
+				//.pikaday('show');
 			}
 		}
 	});
