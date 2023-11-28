@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Clickable Rows</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+    <style type="text/css">
+			table {
+				width: 100%;
+			  border: 1px solid #000;
+			}
+			table th,
+			table td {
+			  margin: 0;
+			  border: 1px solid #000;
+			}
+			table tbody tr:hover,
+			table tbody tr:focus {
+			  background: #ff0;
+			}
+    	
+    	[tabindex="0"]{
+    		cursor: pointer;
+    	}
+    	
+    </style>
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><a href="https://www.example.com">Example</a></div>
+			<div id="content">
+<table>
+	<caption>Transactions January 1 through January 7</caption>
+    <thead>
+      <tr><th>Funds</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+<td style="background: #fbb531;" scope="row"><span style="overflow: hidden !important; position: absolute !important; margin: 0px !important; padding: 0px !important; width: 1px !important; height: 1px !important; border: 0px !important; clip: rect(1px, 1px, 1px, 1px) !important; clip-path: inset(50%) !important; white-space: nowrap !important;">INDEX / ENHANCED selected</span></td>
+        <td>Credit </td>
+        <td>Income </td>
+      </tr>
+    
+      <tr>
+         <td style="background: #565656;" scope="row" aria-label="ACTIVE selected"> </td>
+        <td>Deposit</td>
+        <td>Rent</td>
+      </tr>
+    
+      <tr>
+        <td>null</td>
+        <td>Debit</td>
+        <td>Grocery</td>
+      </tr>
+    
+      <tr>
+        <td> - </td>
+        <td>Debit</td>
+        <td>Clothes</td>
+      </tr>
+    </tbody>
+  </table>
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+		var keyElements = document.querySelectorAll('[tabindex="0"]');
+		for (let element of keyElements) {
+		  element.addEventListener('keydown',function(e) {
+   				var keyCode = e.keyCode
+   				if (!/(13|32)/.test(keyCode)) return;
+   				if(keyCode===13 || keyCode===32)
+   					e.target.click();
+				});
+		}
+
+	</script>
+	
+</body>
+</html>
