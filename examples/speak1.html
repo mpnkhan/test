@@ -175,8 +175,9 @@ if (speechSynthesis.onvoiceschanged !== undefined) {
 
 function speak() {
   if (synth.speaking) {
-    console.error("speechSynthesis.speaking");
-    return;
+    // console.error("speechSynthesis.speaking");
+    // return;
+    synth.cancel();
   }
 
   if (inputTxt.value !== "") {
