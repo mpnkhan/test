@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<title> captures errors in iframe </title>
+<head>
+</head>
+<body>
+<h1> Test tool to see if it captures errors in iframe contents  </h1>
+<input> <br>
+<iframe id="ifr1" src="allTests.html" width="960px" height="600px">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+<script>
+var iframe= document.getElementById('ifr1');
+
+iframe.onload = function() {
+	iframe.contentWindow.document.querySelectorAll('input[type=text]')[0].focus();
+}
+				
+</script>
+</body>
+</html>
