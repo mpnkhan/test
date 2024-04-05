@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Color Contrast</title>
+		<style>
+			body{
+				text-align:center
+			  --primary: #F05537;
+			  --secondary: #1F0B3D;
+			  --orange-dark: #CD492F;
+			  --white: #fff;
+			  --black: #14111f;
+			  --grey-light: #ddd;
+			  --grey-light-bkgd: #f7f7f7;
+			  --grey-dark: #666;
+			}
+
+	.ht{height: 2.5vw;}
+	.cl1{
+		color: #dddddd;
+		 background-color: #cccccc;
+	 }
+
+	.cl2{
+		color: var(--white);
+		 background-color: var(--grey-light-bkgd);
+	 }
+
+		</style>  
+</head>
+
+<body>
+<div id='container'>
+	<h1>Color contrast</h1>
+
+		<p>
+		<img src="../../img/lowcontrast.gif" alt="Low contrast image">
+	</p>
+	<p class="cl1 ht">
+		Low-contrast font color and unreadable texts? visit http://contrastrebellion.com/
+	</p>
+
+	<p class="cl2 ht">
+		Sample text with variables
+	</p>
+
+</div>
+</body>
+</html>
