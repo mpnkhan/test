@@ -5,7 +5,7 @@
   <title>Color Contrast</title>
 		<style>
 			body{
-				text-align:center
+				text-align:center;
 			  --primary: #F05537;
 			  --secondary: #1F0B3D;
 			  --orange-dark: #CD492F;
@@ -26,6 +26,28 @@
 		color: var(--white);
 		 background-color: var(--grey-light-bkgd);
 	 }
+	.cl3{
+		color: var(--white);
+		background-color: var(--orange-dark);
+	 }
+
+.wp-element-button, .wp-block-button__link {
+  color: var(--white) !important;
+  font-weight: 800 !important;
+  text-align: center;
+  background: var(--primary);
+  border-radius: 50px;
+  text-decoration: none;
+  margin-top: 1rem;
+  border-bottom: 2px solid #B4402A;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+    padding-top: .5em;
+    padding-right: 1em;
+    padding-bottom: .5em;
+    padding-left: 1em;  
+}
 
 		</style>  
 </head>
@@ -44,7 +66,12 @@
 	<p class="cl2 ht">
 		Sample text with variables
 	</p>
-
+	<p class="cl3 ht">
+		Sample text with variables
+	</p>
+	<p>
+		<a class="wp-block-button__link wp-element-button" href="#/">View services</a>
+	</p>
 </div>
 </body>
 </html>
