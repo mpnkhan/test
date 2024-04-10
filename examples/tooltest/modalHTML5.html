@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Modal Dialog</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : Modal" />
+    <style type="text/css">
+::backdrop {
+  background-image: linear-gradient(
+    45deg,
+    magenta,
+    rebeccapurple,
+    dodgerblue,
+    green
+  );
+  opacity: 0.75;
+}
+
+    </style>
+</head>
+<body>
+	<div id="wrapper">
+
+
+<dialog>
+  <!-- <button autofocus>Close</button> -->
+  <p>This modal dialog has a groovy backdrop!</p>
+  <input type="text" name="fname" autofocus aria-label="First Name" placeholder="First Name">
+  <input type="text" name="lname" aria-label="Last Name" placeholder="Last Name">
+</dialog>
+<button>Show the dialog</button>
+
+
+
+	</div> <!--wrapper-->
+
+	<script>
+    const dialog = document.querySelector("dialog");
+    const showButton = document.querySelector("dialog + button");
+    // const closeButton = document.querySelector("dialog button");
+
+    // "Show the dialog" button opens the dialog modally
+    showButton.addEventListener("click", () => {
+      dialog.showModal();
+    });
+
+    // "Close" button closes the dialog
+    // closeButton.addEventListener("click", () => {
+      // dialog.close();
+    // });
+
+  </script>
+	
+</body>
+</html>
