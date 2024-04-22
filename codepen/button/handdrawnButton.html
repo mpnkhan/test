@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Title</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <style type="text/css">
+@import url("https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Indie+Flower&family=Merienda:wght@300..900&display=swap");
+button {
+  --clr: #F9F6EF;
+  --fg: #1f2020;
+  border: none;
+  cursor: pointer;
+  color: var(--fg);
+  background: transparent;
+  padding: 0.7em 1.2em;
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: inherit;
+  width: max-content;
+  position: relative;
+  text-align: center;
+  transition: 0.1s linear;
+  filter: drop-shadow(0.1em 0.1em 0.1em color-mix(in srgb, var(--clr), transparent 50%));
+}
+button:before {
+  --clrs1: color-mix(in lab, var(--clr), #0000 50%);
+  --clrs2: color-mix(in lab, var(--clr), #0000 20%);
+  --clrs3: color-mix(in lab, var(--clr), #0000 60%);
+  --clrs4: color-mix(in lab, var(--clr), #0000 98%);
+  position: absolute;
+  content: "";
+  inset: 0;
+  padding: 0.1em;
+  border: 4px double var(--clr);
+  border-radius: 0.1em 0.2em/0.5em 0.23em;
+  z-index: -1;
+  transition: 0.25s ease;
+  background: linear-gradient(178deg, var(--clrs1), var(--clrs2) 20% 70%, var(--clrs3) 90%, var(--clrs4)) 0 0/100% 0.3rem;
+  background-clip: content-box;
+}
+button:active {
+  translate: 0.05em 0.1em;
+  filter: drop-shadow(-0.1em -0.1em 0.1em color-mix(in srgb, var(--clr), transparent 50%));
+}
+button:active:before {
+  filter: url("#squiggly-0");
+}
+button:focus {
+  outline: 2px dashed color-mix(in srgb, var(--clr), transparent 90%);
+  outline-offset: 0.5rem;
+  border-radius: 0.25em;
+}
+
+.but1:before {
+  filter: url("#squiggly-0");
+}
+
+.but1:active:before {
+  filter: url("#squiggly-5");
+}
+
+.but2 {
+  --clr: hsl(80 75% 75%);
+}
+.but2::before {
+  filter: url("#squiggly-1");
+}
+
+.but3 {
+  --clr: hsl(180 75% 75%);
+}
+.but3:before {
+  filter: url("#squiggly-2");
+}
+
+.but4 {
+  --clr: hsl(240 75% 75%);
+}
+.but4:before {
+  filter: url("#squiggly-3");
+}
+
+.but5 {
+  --clr: hsl(320 75% 75%);
+}
+.but5:before {
+  filter: url("#squiggly-4");
+}
+
+.but6 {
+  --clr: hsl(0 75% 75%);
+}
+.but6:before {
+  filter: url("#squiggly-5");
+}
+
+h1 {
+  font-family: "Edu NSW ACT Foundation", cursive;
+  color: #F9F3EE;
+  grid-column: 1/-1;
+  margin: 0;
+  font-weight: 500;
+  font-size: 2.7rem;
+}
+
+.squigglysvg {
+  display: hidden;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+body {
+  font-family: "Merienda", cursive;
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-content: center;
+  place-items: center;
+  gap: 2em;
+  background-color: #1f2020;
+  background-image: radial-gradient(#535150, #1f2020);
+}
+
+button:nth-of-type(2n-1) {
+  justify-self: right;
+}
+
+button:nth-of-type(2n) {
+  justify-self: left;
+}    	
+    </style>
+</head>
+<body class="bg">
+	<div id="wrapper">
+
+<h1>Hand Drawn Buttons</h1>
+<button class="but1">Button 1</button>
+<button class="but2">Button 2</button>
+<button class="but3">Button 3</button>
+<button class="but4">Button 4</button>
+<button class="but5">Button 5</button>
+<button class="but6">Button 6</button>
+<svg class="squigglysvg" xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+    <filter id="squiggly-0">
+      <feturbulence id="turbulence" basefrequency="0.02" numoctaves="3" result="noise" seed="0"></feturbulence>
+      <fedisplacementmap id="displacement" in="SourceGraphic" in2="noise" scale="6"></fedisplacementmap>
+    </filter>
+    <filter id="squiggly-1">
+      <feturbulence id="turbulence" basefrequency="0.02" numoctaves="3" result="noise" seed="1"></feturbulence>
+      <fedisplacementmap in="SourceGraphic" in2="noise" scale="8"></fedisplacementmap>
+    </filter>
+    <filter id="squiggly-2">
+      <feturbulence id="turbulence" basefrequency="0.02" numoctaves="3" result="noise" seed="2"></feturbulence>
+      <fedisplacementmap in="SourceGraphic" in2="noise" scale="6"></fedisplacementmap>
+    </filter>
+    <filter id="squiggly-3">
+      <feturbulence id="turbulence" basefrequency="0.02" numoctaves="3" result="noise" seed="3"></feturbulence>
+      <fedisplacementmap in="SourceGraphic" in2="noise" scale="8"></fedisplacementmap>
+    </filter>
+    <filter id="squiggly-4">
+      <feturbulence id="turbulence" basefrequency="0.02" numoctaves="3" result="noise" seed="4"></feturbulence>
+      <fedisplacementmap in="SourceGraphic" in2="noise" scale="6"></fedisplacementmap>
+    </filter>
+    <filter id="squiggly-5">
+      <feturbulence id="turbulence" basefrequency="0.02" numoctaves="3" result="noise" seed="9"></feturbulence>
+      <fedisplacementmap in="SourceGraphic" in2="noise" scale="6"></fedisplacementmap>
+    </filter>
+  </defs>
+</svg>
+
+	</div> <!--wrapper-->
+
+	<script>
+
+	</script>
+	
+</body>
+</html>
