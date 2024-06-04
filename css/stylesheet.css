@@ -1,4 +1,12 @@
-  @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&family=Roboto&display=swap");
+/*  @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&family=Roboto&display=swap");*/
+  @import url("https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&display=swap");    
+  body {
+    font-family: "Inclusive Sans", sans-serif;
+/*    font-size: calc(15px + 0.390625vw);*/
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+  }
   * {
     margin: 0;
     padding: 0;
@@ -6,12 +14,12 @@
   }
 
 
-      body{
+/*      body{
         text-align:center;
         font-family: 'Atkinson Hyperlegible', sans-serif !important;        
         font-size: 16px;
-/*        border: 1px dotted blue;  */
       }
+*/      
       div#wrapper {
           margin:0 auto; 
           text-align:left ;
