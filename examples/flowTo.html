@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Color contrast</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><a href="https://www.bbc.com">BBC</a></div>
+			<div id="content">
+
+  <h1 aria-flowto="main">The Daily Planet</h1>
+  
+	  <h2> Weather</h2>
+	  <article id="weather" title="Weather" aria-flowto="sports">
+	    <p> The weather will be what it will be, if you want a forecast look out your window and have a guess. That's what the pros do!</p>
+	  </article>
+	  
+	  <h2> Election results</h2>
+	  <article id="main" title="Election Results"  aria-flowto="weather">
+	    <p> Whoever you vote for government wins. ANOK 1984</p>
+	  </article>
+	  
+	  <h2>Sports</h2>
+	  <article id="sports" title="Sports">
+	    <p>Today there will be lots of goals scored, tennis played and footballs kicked</p>
+	  </article>
+
+
+ <h1 aria-flowto="election sports weather">The Daily Planet</h1>
+  
+  <article id="weather" title="Weather">
+   The forecast for today will be ...
+  </article>
+  
+  <article id="election" title="Election Results">
+   <p> Whoever you vote for government wins. ANOK 1984</p>
+  </article>
+  
+  <article id="sports" title="Sports">
+   <p>Today there will be lots of goals scored, tennis played and footballs kicked</p>
+  </article>
+  
+
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+
+	</script>
+	
+</body>
+</html>
