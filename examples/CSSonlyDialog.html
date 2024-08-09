@@ -121,7 +121,7 @@ small {
 
 <div class="container">
   <div class="interior">
-    <a id="modal1" class="btn" href="#open-modal">👋 Basic  Modal Dialog</a>
+    <a id="modal1" class="btn" href="#open-modal">Basic  Modal Dialog</a>
      <br><br>
      <p>Initially doesn't load aria-hidden</p>
      
@@ -162,14 +162,28 @@ small {
 	
 
 <script type="text/javascript">
-document.getElementById('modal1').addEventListener('click',()=>{
-	document.getElementById('open-modal').removeAttribute('aria-hidden')
+const modal = document.getElementById('open-modal');
 
+function focusableElements(disable) {
+     if (modal) {
+    const focusableElements = modal.querySelectorAll('a, button, input, textarea, select, [tabindex]');
+
+        // Set tabindex to -1 for each focusable element
+        focusableElements.forEach(function(element) {
+            if(disable) element.setAttribute('tabindex', '-1');
+            else element.setAttribute('tabindex', '0');
+        });
+    }
+}
+focusableElements(true);
+document.getElementById('modal1').addEventListener('click',()=>{
+		modal.removeAttribute('aria-hidden');
+		focusableElements();
 });
 
 document.getElementById('modalClose').addEventListener('click',(e)=>{
-	document.getElementById('open-modal').setAttribute('aria-hidden','true')
-
+	modal.setAttribute('aria-hidden','true')
+	focusableElements(true);
 });
 
 </script>
