@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Heading 3 column layout</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <style type="text/css">
+/* General Layout Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh; /* Ensure full height */
+}
+
+/* Left Navigation Styling */
+.left-nav {
+    flex: 1; /* Take up 1 part of the available space */
+    background-color: #f4f4f4; /* Light gray background */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Main Content Styling */
+.main-content {
+    flex: 2; /* Take up 2 parts of the available space */
+    background-color: #ffffff; /* White background */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Right Panel Styling */
+.right-panel {
+    flex: 1; /* Take up 1 part of the available space */
+    background-color: #f4f4f4; /* Light gray background */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Headings */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Stack columns vertically on small screens */
+    }
+
+    .left-nav, .main-content, .right-panel {
+        flex: 1; /* All sections take equal width */
+    }
+
+    .left-nav, .right-panel {
+        margin-bottom: 20px; /* Add spacing between sections */
+    }
+}
+    	
+    </style>
+</head>
+<body>
+
+ <!-- left nav -->
+ <div class="left-nav">
+ <h2>Site Navigation</h2>
+ <!-- content here -->
+ </div>
+
+ <!-- main contents -->
+ <div class="main">
+ <h1>Stock Market up today</h1>
+ <!-- article text here -->
+ </div>
+
+ <!-- right panel -->
+ <div class="left-nav">
+ <h2>Related links</h2>
+ <!-- content here -->
+ </div>
+ </body>
+ 
+</html>
