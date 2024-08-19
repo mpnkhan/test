@@ -12,54 +12,10 @@
         h2{ margin-top:20px}
     </style>
 <script>
-const getTextContent = (elem) => {
-    function getText(e, strings) {
-        if (e.nodeType === Node.TEXT_NODE) {
-            strings.push(e.data);
-        } else {
-            // if an element for through all the children elements looking for text
-            if (e.nodeType === Node.ELEMENT_NODE) {
-                // check to see if IMG or AREA element and to use ALT content if defined
-                const tagName = e.tagName.toLowerCase();
-                if (tagName === "img" || tagName === "area") {
-                    if (e.alt) {
-                        strings.push(e.alt);
-                    }
-                } else {
-                    let c = e.firstChild;
-                    while (c) {
-                        getText(c, strings);
-                        c = c.nextSibling;
-                    } // end loop
-                }
-            }
-        }
-    } // end function getStrings
-    let str = "Test",
-        strings = [];
-    getText(elem, strings);
-    if (strings.length) str = strings.join(" ");
-    return str;
-};
+
 
 const getAccessibleName = (elem) => {
     if (!elem) return "";
-    /*
-    let labelledbyIds = elem.getAttribute("aria-labelledby"),
-        name = "";
-    if (labelledbyIds && labelledbyIds.length) {
-        let str,
-            strings = [],
-            ids = labelledbyIds.split(" ");
-        if (!ids.length) ids = [labelledbyIds];
-        for (var i = 0, l = ids.length; i < l; i += 1) {
-            var e = document.getElementById(ids[i]);
-            if (e) str = getTextContent(e);
-            if (str && str.length) strings.push(str);
-        }
-        return strings.join(" ");
-    }
-    */
     // Check for aria-labelledby
     const labelledBy = elem.getAttribute('aria-labelledby');
     if (labelledBy) {
@@ -131,7 +87,7 @@ const getAccessibleName = (elem) => {
                     <div id="myBillingId">Billing</div>
                     <div>
                         <div id="myNameId">Name</div>
-                        <input type="text" id="txtLblBy" aria-labelledby="myBillingId myNameId" />
+                        <input type="text" id="txtLblBy" aria-label="test" aria-labelledby="myBillingId myNameId" />
                     </div>
                     <br><br> Computed Name: <span class="bold" id="lblBy1"></span>
                     <br> Script computed name: <span class="bold" id="lblBy2"></span>
