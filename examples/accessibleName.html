@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Accessible Name</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+    <style type="text/css">
+        .bold {
+            font-weight: bold;
+        }
+        h2{ margin-top:20px}
+    </style>
+<script>
+const getTextContent = (elem) => {
+    function getText(e, strings) {
+        if (e.nodeType === Node.TEXT_NODE) {
+            strings.push(e.data);
+        } else {
+            // if an element for through all the children elements looking for text
+            if (e.nodeType === Node.ELEMENT_NODE) {
+                // check to see if IMG or AREA element and to use ALT content if defined
+                const tagName = e.tagName.toLowerCase();
+                if (tagName === "img" || tagName === "area") {
+                    if (e.alt) {
+                        strings.push(e.alt);
+                    }
+                } else {
+                    let c = e.firstChild;
+                    while (c) {
+                        getText(c, strings);
+                        c = c.nextSibling;
+                    } // end loop
+                }
+            }
+        }
+    } // end function getStrings
+    let str = "Test",
+        strings = [];
+    getText(elem, strings);
+    if (strings.length) str = strings.join(" ");
+    return str;
+};
+
+const getAccessibleName = (elem) => {
+    if (!elem) return "";
+    /*
+    let labelledbyIds = elem.getAttribute("aria-labelledby"),
+        name = "";
+    if (labelledbyIds && labelledbyIds.length) {
+        let str,
+            strings = [],
+            ids = labelledbyIds.split(" ");
+        if (!ids.length) ids = [labelledbyIds];
+        for (var i = 0, l = ids.length; i < l; i += 1) {
+            var e = document.getElementById(ids[i]);
+            if (e) str = getTextContent(e);
+            if (str && str.length) strings.push(str);
+        }
+        return strings.join(" ");
+    }
+    */
+    // Check for aria-labelledby
+    const labelledBy = elem.getAttribute('aria-labelledby');
+    if (labelledBy) {
+        const labelIds = labelledBy.split(' ');
+        const labelledByText = labelIds.map(id => {
+            const labelElement = document.getElementById(id);
+            return labelElement ? (labelElement.innerText || labelElement.textContent || '') : '';
+        }).join(' ').trim();
+        
+        if (labelledByText) {
+            return labelledByText;
+        }
+    }
+
+    const ariaLabel = elem.getAttribute("aria-label");
+    if (ariaLabel) {
+        return ariaLabel;
+    }
+
+    // For IMG or AREA elements, prioritize the alt attribute
+    if (elem.tagName === 'IMG' || elem.tagName === 'AREA') {
+        const altText = elem.getAttribute('alt');
+        if (altText) {
+            return altText;
+        }
+    }
+
+    // Check for a <label> element associated with the form element (explicit label)
+    if (elem.id) {
+        const explicitLabel = document.querySelector(`label[for="${elem.id}"]`);
+        if (explicitLabel) {
+            return explicitLabel.innerText || explicitLabel.textContent;
+        }
+    }
+
+    // Check for an implicit label where the form element is wrapped by a <label>
+    const implicitLabel = elem.closest('label');
+    if (implicitLabel) {
+        // If the element is wrapped by a <label>, return only the text content of the label
+        // excluding the element's own text content.
+        return Array.from(implicitLabel.childNodes)
+            .filter(node => node !== elem)
+            .map(node => node.textContent || '')
+            .join('').trim();
+    }
+    const txtContent =  elem.innerText || elem.textContent ;
+    if(txtContent) return txtContent;
+
+    const title = elem.getAttribute("title");
+    if (title) {
+        return title || '';
+    }
+
+};
+    </script>
+
+</head>
+<body>
+		<div id="wrapper">
+			<div id="content">
+                <h1>Accessible Name</h1>
+               <p style="margin-top:20px">
+                    For chrome:<br>
+                    Enable the Experimental Web Platform feature in chrome://flags/#enable-experimental-web-platform-features  and use element.computedName and element.computedRole
+                </p>
+
+                <h2>Using aria-labelledby</h2>
+                <p>
+                    <div id="myBillingId">Billing</div>
+                    <div>
+                        <div id="myNameId">Name</div>
+                        <input type="text" id="txtLblBy" aria-labelledby="myBillingId myNameId" />
+                    </div>
+                    <br><br> Computed Name: <span class="bold" id="lblBy1"></span>
+                    <br> Script computed name: <span class="bold" id="lblBy2"></span>
+                </p>
+
+                    <script> 
+                        document.getElementById('lblBy1').innerHTML = document.getElementById('txtLblBy').computedName;
+                        document.getElementById('lblBy2').innerHTML = getAccessibleName(document.getElementById('txtLblBy'));
+                    </script>
+
+                <h2>Using aria-label</h2>
+                <p>
+                    <button id="btnAriaLbl" aria-label="Share ACT rules">Share</button>
+
+                    <br><br> Computed Name: <span class="bold" id="ariaLbl1"></span>
+                    <br> Script computed name: <span class="bold" id="ariaLbl2"></span>
+                </p>
+
+                    <script> 
+                        document.getElementById('ariaLbl1').innerHTML = document.getElementById('btnAriaLbl').computedName;
+                        document.getElementById('ariaLbl2').innerHTML = getAccessibleName(document.getElementById('btnAriaLbl'));
+                    </script>
+                <h2>Using img alt attribute</h2>
+                <p>
+                    <img id="img1" src="#" alt="ACT rules" />
+
+                    <br><br> Computed Name: <span class="bold" id="imgLbl1"></span>
+                    <br> Script computed name: <span class="bold" id="imgLbl2"></span>
+                </p>
+
+                    <script> 
+                        document.getElementById('imgLbl1').innerHTML = document.getElementById('img1').computedName;
+                        document.getElementById('imgLbl2').innerHTML = getAccessibleName(document.getElementById('img1'));
+                    </script>
+                <h2>Using implicit labels</h2>
+                <p>
+                    <label>Share ACT rules<button id="implicitBtn">Button with imlicit Label</button></label>
+
+                    <br><br> Computed Name: <span class="bold" id="implicitLbl1"></span>
+                    <br> Script computed name: <span class="bold" id="implicitLbl2"></span>
+                </p>
+
+                    <script> 
+                        document.getElementById('implicitLbl1').innerHTML = document.getElementById('implicitBtn').computedName;
+                        document.getElementById('implicitLbl2').innerHTML = getAccessibleName(document.getElementById('implicitBtn'));
+                    </script>
+                <h2>Using Explicit labels</h2>
+                <p>
+                    <label for="fname">First Name</label>&nbsp;&nbsp; <input id="fname"> 
+
+                    <br><br> Computed Name: <span class="bold" id="explicitLbl1"></span>
+                    <br> Script computed name: <span class="bold" id="explicitLbl2"></span>
+                </p>
+
+                    <script> 
+                        document.getElementById('explicitLbl1').innerHTML = document.getElementById('fname').computedName;
+                        document.getElementById('explicitLbl2').innerHTML = getAccessibleName(document.getElementById('fname'));
+                    </script>
+
+                <h2>Using text content</h2>
+                <p>
+                   <a href="https://act-rules.github.io/" id="aLink">ACT rules</a>
+
+                    <br><br> Computed Name: <span class="bold" id="aLinkLbl1"></span>
+                    <br> Script computed name: <span class="bold" id="aLinkLbl2"></span>
+                </p>
+
+                    <script> 
+                        document.getElementById('aLinkLbl1').innerHTML = document.getElementById('aLink').computedName;
+                        document.getElementById('aLinkLbl2').innerHTML = getAccessibleName(document.getElementById('aLink'));
+                    </script>
+
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	
+</body>
+</html>
