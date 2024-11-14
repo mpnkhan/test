@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Sibling Selector</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+<style type="text/css">
+        input[type=radio]:focus+label::before {
+            outline-offset: -2px !important;
+            outline: rgb(0, 24, 255) solid 2px  !important;
+        }
+
+        input[type=radio]:focus-visible+span{
+         outline: 2px solid red !important;
+         outline-offset: -2px !important; 
+        }
+
+
+</style> 
+</head>
+<body>
+    <div id="wrapper">
+        <div id="content">
+
+            <p class="example">
+                <!-- 
+                    & nesting selector
+                    https://developer.mozilla.org/en-US/docs/Web/CSS/Nesting_selector 
+                -->
+With pure CSS selectors, unfortunately, it is not possible to style a preceding element based on the state of a following element, like a focused radio button. CSS lacks a parent or <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Next-sibling_combinator"> preceding sibling selector </a> that would enable you to style a preceding &lt;span&gt; based on the focus state of an adjacent &lt;input type="radio"&gt;
+
+     </p> 
+     
+            <br>
+            ----------------------------------------------------------------------------------------
+            <br>
+            <h3>Nesting_selector (&)</h3>
+
+            <ul class="example1">
+              <li>One</li>
+              <li>Two!</li>
+              <li>Three</li>
+            </ul>
+
+            <style>
+            .example {
+              font-family: system-ui;
+              font-size: 1.2rem;
+              & > a {
+                color: tomato;
+                &:hover, &:focus {
+                  color: paleturquoise;
+                  background-color: black;
+                }
+              }
+            }
+
+
+            ul.example1 li:first-of-type + li {
+              color: red;
+              font-weight: bold;
+            }
+            </style>
+
+            <br>
+            ----------------------------------------------------------------------------------------
+            <br>
+            <h3>Subsequent-sibling combinator (~, tilde) and Next-sibling combinator (+)</h3>
+            <div class="example2">
+                <input type="radio" id="id1"><label for="id1">Visa</label>
+                <div class="errormessage"> Some Dirty Error Message</span>
+            </div>
+
+
+            <style>
+            /*subsequent-sibling combinator (~, a tilde)*/
+            .example2 input[type="radio"] ~ div.errormessage{
+                color: red;
+            }
+
+            /*next-sibling combinator (+)*/
+
+            .example2 input[type="radio"]:focus + label + div.errormessage {
+                color: blue; 
+            }
+            </style>
+
+            <br>
+            ----------------------------------------------------------------------------------------
+            <br>
+            <h3>Styling parent</h3>
+            <label class="custom-radio">
+                <input type="radio" name="example" id="rd2">
+                <span class="checkmark"></span> Master Card
+            </label>
+
+            <style type="text/css">
+            /* Hide the default radio button */
+            .custom-radio input[type=radio] {
+                opacity: 0;
+            }
+
+            /* Style the custom radio button */
+            .custom-radio .checkmark {
+                height: 16px;
+                width: 16px;
+                border: 2px solid red;
+                border-radius: 50%;
+                display: inline-block;
+                position: relative;
+                margin-right: 8px;
+            }
+
+            /* Style the checked state */
+            .custom-radio input[type=radio]:checked + .checkmark {
+                background-color: red;
+            }
+
+            .custom-radio.focused {
+                outline: 2px solid blue;
+            }
+            </style>
+
+            <script>
+           const label = document.querySelector(".custom-radio");
+           const radio = label.querySelector("#rd2");
+
+            radio.addEventListener("focus", () => {
+                label.classList.add("focused");
+            });
+
+            radio.addEventListener("blur", () => {
+                label.classList.remove("focused");
+            });
+
+            </script>
+
+        </div>
+    </div>    	
+</body>
+</html>
