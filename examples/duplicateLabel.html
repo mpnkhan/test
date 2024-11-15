@@ -11,13 +11,22 @@
 			<div id="header"><a href="https://www.bbc.com">BBC</a></div>
 			<div id="content">
 
-			<label for="testId1">Label1</label>
-			<label for="testId1">Label2</label>
-			<input type="text" id="testId1" /> <br><br>
+			<label for="testId">Label</label>
+			<input type="text" id="testId" />
 
-			<label id="testId2">Label3</label>
-			<label id="testId3">Label4</label>
-			<input type="text" aria-labelledby="testId2 testId3" /> <br><br>
+			<label for="testId">Label</label>
+			<input type="text" id="testId" />
+			<input type="text" id="testId" />
+			<br><br>
+
+			<label for="testId">Label</label>
+			<input type="text" id="testId" />
+
+			<label id="uw0913043">Label</label>
+			<input type="text" id="testId" aria-labelledby="uw0913043" />
+			<input type="text" id="testId" aria-labelledby="uw0913043" />
+
+			 <br><br>
 
 <ul ng-switch-default="" class="ng-scope">		
 <li ng-repeat="value in facet.values | filter:facet.search | limitTo:facet.overflow.limit track by $index" class="ng-scope">								<input ng-click="value.go()" ng-model="value.active" id="ss-customfield25-0" type="checkbox" class="ng-pristine ng-valid" data-uw-rm-form="nfx" data-uw-rm-kbnav="ngclick" role="button" tabindex="0">								<label for="ss-customfield25-0" class="ng-binding">USA Made <span class="facet-count ng-binding">(9)</span></label>							</li>
