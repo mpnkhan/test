@@ -94,6 +94,12 @@ With pure CSS selectors, unfortunately, it is not possible to style a preceding 
                 <span class="checkmark"></span> Master Card
             </label>
 
+            <h3>Share</h3>
+            <div id="share">               
+            </div>
+
+            <button id='shareArticle'>Share this Article</button>
+
             <style type="text/css">
             /* Hide the default radio button */
             .custom-radio input[type=radio] {
@@ -133,6 +139,22 @@ With pure CSS selectors, unfortunately, it is not possible to style a preceding 
                 label.classList.remove("focused");
             });
 
+            </script>
+            <script>
+                document.addEventListener('DOMContentLaoded',() =>
+                    navigator.canShare && document.querySelector('#share').append(
+                        Object.assign(document.createElement('button'), {
+                            textContent: 'Share this article',
+                            onClick:() => navigator.share(
+                                {url: location.href,title: document.title}
+                        )
+                    })
+                  )
+                );
+
+            </script>
+            <script>
+                document.getElementById('shareArticle').addEventListener('click',()=> navigator.share({url: location.href,title: document.title}))
             </script>
 
         </div>
