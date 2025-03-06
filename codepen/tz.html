@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--https://codepen.io/shivani0805/pen/RNwowvm-->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Simple Time Zone Scheduler</title>
+	<style>
+		body {
+			background-color: #080808;
+			color: #fff;
+			font-family: Arial, sans-serif;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			flex-direction: column;
+		}
+
+		.container {
+			text-align: center;
+			padding: 20px;
+			border: 2px solid #0ff;
+			box-shadow: 0 0 20px #0ff;
+			border-radius: 10px;
+		}
+
+		input {
+			background-color: #111;
+			border: 1px solid #0ff;
+			color: #0ff;
+			padding: 10px;
+			font-size: 18px;
+			border-radius: 5px;
+			text-align: center;
+		}
+
+		.result {
+			margin-top: 20px;
+			font-size: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1 style="color: #0ff; text-shadow: 0 0 10px #0ff;">🌎 Time Zone Meeting Scheduler</h1>
+		<label for="time">Pick a time (Your Local Time):</label>
+		<input type="time" id="time" onchange="convertTime()">
+		<div class="result" id="output"></div>
+	</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Set default time to current local time in HH:MM format
+        const now = new Date();
+        const formattedLocalTime = now.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false // Ensure 24-hour format for input field
+        }).padStart(5, '0'); 
+
+        document.getElementById('time').value = formattedLocalTime;
+        
+        // Call convertTime on page load
+        convertTime();
+    });
+
+    function convertTime() {
+        const timeInput = document.getElementById('time').value;
+        if (!timeInput) return;
+
+        const [hours, minutes] = timeInput.split(":").map(Number);
+        
+        // Get user's local date and time, but override hours/minutes with input value
+        let localTime = new Date();
+        localTime.setHours(hours, minutes, 0, 0);
+
+        const timeZones = {
+            "Alison (EST/EDT)": "America/New_York",
+            "Josh/Jovicka (CET/CEST)": "Europe/Madrid",
+            "Veronika (EET/EEST)": "Europe/Kyiv",
+            "Nawaz (IST)": "Asia/Kolkata",
+        };
+
+        let outputHTML = '<h2>Converted Times:</h2>';
+        Object.entries(timeZones).forEach(([city, timeZone]) => {
+            let formattedTime = new Intl.DateTimeFormat('en-US', {
+                timeZone,
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true // Display in AM/PM format
+            }).format(localTime);
+
+            outputHTML += `<p><strong>${city}:</strong> ${formattedTime}</p>`;
+        });
+
+        document.getElementById('output').innerHTML = outputHTML;
+    }
+</script>
+
+</body>
+
+</html>
