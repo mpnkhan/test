@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify remediation for <summary> element</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+        color: #333;
+    }
+    .container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+    h1 {
+        text-align: center;
+        color: #E62B1E;
+    }
+    details {
+        margin: 20px 0;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background: #fff;
+    }
+    summary {
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: bold;
+        color: #E62B1E;
+        padding: 5px;
+    }
+    summary:hover {
+        color: #C1272D;
+    }
+    p, form, img, button {
+        padding: 10px;
+    }
+    button {
+        background: #E62B1E;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    button:hover {
+        background: #C1272D;
+    }
+    input {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Interactive Expandable Sections</h1>
+
+  <details>
+    <summary></summary>
+    <p>This is a simple expandable section.</p>
+  </details>
+
+  <details>
+    <summary></summary>
+    <p>Check out our <a href="https://linkedin.com">full guide</a> for more information.</p>
+  </details>
+
+  <details>
+    <summary>Show Actions</summary>
+    <button onclick="alert('Action performed!')">Click Me</button>
+  </details>
+
+  <details>
+    <summary>Contact Us</summary>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </details>
+
+  <details>
+    <summary>View Image</summary>
+    <img src="https://via.placeholder.com/150" alt="Sample image">
+  </details>
+
+  <details>
+    <summary>What is your refund policy?</summary>
+    <p>We offer a 30-day money-back guarantee.</p>
+  </details>
+
+  <details>
+    <summary>How can I contact support?</summary>
+    <p>Email us at support@example.com.</p>
+  </details>
+
+  <details>
+    <summary>Main Topic</summary>
+    <p>This is the main content.</p>
+    <details>
+      <summary>Subtopic 1</summary>
+      <p>Details about subtopic 1.</p>
+    </details>
+    <details>
+      <summary>Subtopic 2</summary>
+      <p>Details about subtopic 2.</p>
+    </details>
+  </details>
+
+  <details>
+    <summary>🔽 Expand Section</summary>
+    <p>Content with an icon in the summary.</p>
+  </details>
+
+  <details>
+    <summary id="toggleSummary">Show More</summary>
+    <p>This section expands with JavaScript.</p>
+  </details>
+</div>
+
+<script>
+  document.getElementById("toggleSummary").addEventListener("click", function() {
+      this.textContent = this.parentElement.open ? "Show Less" : "Show More";
+  });
+</script>
+</body>
+</html>
