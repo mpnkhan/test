@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Inbuilt Select</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <!--
+    	https://developer.chrome.com/blog/a-customizable-select
+		https://codepen.io/collection/BNZjPe?cursor=eyJwYWdlIjoxfQ==
+    -->
+    <style type="text/css">
+		#countrySelect select,
+		#countrySelect ::picker(select) {
+		  appearance: base-select;
+		  font-family: system-ui;
+		}
+
+		/* hide checkmark */
+		#countrySelect option::checkmark {
+		  display: none;
+		}
+
+		#countrySelect ::picker(select) {
+		  max-height: 80dvh;
+		  padding: 0;
+		}
+
+		#countrySelect select:has(:popover-open) {
+		  border-radius: 0;
+		}
+
+		option,
+		selectedcontent {
+		  display: grid;
+		  grid-template-columns: 1.5rem 1fr;
+		  gap: 1rem;
+		  font-size: 1rem;
+		  /*  remove these two lines when patch is in   */
+		  align-items: center;
+		  place-items: initial;
+		  padding: 1rem;
+
+		  & img,
+		  & figure {
+		    width: 100%;
+		  }
+		}
+
+		[hidden] {
+		  display: none;
+		}
+
+		#countrySelect select {
+		  background: aliceblue;
+		  border: 1px solid gray;
+		  align-items: center;
+		}
+
+		#countrySelect selectedcontent {
+		  font-style: italic;
+
+		  /*  Default flag "icon", before you pick one  */
+		  & figure {
+		    background-image: linear-gradient(
+		      0deg,
+		      #fff 0%,
+		      #000 0% 20%,
+		      #fff 0% 40%,
+		      #000 0% 60%,
+		      #fff 0% 80%,
+		      #000 0% 100%
+		    );
+		    height: 1rem;
+		    margin: 0;
+		  }
+		}
+
+body {
+  margin: 2rem 4rem;
+}    	
+
+/** Currency selector **/
+/* Enter into custom mode */
+
+select,
+::picker(select) {
+  appearance: base-select;
+  font: -webkit-small-control;
+}
+
+option::checkmark,
+select::picker-icon {
+  display: none;
+}
+
+
+/* Styling the options list */
+
+#currencySelector::picker(select) {
+  border-radius: 0.5rem;
+  padding: 0;
+  box-shadow: 0px 12.8px 28.8px rgba(0, 0, 0, 0.13), 0px 0px 9.2px rgba(0, 0, 0, 0.11);
+  border: 1px solid #ececec;
+}
+
+#currencySelector option {
+  grid-template-columns: 1.5rem 1fr auto;
+  padding: 0.5rem 1rem;
+  /*  remove when patch is in  */
+  place-items: start;
+  
+  &:nth-child(even):not(:hover) {
+    background: #ececec;
+  }
+  
+  &:hover {
+    background: #cbe7ff;
+  }
+  
+  .symbol {
+    margin-left: 1rem;  
+  }
+  
+  .currency-long {
+    font-size: 80%;
+    color: #595959;
+  }
+  
+  .symbol {
+    justify-self: end;
+  }
+}
+
+/* Styles for both the options and selectedcontent */
+
+#currencySelector option,
+#currencySelector selectedcontent {
+  display: grid;
+  gap: 1rem;
+  font-size: 1rem;
+  align-items: center;
+}
+
+/* Style what you see before you open the select dropdown */
+
+#currencySelector selectedcontent {
+  padding: 0.5rem;
+  grid-template-columns: 1.5rem auto;
+  
+  .symbol,
+  .currency-long {
+    display: none
+  }
+}
+
+#currencySelector select {
+  border: none;
+  border-radius: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  padding: 0 1rem 0 0.5rem;
+  width: 8.25rem;
+}
+
+.arrow {
+  align-self: center;
+  transition: rotate 0.25s;
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='Layer_1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 66.49 42.37'%3E%3Cdefs%3E%3Cstyle%3E .cls-1 %7B fill: %23221f20; stroke-width: 0px; %7D %3C/style%3E%3C/defs%3E%3Cpath class='cls-1' d='M3.96,0h58.57c3.37,0,5.2,3.95,3.01,6.52l-29.28,34.46c-1.58,1.86-4.45,1.86-6.03,0L.95,6.52C-1.23,3.95.59,0,3.96,0Z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(4);
+    width: 0.5rem;
+    height: 0.5rem;
+  
+  .currency-select:open & {
+    rotate: x 180deg;
+  }
+}
+
+/* etc */
+
+[hidden] {
+  display: none;
+}
+
+body {
+  margin: 2rem 4rem;
+}
+
+img,
+figure {
+  width: 100%;
+}
+    </style>
+</head>
+<body class="bg">
+	<div id="countrySelect">
+
+		<select class="country-select">
+		  <button>
+		    <selectedcontent></selectedcontent>
+		  </button>
+		  <option value="" hidden>
+		    <figure></figure>
+		    <span>Select a country</span>
+		  </option>
+		  <option value="andorra">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Flag_of_Andorra.svg/120px-Flag_of_Andorra.svg.png" alt="" />
+		    <span>Andorra</span>
+		  </option>
+		  <option value="bolivia">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Flag_of_Bolivia.svg/120px-Flag_of_Bolivia.svg.png" alt=""/>
+		    <span>Bolivia</span>
+		  </option>
+		  <option value="cambodia">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_Cambodia.svg/120px-Flag_of_Cambodia.svg.png" alt="" />
+		    <span>Cambodia</span>
+		  </option>
+		  <option value="denmark">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Flag_of_Denmark.svg/120px-Flag_of_Denmark.svg.png" alt="" />
+		    <span>Denmark</span>
+		  </option>
+		  <option value="egypt">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Egypt.svg/120px-Flag_of_Egypt.svg.png" alt="" />
+		    <span>Egypt</span>
+		  </option>
+		  <option value="estonia">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Flag_of_Estonia.svg/120px-Flag_of_Estonia.svg.png" alt="" />
+		    <span>Estonia</span>
+		  </option>
+		  <option value="ethiopia">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Flag_of_Ethiopia.svg/120px-Flag_of_Ethiopia.svg.png" alt="" />
+		    <span>Ethiopia</span>
+		  </option>
+		  <option value="finland">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Finland.svg/120px-Flag_of_Finland.svg.png" alt="" />
+		    <span>Finland</span>
+		  </option>
+		  <option value="france">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/120px-Flag_of_France.svg.png" alt="" />
+		    <span>France</span>
+		  </option>
+		  <option value="gabon">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Flag_of_Gabon.svg/120px-Flag_of_Gabon.svg.png" alt="" />
+		    <span>Gabon</span>
+		  </option>
+		  <option value="germany">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/120px-Flag_of_Germany.svg.png" alt="" />
+		    <span>Germany</span>
+		  </option>
+		  <option value="ghana">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Flag_of_Ghana.svg/120px-Flag_of_Ghana.svg.png" alt="" />
+		    <span>Ghana</span>
+		  </option>
+		  <option value="greece">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Greece.svg/120px-Flag_of_Greece.svg.png" alt="" />
+		    <span>Greece</span>
+		  </option>
+		  <option value="guatemala">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Flag_of_Guatemala.svg/120px-Flag_of_Guatemala.svg.png" alt="" />
+		    <span>Guatemala</span>
+		  </option>
+		  <option value="guinea">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Flag_of_Guinea.svg/120px-Flag_of_Guinea.svg.png" alt="" />
+		    <span>Guinea</span>
+		  </option>
+		  <option value="guyana">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Flag_of_Guyana.svg/120px-Flag_of_Guyana.svg.png" alt="" />
+		    <span>Guyana</span>
+		  </option>
+		  <option value="haiti">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Flag_of_Haiti.svg/120px-Flag_of_Haiti.svg.png" alt="" />
+		    <span>Haiti</span>
+		  </option>
+		  <option value="honduras">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Flag_of_Honduras.svg/120px-Flag_of_Honduras.svg.png" alt="" />
+		    <span>Honduras</span>
+		  </option>
+		  <option value="hungary">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Flag_of_Hungary.svg/120px-Flag_of_Hungary.svg.png" alt="" />
+		    <span>Hungary</span>
+		  </option>
+		  <option value="iceland">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Iceland.svg/120px-Flag_of_Iceland.svg.png" alt="" />
+		    <span>Iceland</span>
+		  </option>
+		  <option value="india">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/120px-Flag_of_India.svg.png" alt="" />
+		    <span>India</span>
+		  </option>
+		  <option value="south-africa">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Flag_of_South_Africa.svg/120px-Flag_of_South_Africa.svg.png" alt=""/>
+		    <span>South Africa</span>
+		  </option>
+		</select>
+
+	</div> <!--wrapper-->
+
+	<div id="currencySelector">
+		<select name="currency-select" class="currency-select" aria-label="Currency preference:">
+		  <button>
+		    <selectedcontent></selectedcontent>
+		    <span class="arrow"></span>
+		  </button>
+		  <option value="eur">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/510px-Flag_of_Europe.svg.png" alt="" />
+		    <div class="currency">
+		      <div class="currency-short">EUR</div>
+		      <div class="currency-long">Euro</div>
+		    </div>
+		    <div class="symbol" aria-hidden="true">€</div>
+		  </option>
+		  <option value="gbp">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/510px-Flag_of_the_United_Kingdom_%281-2%29.svg.png" alt="" />
+		    <div class="currency">
+		      <div class="currency-short">GBP</div>
+		      <div class="currency-long">Great British Pound</div>
+		    </div>
+		    <div class="symbol" aria-hidden="true">£</div>
+		  </option>
+		  <option value="usd" selected>
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg/510px-Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg.png" alt="" />
+		    <div class="currency">
+		      <div class="currency-short">USD</div>
+		      <div class="currency-long">United States Dollar</div>
+		    </div>
+		    <div class="symbol" aria-hidden="true">$</div>
+		  </option>
+		<option value="jpy">
+		    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/510px-Flag_of_Japan.svg.png" alt="" />
+		    <div class="currency">
+		      <div class="currency-short">JPY</div>
+		      <div class="currency-long">Japanese Yen</div>
+		    </div>
+		    <div class="symbol" aria-hidden="true">¥</div>
+		  </option>
+		  <option value="bitcoin">
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/300px-Bitcoin.svg.png" alt="" />
+		    <div class="currency">
+		      <div class="currency-short">BTC</div>
+		      <div class="currency-long">Bitcoin</div>
+		    </div>
+		    <div class="symbol" aria-hidden="true">₿</div>
+		  </option>
+		</select>
+	</div>	
+	<script>
+
+	</script>
+	
+</body>
+</html>
