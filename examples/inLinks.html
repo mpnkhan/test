@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Internal Page Links and Input Focus &#8212; In-Page Links and Input Focus [Again] &#8212; Accessible Culture</title>
+    <link href="../common/styles.css" rel="stylesheet">
+    <style type="text/css">
+      div {border: 1px solid #999; margin-bottom: 1em; padding: 10px;}
+      div#page {border: none;}
+      li {margin-bottom: 0.5em;}
+      a {font-size: 1.2em; font-weight: bold;}
+      a:link, a:visited {font-size: 1em; font-weight: normal;}
+      a:hover, a:focus {color: #fff; background-color: #00f;}
+      div#banner, #banner div, .pageFooter, .pageFooter div {border: none; margin-bottom: 0; padding: 0;}
+    </style>
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-4468201-2']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </head>
+  <body>
+  <div id="page">
+    <div id="banner">
+      <div id="siteName"><a href="/">Accessible Culture</a></div>
+      <p><a href="/articles/2010/05/in-page-links/">Back to In-Page Links and Input Focus [Again]</a></p>
+    </div>
+    <h1>In-Page Links and Input Focus Test</h1>
+    <a id="top" tabindex="-1"></a>
+    <ol>
+      <li><a href="#a-name">Skip to <code>a</code> element with @<code>name</code></a></li>
+      <li><a href="#a-name-height">Skip to <code>a</code> element with @<code>name</code> in <code>div</code> with height</a></li>
+      <li><a href="#a-name-tabindex">Skip to <code>a</code> element with @<code>name</code> and <code>tabindex="-1"</code></a></li>
+      <li><a href="#a-id">Skip to <code>a</code> element with @<code>id</code></a></li>
+      <li><a href="#a-id-height">Skip to <code>a</code> element with @<code>id</code> in <code>div</code> with height</a></li>
+      <li><a href="#a-id-tabindex">Skip to <code>a</code> element with @<code>id</code> and <code>tabindex="-1"</code></a></li>
+      <li><a href="#a-name-id">Skip to <code>a</code> element with @<code>name</code> and @<code>id</code></a></li>
+      <li><a href="#a-name-id-height">Skip to <code>a</code> element with @<code>name</code> and @<code>id</code> in <code>div</code> with height</a></li>
+      <li><a href="#a-name-id-tabindex">Skip to <code>a</code> element with @<code>name</code>, @<code>id</code> and <code>tabindex="-1"</code></a></li>
+      <li><a href="#h-id">Skip to heading with @<code>id</code></a></li>
+      <li><a href="#h-id-height">Skip to heading with @<code>id</code> in <code>div</code> with height</a></li>
+      <li><a href="#h-id-tabindex">Skip to heading with @<code>id</code> and <code>tabindex="-1"</code></a></li>
+    </ol>
+    <!-- <code>a</code> element with @name only-->
+    <div><p><a name="a-name">1. <code>a</code> element with @<code>name</code></a>. Nulla sagittis eleifend ligula, vel feugiat est tincidunt ac. Curabitur blandit volutpat enim, quis <a href="#">link following target #1</a> Phasellus tempor massa eu ante fringilla a molestie diam aliquam.</p><a href="#top">Top</a></div>
+    <!-- <code>a</code> element with @name and height-->
+    <div style="height:100%;"><p><a name="a-name-height">2. <code>a</code> element with @<code>name</code> in <code>div</code> with height</a>. Vivamus molestie ligula sed felis tristique tempus. Sed eu ante sem. <a href="#">link following target #2</a> pretium vitae. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p><a href="#top">Top</a></div>
+    <!-- <code>a</code> element with @name, tabindex="-1"-->
+    <div><p><a name="a-name-tabindex" tabindex="-1">3. <code>a</code> element with @<code>name</code>  and <code>tabindex="-1"</code></a>. Phasellus nec lorem in nisl pellentesque lacinia vitae eget elit. Morbi lorem ipsum, molestie sed varius vitae, <a href="#">link following target #3</a> neque. Donec vitae cursus lectus.</p><a href="#top">Top</a></div>
+    
+    <!-- <code>a</code> element with @id only-->
+    <div><p><a id="a-id">4. <code>a</code> element with @<code>id</code></a>. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dapibus condimentum dapibus. Maecenas viverra vehicula <a href="#">link following target #4</a> pellentesque.</p><a href="#top">Top</a></div>
+    <!-- <code>a</code> element with @id and height-->
+    <div style="height:100%;"><p><a id="a-id-height">5. <code>a</code> element with @<code>id</code> in <code>div</code> with height</a>. Phasellus nec tortor risus. Cras molestie nisi convallis libero feugiat ullamcorper. <a href="#">link following target #5</a> lorem vitae posuere. Vivamus a nulla justo.</p><a href="#top">Top</a></div>
+    <!-- <code>a</code> element with @id, tabindex="-1"-->
+    <div><p><a id="a-id-tabindex" tabindex="-1">6. <code>a</code> element with @<code>id</code> and <code>tabindex="-1"</code></a>. Nullam dignissim hendrerit lorem ut scelerisque. Donec elit odio, vulputate et scelerisque sed, ornare in est. <a href="#">link following target #6</a> ante a nunc vestibulum ut dignissim lorem commodo. Etiam vitae elementum velit.</p><a href="#top">Top</a></div>
+    
+    <!-- <code>a</code> element with @name and @id-->
+    <div><p><a name="a-name-id" id="a-name-id">7. <code>a</code> element with @<code>name</code> and @<code>id</code> only</a>. Nullam sapien tortor, vestibulum ac porta in, porttitor id enim. Cras scelerisque nibh et odio rutrum pretium. <a href="#">link following target #7</a> lorem mauris, convallis vulputate augue. Morbi lorem nibh, accumsan vitae faucibus id, euismod a urna.</p><a href="#top">Top</a></div>
+    <!-- <code>a</code> element with @name, @id and height-->
+    <div style="height:100%;"><p><a name="a-name-id-height" id="a-name-id-height">8. <code>a</code> element with @<code>name</code> and @<code>id</code> in <code>div</code> with height</a>. Nulla sagittis eleifend ligula, vel feugiat est tincidunt ac. Curabitur blandit volutpat enim, quis <a href="#">link following target #8</a> pretium vitae. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p><a href="#top">Top</a></div>
+    <!-- <code>a</code> element with @name, @id, tabindex="-1"-->
+    <div><p><a name="a-name-id-tabindex" id="a-name-id-tabindex" tabindex="-1">9. <code>a</code> element with @<code>name</code>, @<code>id</code> and <code>tabindex="-1"</code></a>. Nullam sapien tortor, vestibulum ac porta in, porttitor id enim. <a href="#">link following target #9</a> nibh et odio rutrum pretium. Nulla vitae lorem mauris, convallis vulputate augue.</p><a href="#top">Top</a></div>
+    
+    <!-- Heading with @id only-->
+    <div><h2 id="h-id">10. Heading with @<code>id</code></h2><p>Quisque quis ornare mauris. Nulla ut euismod nisi. Aenean ac odio mauris, eu <a href="#">link following target #10</a> Vivamus laoreet pellentesque vulputate. Donec ut nisl at erat egestas vestibulum eu volutpat tortor.</p><a href="#top">Top</a></div>
+    <!-- Heading with @id and height-->
+    <div style="height:100%;"><h2 id="h-id-height">11. Heading with @<code>id</code> in <code>div</code> with height</h2><p>Vivamus molestie ligula sed felis tristique tempus. Sed eu ante sem. Fusce eu <a href="#">link following target #11</a> tortor sollicitudin vestibulum. Curabitur porta ullamcorper nibh.</p><a href="#top">Top</a></div>
+    <!-- Heading with @id, tabindex="-1"-->
+    <div><h2 id="h-id-tabindex" tabindex="-1">12. Heading with @<code>id</code> and <code>tabindex="-1"</code></h2><p>Phasellus tempor massa eu ante fringilla a molestie diam aliquam. Suspendisse leo magna, ultricies ac tincidunt at, <a href="#">link following target #12</a> Mauris neque metus, porttitor nec tempor et, aliquet a neque. Sed ut dui erat.</p><a href="#top">Top</a></div>
+          <div class="pageFooter">
+        <h2 class="hidden">Footer</h2>
+        <div class="vcard">
+          <p><a rel="me" class="org url" href="http://www.accessibleculture.org">AccessibleCulture.org</a> by <span class="fn n"><span class="given-name">Jason</span> <span class="family-name">Kiss</span></span></p>
+          <ul>
+            <li class="e-mail"><img src="/wp-content/themes/accesscult/images/email_icons_011.png" alt="Email"> <a rel="me" href="mailto:jason@accesscult.org" title="Send me an email"><span class="email">jason@accesscult.org</span></a></li>
+            <li class="twitter"><img src="/wp-content/themes/accesscult/images/twitter_mini-b.png" alt="Twitter"> <a rel="me" class="url" href="http://twitter.com/jkiss" title="Follow me on Twitter">@<span class="nickname">jkiss</span></a></li>
+          </ul>
+        </div>
+        <p>Unless otherwise noted, content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License</a>.</p>
+      </div>
+
+  </div>
+  </body>
+</html>
