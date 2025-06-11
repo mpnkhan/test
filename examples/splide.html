@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Just Testing</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+<link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><a href="https://www.bbc.com">BBC</a></div>
+			<div id="content">
+			<!--start-->
+			
+		<section class="splide" aria-label="Slide Container Example">
+		  <div class="splide__track">
+		    <ul class="splide__list">
+		      <li class="splide__slide">
+		        <div class="splide__slide__container">
+		          <img style="width:100px;height:100px" src="https://www.murad.com/cdn/shop/files/720652_Superactives_Site_Murad_HP_Promo_Card_Desktop_1.jpg?v=1738606422">
+		        </div>
+		        Lorem Ipsum Dolor Sit Amet
+		      </li>
+		      <li class="splide__slide">
+		        <div class="splide__slide__container">
+		          <img style="width:100px;height:100px" src="https://www.murad.com/cdn/shop/files/758250_SkinQuizLaunch_HP_Promos_Desktop_712x388_086e88fa-70a1-465a-8932-2c9dc4ad7505.jpg?v=1747922983">
+		        </div>
+		        Lorem Ipsum Dolor Sit Amet
+		      </li>
+		    </ul>
+		  </div>
+		  <button class="splide__toggle" type="button">
+			  <span class="splide__toggle__play">Play</span>
+			  <span class="splide__toggle__pause">Pause</span>
+		  </button>
+
+		</section>			
+
+
+
+
+
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+
+	<script>
+  document.addEventListener( 'DOMContentLoaded', function() {
+    var splide = new Splide( '.splide' );
+	splide.on( 'autoplay:playing', function ( rate ) {
+	  console.log( rate ); // 0-1
+	} );    
+    splide.mount();
+  } );
+	</script>
+	
+</body>
+</html>
