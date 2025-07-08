@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>G183: Using a contrast ratio of 3:1 with surrounding text and providing additional visual cues on hover for links or controls where color alone is used to identify them | WAI | W3C</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+    <style>
+    	html{
+	    	color: #1d1d1d
+		}
+
+		a.example1{
+			color: #1d5bbf;
+			text-decoration: none;
+		}
+		a.example1:hover, a.example3:hover{
+			text-decoration: underline;
+		}
+		a.example2{
+			color: #1d5bbf;
+		}
+		a.example3{
+			color: 1F63D1;
+			text-decoration: none;
+		}
+
+    </style>
+</head>
+<body>
+		<div id="wrapper">
+			<div id="content">
+				<h2> Default</h2>		
+				<p>
+				Coaches should ensure that they perform a <a href="#" class="example1">Health Assessment</a> with each of their potential clients before they start the Program
+				</p>
+
+				<h2> Same color but with underline</h2>		
+				<p>
+				Coaches should ensure that they perform a <a href="#" class="example2">Health Assessment</a> with each of their potential clients before they start the Program
+				</p>
+
+				<h2> Improved color </h2>		
+				<p>
+				Coaches should ensure that they perform a <a href="#" class="example3">Health Assessment</a> with each of their potential clients before they start the Program
+				</p>
+
+			</div> <!--content-->
+
+		<footer style="margin-top:400px">
+			<a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G183">Technique G183</a>
+		</footer>
+
+		</div> <!--wrapper-->
+
+	<script>
+
+	</script>
+	
+</body>
+</html>
