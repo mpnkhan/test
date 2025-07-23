@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>WCAG 2 Checklist</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Test : testing" />
+    <style>
+			table {
+				width: 100%;
+			  border: 1px solid #000;
+			}
+			table th,
+			table td {
+			  margin: 0;
+			  border: 1px solid #000;
+			}
+			table tbody tr:hover,
+			table tbody tr:focus {
+			  background: #ff0;
+			}  	
+    </style>
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><h1>WCAG 2 Checklist</h1></div>
+			<div id="content">
+				<table>
+					<tr>
+						<th>Rule Name</th>
+						<th>Descprition</th>
+						<th>Tags</th>
+						<th>Comments</th>
+					</tr>
+					<tr>
+						<td>Image alt </td>
+						<td>Alt text to all images or make some of them decorative</td>
+						<td>1.1.1 Non-Text Content - A</td>
+						<td>
+							Not covered<br>
+							CSS backgrounds, iFrame Title,Embedded multimedia,complex images
+						</td>
+					</tr>
+					<tr>
+						<td>Empty control rule</td>
+						<td>Links and buttons without Accessible name are added with aria labels</td>
+						<td>4.1.2 Name, Role, Value - A</td>
+						<td>&nbsp;</td>
+					</tr>
+
+					<tr>
+						<td>Form label</td>
+						<td>Provide semantically correct control elements (input, textarea, select) for a screen reader</td>
+						<td>4.1.2 Name, Role, Value - A</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>Head Title</td>
+						<td>Fix page &lt;title&gt; tags </td>
+						<td>2.4.2 Page Titled - A</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>Broken Links</td>
+						<td>links with href attribute but not naviate. Add aria label  "-target website may not be available"</td>
+						<td>&nbsp;</td>
+						<td>Could not map any guideline</td>
+					</tr>
+					<tr>
+						<td>External Link Rule</td>
+						<td>Links that open in a new window are appended with "- open in a new tab"</td>
+						<td> 3.2.5 Change on Request - AAA</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>Control error associator rule</td>
+						<td>Associate an error text with an appropriate control element</td>
+						<td>3.3.3 Error Suggestion - AA </td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>Meta viewport</td>
+						<td>fix content attribute in &lt;meta name="viewport"^gt;</td>
+						<td>1.4.4 Resize text - AA </td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>Iframe title</td>
+						<td>correct the title for iframe elements without a title attribute</td>
+						<td>4.1.2 Name, Role, Value - A</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>Site language</td>
+						<td>Remediate elements without a lang attribute</td>
+						<td>3.1.1 Language of Page - A</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>Color Contrast</td>
+						<td>find and fix color violations on the page</td>
+						<td>1.4.3: Contrast (Minimum) -AA </td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>Vague Link</td>
+						<td>Remediate anchor elements that have vague text content and make their label more concrete by using surrounding text</td>
+						<td>2.4.4 Link Purpose (In Context) - A</td>
+						<td>&nbsp;</td>
+					</tr>					<tr>
+						<td>Skip navigation</td>
+						<td>Add skip to content link</td>
+						<td> 2.4.1 Bypass Blocks - A</td>
+						<td>&nbsp;</td>
+					</tr>					<tr>
+						<td>Heading</td>
+						<td>Fix heading levels</td>
+						<td>1.3.1 Info and Relationships - A</td>
+						<td>&nbsp;</td>
+					</tr>					<tr>
+						<td>Empty Label rule</td>
+						<td> Remediate &lt;label^gt; tags that do not contain any text content.</td>
+						<td> 4.1.2 Name, Role, Value - A</td>
+						<td>&nbsp;</td>
+					</tr>					<tr>
+						<td>Screen Reader</td>
+						<td>Fix Broken Aria References </td>
+						<td>4.1.2 Name, Role, Value - A</td>
+						<td>&nbsp;</td>
+					</tr>					<tr>
+						<td>Popup</td>
+						<td>Focus management, keyboard navigation, and appropriate labelling</td>
+						<td>2.4.3 Focus Order - A</td>
+						<td>&nbsp;</td>
+					</tr>
+
+					<tr>
+						<td>Focus</td>
+						<td>Adds 2px solid blue outline for keyboard users</td>
+						<td>2.4.7 Focus Visible - AA</td>
+						<td>&nbsp;</td>
+					</tr>
+
+					<tr>
+						<td>Keyboard Navigation</td>
+						<td> Add tabindex attribute and add a click event for elements with role</td>
+						<td>2.1.1 Keyboard - A</td>
+						<td>&nbsp;</td>
+					</tr>					
+					<tr>
+						<th colspan="4">Widget features</td>
+					</tr>					
+					<tr>
+						<td>Contrast +</td>
+						<td>Invert colors, dark and light contrast</td>
+						<td>1.4.3: Contrast (Minimum) -AA </td>
+						<td>https://www.w3.org/WAI/WCAG22/Techniques/general/G174</td>
+					</tr>					
+					<tr>
+						<td>Text spacing</td>
+						<td> Applies light, moderate and heavy spacing</td>
+						<td>1.4.12 Text Spacing</td>
+						<td>&nbsp; We need to make sure no loss of content or functionality occurs when setting is applied</td>
+					</tr>					
+					<tr>
+						<td>Pause Animation</td>
+						<td> Pauses animation</td>
+						<td>2.2.2 Pause, Stop, Hide - A</td>
+						<td>&nbsp;</td>
+					</tr>	
+					<tr>
+						<td>Page structure</td>
+						<td>A tool to jump to headings, landmarks and activate links</td>
+						<td> 2.4.1 Bypass Blocks - A</td>
+						<td>&nbsp;</td>
+					</tr>	
+
+
+				</table>	
+
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	
+</body>
+</html>
