@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Multiple tables</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="Multiple tables : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+    <style>
+	.sr-only {
+	  position: absolute;
+	  width: 1px;
+	  height: 1px;
+	  padding: 0;
+	  margin: -1px;
+	  overflow: hidden;
+	  clip: rect(0, 0, 0, 0);
+	  white-space: nowrap; /* prevents text wrapping */
+	  border: 0;
+	}
+    	
+    </style>
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><a href=" https://optaviaconnect.com"> optaviaconnect.com</a></div>
+			<div id="content">
+
+<div class="k-grid-header-wrap k-auto-scrollable" data-role="resizable">
+  <table role="grid" style="">
+    <colgroup>
+      <col style="width:105px">
+      <col style="width:145px">
+      <col style="width:145px">
+    </colgroup>
+    <thead role="rowgroup">
+      <tr role="row">
+        <th scope="col" role="columnheader" data-field="Customer_ID" aria-haspopup="true" rowspan="1" data-title="OPTAVIA ID" data-index="0" id="e68851ff-53d7-41fa-b543-fc95b7a1a2d8" class="k-header k-with-icon" data-role="columnsorter" style="padding: 2px;"><a class="k-header-column-menu" href="#" title="Edit Column Settings" aria-label="Edit Column Settings" tabindex="-1" data-uw-rm-brl="PR" data-uw-original-href="#"><span class="k-icon k-i-more-vertical"></span></a><a class="k-link" href="#" data-uw-rm-brl="PR" data-uw-original-href="#">OPTAVIA ID1</a></th>
+        <th scope="col" role="columnheader" data-field="First_Name" aria-haspopup="true" rowspan="1" data-title="First Name" data-index="1" id="915ab889-e665-4efa-8e57-8dffc822e7bd" class="k-header k-with-icon" data-role="columnsorter" style="padding: 2px;"><a class="k-header-column-menu" href="#" title="Edit Column Settings" aria-label="Edit Column Settings" tabindex="-1" data-uw-rm-brl="PR" data-uw-original-href="#"><span class="k-icon k-i-more-vertical"></span></a><a class="k-link" href="#" data-uw-rm-brl="PR" data-uw-original-href="#">First Name1</a></th>
+        <th scope="col" role="columnheader" data-field="Last_Name" aria-haspopup="true" rowspan="1" data-title="Last Name" data-index="2" id="102d2ad0-7bb5-4503-9cab-853cc83261c9" class="k-header k-with-icon" data-role="columnsorter" style="padding: 2px;"><a class="k-header-column-menu" href="#" title="Edit Column Settings" aria-label="Edit Column Settings" tabindex="-1" data-uw-rm-brl="PR" data-uw-original-href="#"><span class="k-icon k-i-more-vertical"></span></a><a class="k-link" href="#" data-uw-rm-brl="PR" data-uw-original-href="#">Last Name1</a></th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<div class="k-grid-content k-auto-scrollable" style="height: 42.7679px;">
+  <table role="grid" style="">
+    <colgroup>
+      <col style="width:105px">
+      <col style="width:145px">
+      <col style="width:145px">
+    </colgroup>
+    <tbody role="rowgroup">
+      <tr data-uid="3e6dcb05-d5b0-4e82-b783-95e925b9f162" role="row">
+        <td class="" role="gridcell" style="padding: 2px;"><a href="#" class="link" value="848579041" data-uw-rm-brl="PR" data-uw-original-href="#">848579041</a></td>
+        <td class="" role="gridcell" style="padding: 2px;">Health test Coach1</td>
+        <td class="" role="gridcell" style="padding: 2px;">test1</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<br><br>
+<hr>
+Fix-1 (sr-only duplicated thead inside second table) <br>
+
+
+	<div class="k-grid-header-wrap k-auto-scrollable" data-role="resizable">
+	  <table>
+	    <colgroup>
+	      <col style="width:105px">
+	      <col style="width:145px">
+	      <col style="width:145px">
+	    </colgroup>  	
+	<thead class="sr-only">
+		  <tr role="row">
+		    <th scope="col" >OPTAVIA ID2</th>
+		    <th scope="col" >First Name2</th>
+		    <th scope="col">Last Name2</th>
+		  </tr>
+		</thead>
+  
+		</table>
+	</div>
+
+	<div class="k-grid-content k-auto-scrollable" style="height: 42.7679px;">
+		<table>
+		    <colgroup>
+		      <col style="width:105px">
+		      <col style="width:145px">
+		      <col style="width:145px">
+		    </colgroup>
+		<thead>
+		  <tr role="row">
+		    <th scope="col" >OPTAVIA ID2</th>
+		    <th scope="col" >First Name2</th>
+		    <th scope="col">Last Name2</th>
+		  </tr>
+		</thead>
+
+			<tbody>
+			  <tr>
+					<td><a href="#">848579042</a></td>
+					<td>Health test Coach2</td>
+					<td>test2</td>
+			  </tr>
+			</tbody>
+		</table>	
+	</div>
+
+
+<br><br>
+<hr>
+Fix - 2 (not working) <br>
+
+<div role="grid" aria-rowcount="2" aria-colcount="3">
+	<div class="k-grid-header-wrap k-auto-scrollable" data-role="resizable" role="rowgroup">
+	  <table>
+	    <colgroup>
+	      <col style="width:105px">
+	      <col style="width:145px">
+	      <col style="width:145px">
+	    </colgroup>  	
+		<thead>
+		  <tr role="row">
+		    <th id="optaviaId" scope="col" role="columnheader" aria-colindex="1">OPTAVIA ID2</th>
+		    <th id="optaviaFname" scope="col" role="columnheader" aria-colindex="2">First Name2</th>
+		    <th id="optaviaLname" scope="col" role="columnheader" aria-colindex="3" >Last Name2</th>
+		  </tr>
+		</thead>
+	  </table>
+	</div>
+
+	<div class="k-grid-content k-auto-scrollable" style="height: 42.7679px;" role="rowgroup">
+		<table>
+		    <colgroup>
+		      <col style="width:105px">
+		      <col style="width:145px">
+		      <col style="width:145px">
+		    </colgroup>		
+			<tbody>
+			  <tr role="row">
+					<td role="gridcell" aria-colindex="1" aria-labelledby="optaviaId">
+					  <a href="#">848579042</a>
+					</td>
+					<td role="gridcell" aria-colindex="2" aria-labelledby="optaviaFname">
+					  Health test Coach2
+					</td>
+					<td role="gridcell" aria-colindex="3" aria-labelledby="optaviaLname">
+					  test2
+					</td>
+			  </tr>
+			</tbody>
+		</table>	
+	</div>
+</div>
+
+<br><br>
+<hr>Ideal / Perfect <br>
+
+<div class="k-grid k-auto-scrollable">
+  <table role="grid">
+    <colgroup>
+      <col style="width:105px">
+      <col style="width:145px">
+      <col style="width:145px">
+      <col style="width:120px">
+    </colgroup>
+    <thead role="rowgroup">
+      <tr role="row">
+        <th scope="col">OPTAVIA ID3</th>
+        <th scope="col">First Name3</th>
+        <th scope="col">Last Name3</th>
+      </tr>
+    </thead>
+    <tbody role="rowgroup">
+      <tr role="row">
+        <td role="gridcell"><a href="#">848579043</a></td>
+        <td role="gridcell">Health test Coach3</td>
+        <td role="gridcell">test3</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+
+	</script>
+	
+</body>
+</html>
