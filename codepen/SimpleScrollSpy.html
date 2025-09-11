@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Basic scroll-target-group</title>
+    <meta charset='utf-8' />
+    <meta name="description" content="scroll-target-group" />
+    <style type="text/css">
+.article-nav {
+  scroll-target-group: auto;
+  position: sticky;
+  top: 2rem;
+  
+  a:target-current {
+    color: red;
+  }
+}
+
+
+/* etc set up */
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  transition: color 0.25s ease;
+  display: block;
+}
+
+body {
+  max-width: 800px;
+  display: grid;
+  align-items: start;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  margin: 0 auto;
+  line-height: 2;
+  position: relative;
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+
+.note {
+  padding: 1rem;
+  line-height: 1.5;
+  background: lightyellow;
+  border: 1px solid gold;
+  border-radius: 0.5rem;
+  
+  code {
+    font-size: 90%;
+  }
+  
+  @supports(scroll-target-group: auto) {
+    display: none;
+  }
+}    	
+    </style>
+</head>
+<body class="bg">
+
+
+
+<article>
+  <h2 id="one">Section One</h2>
+  <aside class="note">
+    ⚠️ Your browser does not yet support <code>scroll-target-group</code>. Try again in Chrome 140+.
+  </aside>
+  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe molestias labore a doloremque quis? Fuga porro delectus quo exercitationem fugit quidem minima dolor, quasi similique error. Perspiciatis incidunt animi voluptate.</p>
+  <p>Voluptatum alias impedit dolor rem consequatur, ab nihil expedita veniam sunt repellat! Doloribus ab expedita illum laudantium? Ipsum, deleniti quasi. Eum minima nesciunt nam, ipsam consectetur beatae id quia ad?</p>
+  <p>Odio incidunt ratione, blanditiis laudantium, eveniet repudiandae minus animi accusamus ducimus, asperiores similique? Aperiam ipsa accusantium beatae totam vitae. Accusamus ullam asperiores cumque officia sequi error at ducimus! Nemo, unde.</p>
+  <h2 id="two">Section Two</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita quibusdam itaque cumque? Mollitia, tempore. At laudantium quod, asperiores quae eius unde autem, soluta eos sapiente ducimus consequuntur ex! Maiores, voluptate.</p>
+  <p>Quam saepe voluptate dolores quisquam? Cumque officiis, incidunt cum perferendis quam nobis error consequuntur deleniti in placeat dignissimos inventore ipsam? Aut officia sequi cupiditate amet dignissimos ipsam et adipisci tempore?</p>
+  <p>Exercitationem voluptatum vero beatae rerum. Quam ducimus libero dolorum nemo molestiae repudiandae nesciunt tempore vero, nostrum deleniti possimus labore aspernatur suscipit id cumque voluptate commodi delectus fugiat? Ut, obcaecati cum?</p>
+  <p>Odio incidunt ratione, blanditiis laudantium, eveniet repudiandae minus animi accusamus ducimus, asperiores similique? Aperiam ipsa accusantium beatae totam vitae. Accusamus ullam asperiores cumque officia sequi error at ducimus! Nemo, unde.</p>
+  <h2 id="three">Section Three</h2>
+  <p>Voluptatum alias impedit dolor rem consequatur, ab nihil expedita veniam sunt repellat! Doloribus ab expedita illum laudantium? Ipsum, deleniti quasi. Eum minima nesciunt nam, ipsam consectetur beatae id quia ad?</p>
+  <p>Eaque ut placeat eligendi ipsam sunt minus et nesciunt, velit nulla! Consequatur cupiditate tempore voluptas dolor quam repellat, impedit expedita veniam architecto officiis earum dicta aspernatur magni hic, cumque excepturi.</p>
+  <p>Quam saepe voluptate dolores quisquam? Cumque officiis, incidunt cum perferendis quam nobis error consequuntur deleniti in placeat dignissimos inventore ipsam? Aut officia sequi cupiditate amet dignissimos ipsam et adipisci tempore?</p>
+  <p>Exercitationem voluptatum vero beatae rerum. Quam ducimus libero dolorum nemo molestiae repudiandae nesciunt tempore vero, nostrum deleniti possimus labore aspernatur suscipit id cumque voluptate commodi delectus fugiat? Ut, obcaecati cum?</p>
+</article>
+
+<ul class="article-nav">
+  <li><a href="#one">Section 1</a></li>
+  <li><a href="#two">Section 2</a></li>
+  <li><a href="#three">Section 3</a></li>
+</ul>
+	
+</body>
+</html>
