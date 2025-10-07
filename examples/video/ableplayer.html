@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Video Player with Captions and Transcript</title>
+
+  <!-- Include Able Player CSS -->
+  <link rel="stylesheet" href="https://ableplayer.github.io/ableplayer/build/ableplayer.min.css">
+</head>
+<body>
+
+  <h2>Accessible Video Player Demo</h2>
+
+  <!-- The video element -->
+  <video id="video1" width="640" height="360" preload="auto" data-able-player>
+    <source type="video/mp4" src="access.mp4">
+    <track kind="captions" src="access-closed-captions.vtt" srclang="en" label="English" default>
+  </video>
+
+  <!-- The transcript will be automatically generated here -->
+  <div id="transcript" class="able-transcript"></div>
+
+    <!-- jQuery must load first -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+
+  <!-- Include Able Player JS -->
+  <script src="https://ableplayer.github.io/ableplayer/build/ableplayer.min.js"></script>
+
+</body>
+</html>
