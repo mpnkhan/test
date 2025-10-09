@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Accessible jQuery-ui Components Demo</title>
+
+	<script type="text/javascript" src="jquery-ui-min/jquery-1.7.2.min.js"></script>
+
+	<!-- jQuery-UI Core files (minified) -->
+	<link type="text/css" href="jquery-ui-min/jquery-ui.min.css" rel="stylesheet" />
+	<script type="text/javascript" src="jquery-ui-min/jquery-ui.min.js"></script>
+
+	<!-- Temporary Datepicker Files -->
+	<script type="text/javascript" src="jquery-ui-min/globalize.js"></script>
+	<script type="text/javascript" src="jquery-ui-min/localization.js"></script>
+	<script type="text/javascript" src="jquery-ui-min/date.js"></script>
+	<script type="text/javascript" src="jquery-ui-min/picker.js"></script>
+	<script type="text/javascript" src="jquery-ui-min/jquery.tmpl.js"></script>
+
+
+</head>
+<body>
+		<div id="wrapper">
+			<div id="content">
+			<h2>Demo: Sample Datepickers</h2>
+			<h3>Popup Version:</h3>
+			<p><label for="datepicker1">Date of Birth:</label> <input type="text" id="datepicker1" class="demoWidget" /></p>
+			<h3>Inline Version:</h3>
+			<div id="datepicker2" class="demoWidget"></div>
+			<p id="dp2-output"></p>
+			<div class="widgetControls"></div>
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+		$( "#datepicker1" ).datepicker( {
+			select: function( event, ui ) {
+				$( "#datepicker1" ).val( ui.date ).focus( 1 );
+			}
+		});	
+	</script>
+	
+</body>
+</html>	

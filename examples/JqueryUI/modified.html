@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Datepicker First ArrowDown Fix</title>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js"></script>
+<style>
+.ui-datepicker-calendar td a:focus {
+  outline: 2px solid #1976d2;
+}
+</style>
+</head>
+<body>
+
+<p>
+<label for="datepicker">Pick a date:</label>
+<input id="datepicker" type="text">
+</p>
+
+<script>
+$(function() {
+  const $input = $("#datepicker");
+
+  $input.datepicker({
+    showOn: "focus",
+    beforeShow: function(input, inst) {
+      const $dp = $("#ui-datepicker-div");
+      $dp.attr({ role: "dialog", "aria-modal": "true", "aria-label": "Calendar" });
+
+      setTimeout(() => {
+        bindGridKeys($dp);
+        focusToday($dp);
+      }, 10);
+    }
+  });
+
+  // ArrowDown / ArrowUp on input opens datepicker
+  $input.on("keydown", function(e) {
+    if(e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      $input.datepicker("show");
+
+      // Wait until calendar is rendered
+      setTimeout(() => {
+        const $dp = $("#ui-datepicker-div");
+        focusToday($dp);
+
+        // If first key is ArrowDown, move down one week immediately
+        if(e.key === "ArrowDown") simulateArrow($dp, "ArrowDown");
+        else if(e.key === "ArrowUp") simulateArrow($dp, "ArrowUp");
+
+      }, 10);
+    } else if(e.key === "Escape") {
+      $input.datepicker("hide");
+    }
+  });
+
+  function focusToday($dp) {
+    const $today = $dp.find(".ui-datepicker-current-day a, .ui-state-active").first();
+    if($today.length) $today.focus();
+  }
+
+  function bindGridKeys($dp) {
+    $dp.off("keydown.dpnav").on("keydown.dpnav", function(e) {
+      const inst = $.datepicker._getInst($input[0]);
+      let cur = $input.datepicker("getDate") || new Date();
+      let newDate = new Date(cur);
+      let handled = true;
+
+      switch(e.key) {
+        case "ArrowLeft": newDate.setDate(cur.getDate() - 1); break;
+        case "ArrowRight": newDate.setDate(cur.getDate() + 1); break;
+        case "ArrowUp": newDate.setDate(cur.getDate() - 7); break;
+        case "ArrowDown": newDate.setDate(cur.getDate() + 7); break;
+        case "PageUp": newDate.setMonth(cur.getMonth() - 1); break;
+        case "PageDown": newDate.setMonth(cur.getMonth() + 1); break;
+        case "Home": newDate = new Date(cur.getFullYear(), cur.getMonth(), 1); break;
+        case "End": newDate = new Date(cur.getFullYear(), cur.getMonth() + 1, 0); break;
+        case "Enter":
+          $input.datepicker("setDate", cur);
+          $input.datepicker("hide");
+          $input.focus();
+          return;
+        case "Escape":
+          $input.datepicker("hide");
+          $input.focus();
+          return;
+        default: handled = false;
+      }
+
+      if(handled) {
+        e.preventDefault();
+        $input.datepicker("setDate", newDate);
+        $.datepicker._updateDatepicker(inst);
+        setTimeout(() => {
+          const $focusDay = $("#ui-datepicker-div").find(".ui-datepicker-current-day a, .ui-state-active").first();
+          if($focusDay.length) $focusDay.focus();
+        }, 0);
+      }
+    });
+  }
+
+  function simulateArrow($dp, key) {
+    const e = $.Event("keydown");
+    e.key = key;
+    $dp.trigger(e);
+  }
+
+});
+</script>
+
+</body>
+</html>

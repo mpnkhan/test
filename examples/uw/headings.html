@@ -15,15 +15,18 @@
 			<div id="content">
 
 
-
+<button id="cartIcon">
+	Open Cart
+</button>
+<div id="smartCart" style="display: none;">
 <h5 class="rebuy-product-title"><a href="/products/classic-syrup-sampler?variant=18048997228633&amp;_rdiscovery-handle=classic-syrup-sampler&amp;_rdiscovery-widget=74728" aria-label="View Classic Syrup Sampler" rel="nofollow" class="rebuy-product-title-link clickable" data-uw-rm-brl="PR" data-uw-original-href="/products/classic-syrup-sampler?variant=18048997228633&amp;_rdiscovery-handle=classic-syrup-sampler&amp;_rdiscovery-widget=74728" data-uw-csr="5102" tabindex="0">Classic Syrup Sampler</a>
-
 </h5>
 
 
-	<h5><a href="/collections/holiday-collection/products/sugar-free-sugar-cookie?variant=39460263985254&amp;_rdiscovery-handle=sugar-free-sugar-cookie&amp;_rdiscovery-widget=74728" rel="nofollow">Sugar Free Sugar Cookie</a></h5>
-	
-	<h5><a href="/collections/holiday-collection/products/sugar-free-white-chocolate-peppermint-syrup?variant=40239880503398&amp;_rdiscovery-handle=sugar-free-white-chocolate-peppermint-syrup&amp;_rdiscovery-widget=74728" rel="nofollow">Sugar Free White Chocolate Peppermint Syrup</a></h5>
+		<h5><a href="/collections/holiday-collection/products/sugar-free-sugar-cookie?variant=39460263985254&amp;_rdiscovery-handle=sugar-free-sugar-cookie&amp;_rdiscovery-widget=74728" rel="nofollow">Sugar Free Sugar Cookie</a></h5>
+		
+		<h5><a href="/collections/holiday-collection/products/sugar-free-white-chocolate-peppermint-syrup?variant=40239880503398&amp;_rdiscovery-handle=sugar-free-white-chocolate-peppermint-syrup&amp;_rdiscovery-widget=74728" rel="nofollow">Sugar Free White Chocolate Peppermint Syrup</a></h5>
+</div>		
 
 <h3 class="blog__post-title">
       <a class="blog__post-title-link" href="/blogs/cocktail-recipes/creme-brulee-espresso-martini">Crème Brûlée Espresso Martini</a>
@@ -37,6 +40,20 @@
 		</div> <!--wrapper-->
 
 <script src="https://cdn.dev.userway.dev/widget.js" data-account="wSZxZcsYl1"></script>
+
+<script>
+  const cartBtn = document.getElementById('cartIcon');
+  const cartDiv = document.getElementById('smartCart');
+
+  cartBtn.addEventListener('click', () => {
+    const isExpanded = cartBtn.getAttribute('aria-expanded') === 'true';
+    // Toggle aria-expanded
+    cartBtn.setAttribute('aria-expanded', !isExpanded);
+    // Toggle display
+    cartDiv.style.display = isExpanded ? 'none' : 'block';
+  });
+
+</script>
 	
 </body>
 </html>

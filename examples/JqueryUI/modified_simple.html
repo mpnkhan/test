@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Simple Accessible Datepicker</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js"></script>
+</head>
+<body>
+  <p>
+    <label for="datepicker">Pick a date:</label>
+    <input id="datepicker" type="text">
+  </p>
+
+  <script>
+  $(function() {
+    $("#datepicker").datepicker({
+      showAnim: "fadeIn",
+      showOn: "focus",
+      onClose: function() {
+        $(this).off("keydown.dpnav");
+      },
+      beforeShow: function(input, inst) {
+        // Bind arrow key navigation only when datepicker is open
+        $(input).on("keydown.dpnav", function(e) {
+          var curDate = $(this).datepicker("getDate") || new Date();
+          var newDate = new Date(curDate);
+          var handled = true;
+
+          switch (e.key) {
+            case "ArrowLeft":  newDate.setDate(curDate.getDate() - 1); break;
+            case "ArrowRight": newDate.setDate(curDate.getDate() + 1); break;
+            case "ArrowUp":    newDate.setDate(curDate.getDate() - 7); break;
+            case "ArrowDown":  newDate.setDate(curDate.getDate() + 7); break;
+            case "PageUp":     newDate.setMonth(curDate.getMonth() - 1); break;
+            case "PageDown":   newDate.setMonth(curDate.getMonth() + 1); break;
+            case "Enter":
+              // Select current date and close
+              $(this).datepicker("setDate", curDate);
+              $(this).datepicker("hide");
+              return;
+            case "Escape":
+              $(this).datepicker("hide");
+              return;
+            default:
+              handled = false;
+          }
+
+          if (handled) {
+            e.preventDefault();
+            $(this).datepicker("setDate", newDate);
+            // Refresh UI
+            var inst = $.datepicker._getInst(this);
+            $.datepicker._updateDatepicker(inst);
+          }
+        });
+      }
+    });
+  });
+  </script>
+</body>
+</html>
