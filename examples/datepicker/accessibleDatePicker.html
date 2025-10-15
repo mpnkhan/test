@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Accessible Date picker</title>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+    <style>
+body {
+  align-items: center;
+  background-color: #fee;
+  block-size: 100vh;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.datepicker {
+  background-color: #c99;
+  border-radius: 0.25rem;
+  display: inline-flex;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+select {
+  font-size: 1.25rem;
+  padding: 0.5rem 1rem;
+}    	
+    </style>
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"></div>
+			<div id="content">
+
+<div class="datepicker">
+	<fieldset>
+		<legend>Booking Date</legend>
+	  <select id="day" aria-label="Day"></select>
+	  <select id="month" aria-label="Month"></select>
+	  <select id="year" aria-label="Year"></select>
+  </fieldset>
+</div>
+
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+	<script>
+ 	const dayEl = document.getElementById("day");
+    const monthEl = document.getElementById("month");
+    const yearEl = document.getElementById("year");
+
+    const today = new Date();
+    const currentDay = today.getDate();
+    const currentMonth = today.getMonth(); // 0-based
+    const currentYear = today.getFullYear();
+
+    // Generate arrays
+    const days = Array.from({ length: 31 }, (_, i) => i + 1);
+    const months = Array.from({ length: 12 }, (_, i) =>
+      new Date(0, i).toLocaleString("en", { month: "long" })
+    );
+    // const years = Array.from({ length: currentYear - 1899 }, (_, i) => 1900 + i);
+	const futureYears = 2; // number of years ahead
+	const years = Array.from(
+	  { length: currentYear - 1899 + futureYears }, 
+	  (_, i) => 1900 + i
+	);    
+
+    // Fill select boxes
+    function fillSelect(el, options, selectedValue) {
+      el.innerHTML = options
+        .map((opt, i) => {
+          const isSelected = opt === selectedValue || i === selectedValue;
+          return `<option value="${opt}" ${isSelected ? "selected" : ""}>${opt}</option>`;
+        })
+        .join("");
+    }
+
+    fillSelect(dayEl, days, currentDay);
+    fillSelect(monthEl, months, currentMonth);
+    fillSelect(yearEl, years, currentYear);
+
+	</script>
+	
+</body>
+</html>
