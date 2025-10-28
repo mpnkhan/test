@@ -8,7 +8,7 @@ interactive-widget=resizes-content  / resizes layout when keyboard or IME opens 
 interactive-widget=overlays-content / keeps layout fixed; keyboard overlaps For fixed-position UI where you handle scroll manually
 interactive-widget=resizes-visual  / experimental  and rarely needed
 -->
-  <title>Auto Zoom Example</title>
+  <title>Auto Zoom - interactive-widget=overlays-content </title>
   <style>
     body { font-family: sans-serif; margin: 2rem; }
     input {
@@ -19,9 +19,9 @@ interactive-widget=resizes-visual  / experimental  and rarely needed
   </style>
 </head>
 <body>
-  <h2>Auto Zoom Example</h2>
-  <p>On iPhone, tapping this input will zoom in.</p>
-  <p>Safari detects the small text (12 px) → zooms in up to the allowed maximum-scale=5.0 when you tap inside the input.</p>
+  <h2>Auto Zoom - interactive-widget=overlays-content</h2>
+  <p>On iPhone, tapping this input should not zoom in.</p>
+  <p>keeps layout fixed; keyboard overlaps For fixed-position UI where you handle scroll manually</p>
   <input type="text" placeholder="Tap me on mobile">
 </body>
 </html>
