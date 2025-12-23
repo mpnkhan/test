@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	  <title>Accessible Dialog Example</title>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,interactive-widget=resizes-content">
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+
+<style>
+    .pseudo-button {
+      display: inline-block;
+      padding: 8px 12px;
+      background: #005fcc;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .pseudo-button:focus {
+      outline: 3px solid #ffbf47;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Native button -->
+<button id="openDialogBtn" aria-haspopup="dialog">
+  Open Dialog (Button)
+</button>
+
+<br><br><br>
+
+<!-- Pseudo button -->
+<div
+  class="pseudo-button"
+  role="button"
+  tabindex="0"
+  aria-haspopup="dialog"
+  aria-controls="myDialog"
+  id="openDialogPseudo"
+>
+  Open Dialog (Pseudo Button)
+</div>
+
+<dialog id="myDialog" aria-labelledby="dialogTitle">
+  <h2 id="dialogTitle">Dialog title</h2>
+  <p>This dialog can be opened by a button or a pseudo button.</p>
+
+  <button id="closeDialog">Close</button>
+</dialog>
+
+<script>
+ const dialog = document.getElementById("myDialog");
+  const pseudoBtn = document.getElementById("openDialogPseudo");
+
+  function openDialog() {
+    dialog.showModal();
+  }
+
+  // Mouse
+  pseudoBtn.addEventListener("click", openDialog);
+
+  // Keyboard — Narrator-safe
+  pseudoBtn.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      openDialog();
+    }
+  });
+
+  pseudoBtn.addEventListener("keyup", (e) => {
+    if (e.key === " ") {
+      e.preventDefault();
+      openDialog();
+    }
+  });
+
+  document.getElementById("openDialogBtn").onclick = openDialog;
+  document.getElementById("closeDialog").onclick = () => dialog.close();
+</script>
+
+</body>
+</html>

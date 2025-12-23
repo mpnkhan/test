@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>Headings</title>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header">
+
+<h1 class="logo-h1" style="background-color: darkolivegreen;">
+	<a href="/" class="tt-logo 11">
+	  <img src="//www.jamesperse.com/cdn/shop/files/jplogo-white_324x.png?v=1616766274" srcset="//www.jamesperse.com/cdn/shop/files/jplogo-white_324x.png?v=1616766274 1x, //www.jamesperse.com/cdn/shop/files/jplogo-white_648x.png?v=1616766274 2x" alt="James Perse Los Angeles" class="tt-retina tt-logo-white" style="top:0px">
+	</a>
+</h1>			
+
+			</div>
+
+			<div id="content">
+<p>
+<a href="https://dequeuniversity.com/rules/axe/4.10/aria-hidden-focus?application=AxeChrome">ARIA hidden element must not be focusable or contain focusable elements</a>
+</p>	
+
+<button id="cartIcon">
+	Open Cart
+</button>
+
+<div id="smartCart" style="display: none;">
+	<h5 class="rebuy-product-title">
+		<a href="/products/classic-syrup-sampler" aria-label="View Classic Syrup Sampler" rel="nofollow" class="rebuy-product-title-link clickable" data-uw-rm-brl="PR" data-uw-original-href="/products/classic-syrup-sampler?variant=18048997228633&amp;_rdiscovery-handle=classic-syrup-sampler&amp;_rdiscovery-widget=74728" data-uw-csr="5102" tabindex="0">Classic Syrup Sampler</a>
+	</h5>
+
+	<h5>
+		<span>Sugar Free Marshmallow SauceEmpty heading</span>
+	</h5>
+</div>		
+
+<p>
+	<h5> Is this empty? </h5>
+	<a class="blog__post-excerpt-link" href="/blogs/news/is-it-okay-to-drink-sparkling-flavored-water-everyday">
+	        <div class="rte">Sparkling flavored water has gained popularity as a refreshing and flavorful alternative to plain water. With its enticing bubbles and variety of flavors, it's no wonder that many people enjoy incorporating it into their daily...</div>
+	</a>
+</p>
+
+
+
+	<h3 class="blog__post-title">
+      <a class="blog__post-title-link" href="/blogs/cocktail-recipes/creme-brulee-espresso-martini">Crème Brûlée Espresso Martini</a>
+	</h3>
+
+    <h3 class="blog__post-title">
+      <a class="blog__post-title-link" href="/blogs/cocktail-recipes/minty-martini">Minty Martini</a>
+    </h3>
+
+	<h4 id="test1"></h4>
+
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+<script src="widget_app_1764061016441.js"></script>
+
+<script>
+  const cartBtn = document.getElementById('cartIcon');
+  const cartDiv = document.getElementById('smartCart');
+
+  cartBtn.addEventListener('click', () => {
+    const isExpanded = cartBtn.getAttribute('aria-expanded') === 'true';
+    cartBtn.setAttribute('aria-expanded', !isExpanded);
+    cartDiv.style.display = isExpanded ? 'none' : 'block';
+  });
+
+  setTimeout(() => {
+    document.getElementById("test1").innerHTML = '<a href="https://www.delicioustable.com/tater-tot-nachos-totchos/"><span>Tachos Nachos</span></a>';
+  }, 5000); 
+
+
+</script>
+	
+</body>
+</html>
