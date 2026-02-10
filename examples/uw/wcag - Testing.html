@@ -1,0 +1,1529 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>WCAG Widget Coverage</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="WCAG UW Widget Coverage" />
+		<style>
+			table {
+				width: 100%;
+				border: 1px solid #000;
+			}
+			table th,
+			table td {
+				margin: 0;
+				border: 1px solid #000;
+			}
+			table tbody tr:hover,
+			table tbody tr:focus {
+				background: #ff0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="header">
+				<h1>WCAG Widget Coverage</h1>
+			</div>
+			<div id="content">
+				<div class="markdown-body">
+					<p>
+						Use this decision tree to help decide which criteria of
+						the Web Content Accessibility Guidelines (version 2.2 to
+						level AA) something might fail under. Choose the
+						relevant sections for the thing you are testing.
+						Whenever the answer is yes, continue to the next table
+						row.
+					</p>
+					<p>
+						Although the most wide-ranging issues appear first in
+						each table, a serious issue might fail on more than one
+						success criterion. This page is intended to help you
+						find the "main" criterion to fail an issue under, to
+						avoid duplication in an audit report. The wording is
+						intentionally kept simple, and it can be subjective
+						whether a success criterion fails or not. If unsure,
+						read the linked understanding page for each criterion or
+						try the detailed
+						<a href="https://github.com/alphagov/wcag-primer/wiki"
+							>accessibility testing guide</a
+						>.
+					</p>
+					<p>
+						It is also recommended to use an automated tool
+						alongside manual testing, as this will quickly identify
+						some issues, including some contrast failures or missing
+						labels. However, you'll always need manual testing for
+						full coverage.
+					</p>
+
+					<p>Test groupings:</p>
+					<ul>
+						<li><a href="#keyboard">Keyboard</a></li>
+						<li><a href="#zoom">Zoom</a></li>
+						<li>
+							<a href="#sensory">Sensory</a>
+							<ul>
+								<li><a href="#media">Media</a></li>
+								<li>
+									<a
+										href="#colour-contrast-and-sensory-checks"
+										>Colour, contrast and sensory checks</a
+									>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#code">Code</a>
+							<ul>
+								<li>
+									<a href="#title-and-language"
+										>Title and language</a
+									>
+								</li>
+								<li>
+									<a
+										href="#labels-and-assistive-technology-support"
+										>Labels and assistive technology
+										support</a
+									>
+									<ul>
+										<li><a href="#forms">Forms</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li><a href="#gestures">Gestures</a></li>
+						<li><a href="#whole-site">Whole site</a></li>
+					</ul>
+					<div class="markdown-heading">
+						<h2 class="heading-element">Keyboard</h2>
+						<a
+							id="user-content-keyboard"
+							class="anchor"
+							aria-label="Permalink: Keyboard"
+							href="#keyboard"
+							><svg
+								class="octicon octicon-link"
+								viewBox="0 0 16 16"
+								version="1.1"
+								width="16"
+								height="16"
+								aria-hidden="true"
+							>
+								<path
+									d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"
+								></path></svg
+						></a>
+					</div>
+					<p>
+						If you're testing with a keyboard on a Mac then you will
+						need to
+						<a
+							href="https://www.a11y-collective.com/blog/how-to-activate-keyboard-navigation-on-macos/"
+							rel="nofollow"
+							>activate keyboard navigation</a
+						>
+						before you start for the first time.
+					</p>
+					<table role="table">
+						<thead>
+							<tr>
+								<th>Check</th>
+								<th>If not</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									Can all functionality be accessed by
+									keyboard without getting trapped?<br /><br />This
+									applies to all page content, not just that
+									in scope of your audit, as a failure could
+									<a
+										href="https://www.w3.org/TR/WCAG22/#cc5"
+										rel="nofollow"
+										>interfere</a
+									>
+									with the rest of the page.
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html"
+										rel="nofollow"
+										>2.1.2 No keyboard trap</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Can repeated navigational elements be
+									bypassed with a skip link?
+								</td>
+								<td>
+									Does the page have a logical heading or
+									landmark structure?<br /><br />If not, fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html"
+										rel="nofollow"
+										>2.4.1 Bypass blocks</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Can all functionality be interacted with
+									using a keyboard?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html"
+										rel="nofollow"
+										>2.1.1 Keyboard</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Are all components at least partially
+									visible when they receive keyboard focus?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html"
+										rel="nofollow"
+										>2.4.11 Focus not obscured (WCAG 2.2)</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>Is the focus indicator clearly visible?</td>
+								<td>
+									If the focus state is indicated purely by a
+									change from one colour to another, and the
+									contrast ratio between those two colours is
+									below 3:1, fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"
+										rel="nofollow"
+										>1.4.1 Use of colour</a
+									>.<br /><br />If no part of the focus
+									indicator has a contrast ratio of at least
+									3:1 against its surroundings, fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+										rel="nofollow"
+										>1.4.11 Non-text contrast</a
+									>.<br /><br />If the focus indicator is
+									invisible, fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html"
+										rel="nofollow"
+										>2.4.7 Focus visible</a
+									>.
+								</td>
+							</tr>
+							<tr>
+								<td>Is the focus order logical?</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html"
+										rel="nofollow"
+										>2.4.3 Focus order</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Does keyboard focus stay where you expect it
+									to stay when you focus on each element?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/on-focus.html"
+										rel="nofollow"
+										>3.2.1 On focus</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Does keyboard focus stay where you expect it
+									to stay when you input something into a
+									form?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/on-input.html"
+										rel="nofollow"
+										>3.2.2 On input</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Use the
+									<a
+										href="http://3needs.org/en/testing/code/kb-shortcuts.html"
+										rel="nofollow"
+										>bookmarklet from
+										<span lang="de"
+											>BITV-Test Prüfverbund</span
+										>
+										to check for character key shortcuts
+										(linked)</a
+									>. This only needs to be carried out at 100%
+									zoom.
+								</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>
+									Can any keyboard shortcuts can be turned
+									off, re-mapped, or do they only work when
+									focussed on a particular component?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/character-key-shortcuts.html"
+										rel="nofollow"
+										>2.1.4 Character key shortcuts</a
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="markdown-heading">
+						<h2 class="heading-element">Zoom</h2>
+						<a
+							id="user-content-zoom"
+							class="anchor"
+							aria-label="Permalink: Zoom"
+							href="#zoom"
+							><svg
+								class="octicon octicon-link"
+								viewBox="0 0 16 16"
+								version="1.1"
+								width="16"
+								height="16"
+								aria-hidden="true"
+							>
+								<path
+									d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"
+								></path></svg
+						></a>
+					</div>
+					<table role="table">
+						<thead>
+							<tr>
+								<th>Check</th>
+								<th>If not</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Repeat the keyboard steps at 200% zoom.</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>Is everything still readable?</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html"
+										rel="nofollow"
+										>1.4.4 Resize text</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Is everything still keyboard accessible?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html"
+										rel="nofollow"
+										>2.1.1 Keyboard</a
+									>. It is also worth spot checking with a
+									screen reader at this stage.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Repeat the same keyboard steps at 400% zoom
+									and on a small screen (320×256).
+								</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>
+									Is everything still readable without
+									horizontal scrolling?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/reflow.html"
+										rel="nofollow"
+										>1.4.10 Reflow</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Is everything still keyboard accessible?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html"
+										rel="nofollow"
+										>2.1.1 Keyboard</a
+									>. It is also worth spot checking with a
+									screen reader at this stage.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Reset the page to 100% zoom and use
+									<a
+										href="https://dylanb.github.io/bookmarklets.html"
+										rel="nofollow"
+										>Dylan Barrell's bookmarklet to change
+										the text spacing</a
+									>.
+								</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>Is text still readable when spaced out?</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html"
+										rel="nofollow"
+										>1.4.12 Text spacing</a
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="markdown-heading">
+						<h2 class="heading-element">Sensory</h2>
+						<a
+							id="user-content-sensory"
+							class="anchor"
+							aria-label="Permalink: Sensory"
+							href="#sensory"
+							><svg
+								class="octicon octicon-link"
+								viewBox="0 0 16 16"
+								version="1.1"
+								width="16"
+								height="16"
+								aria-hidden="true"
+							>
+								<path
+									d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"
+								></path></svg
+						></a>
+					</div>
+					<div class="markdown-heading">
+						<h3 class="heading-element">Media</h3>
+						<a
+							id="user-content-media"
+							class="anchor"
+							aria-label="Permalink: Media"
+							href="#media"
+							><svg
+								class="octicon octicon-link"
+								viewBox="0 0 16 16"
+								version="1.1"
+								width="16"
+								height="16"
+								aria-hidden="true"
+							>
+								<path
+									d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"
+								></path></svg
+						></a>
+					</div>
+					<p>
+						Review any audio, playable or moving media on the page.
+						This can include videos, carousels, audio tracks or
+						animated gifs.
+					</p>
+					<table role="table">
+						<thead>
+							<tr>
+								<th>Check</th>
+								<th>If not</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									Is all visual media free from flashing?<br /><br />This
+									applies to all page content, not just that
+									in scope of your audit, as a failure could
+									<a
+										href="https://www.w3.org/TR/WCAG22/#cc5"
+										rel="nofollow"
+										>interfere</a
+									>
+									with the rest of the page.
+								</td>
+								<td>
+									Are there fewer than three flashes per
+									second, or is the flashing minimal?<br /><br />If
+									not, fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html"
+										rel="nofollow"
+										>2.3.1 Three flashes or below
+										threshold</a
+									>. If in doubt, always fail this as it
+									presents a safety risk to some users.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Can any autoplaying audio which lasts for
+									longer than 3 seconds be stopped or turned
+									down independently of the operating
+									system?<br /><br />This applies to all page
+									content, not just that in scope of your
+									audit, as a failure could
+									<a
+										href="https://www.w3.org/TR/WCAG22/#cc5"
+										rel="nofollow"
+										>interfere</a
+									>
+									with the rest of the page.
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html"
+										rel="nofollow"
+										>1.4.2 Audio control</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Can any content that moves for longer than 5
+									seconds be paused or hidden?<br /><br />This
+									applies to all page content, not just that
+									in scope of your audit, as a failure could
+									<a
+										href="https://www.w3.org/TR/WCAG22/#cc5"
+										rel="nofollow"
+										>interfere</a
+									>
+									with the rest of the page.
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html"
+										rel="nofollow"
+										>2.2.2 Pause, stop, hide</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									If the media is a live video, does it have
+									captions?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/captions-live.html"
+										rel="nofollow"
+										>1.2.4 Captions (live)</a
+									>.<br /><br />Live captions are not in scope
+									of the UK accessibility regulations.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									If the media is prerecorded, then continue.
+								</td>
+								<td>Otherwise, skip the rest of this table.</td>
+							</tr>
+							<tr>
+								<td>
+									If the media is audio-only, does it have a
+									transcript?
+								</td>
+								<td>
+									Is the media clearly marked as an
+									alternative to text?<br /><br />If not,
+									fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-prerecorded.html"
+										rel="nofollow"
+										>1.2.1 Audio-only and video-only
+										(prerecorded)</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									If the media is video-only, does it have a
+									transcript or equivalent audio track?
+								</td>
+								<td>
+									Is the video clearly marked as an
+									alternative to text?<br /><br />If not,
+									fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-prerecorded.html"
+										rel="nofollow"
+										>1.2.1 Audio-only and video-only
+										(prerecorded)</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									If the media has synchronised audio and
+									video, continue testing.
+								</td>
+								<td>Otherwise, skip the rest of this table.</td>
+							</tr>
+							<tr>
+								<td>Does the media have accurate captions?</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html"
+										rel="nofollow"
+										>1.2.2 Captions (prerecorded)</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Does the media have an audio description or
+									an alternative such as a transcript?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/audio-description-or-media-alternative-prerecorded.html"
+										rel="nofollow"
+										>1.2.3 Audio description or media
+										alternative (prerecorded)</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Does the media have an audio description?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/audio-description-prerecorded.html"
+										rel="nofollow"
+										>1.2.5 Audio Description
+										(prerecorded)</a
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="markdown-heading">
+						<h3 class="heading-element">
+							Colour, contrast and sensory checks
+						</h3>
+						<a
+							id="user-content-colour-contrast-and-sensory-checks"
+							class="anchor"
+							aria-label="Permalink: Colour, contrast and sensory checks"
+							href="#colour-contrast-and-sensory-checks"
+							><svg
+								class="octicon octicon-link"
+								viewBox="0 0 16 16"
+								version="1.1"
+								width="16"
+								height="16"
+								aria-hidden="true"
+							>
+								<path
+									d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"
+								></path></svg
+						></a>
+					</div>
+					<table role="table">
+						<thead>
+							<tr>
+								<th>Check</th>
+								<th>If not</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									Can all visual information be understood
+									without relying on colour alone?
+								</td>
+								<td>
+									If not, and the contrast ratio between the
+									differences in colour is below 3:1, then it
+									fails
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"
+										rel="nofollow"
+										>1.4.1 Use of colour</a
+									>.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Do all instructions avoid relying on sensory
+									characteristics such as shape, colour, size,
+									visual location, orientation or sound in
+									order to convey meaning?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/sensory-characteristics.html"
+										rel="nofollow"
+										>1.3.3 Sensory characteristics</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Does small text (below 18pt or 14pt bold)
+									have a contrast ratio of at least 4.5:1?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+										rel="nofollow"
+										>1.4.3 Contrast (minimum)</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Does large text (at least 18pt or 14pt bold)
+									have a contrast ratio of at least 3:1?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+										rel="nofollow"
+										>1.4.3 Contrast (minimum)</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Do user interface elements have a contrast
+									ratio of 3:1 against their background?
+								</td>
+								<td>
+									If the parts with low contrast were removed,
+									would the elements still be
+									understandable?<br /><br />If not, fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+										rel="nofollow"
+										>1.4.11 Non-text contrast</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Can any content which appears when hovered
+									over or focussed be: dismissed, hovered
+									over, and kept visible until no longer
+									needed?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html"
+										rel="nofollow"
+										>1.4.13 Content on hover or focus</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Is all meaningful content presented without
+									a time limit?
+								</td>
+								<td>
+									Is the time limit either: over 20 hours,
+									essential, able to be turned off, extendable
+									(with a warning) or adjusted beforehand?<br /><br />If
+									not, fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html"
+										rel="nofollow"
+										>2.2.1 Timing adjustable</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									If there are images on the page then
+									continue.
+								</td>
+								<td>Otherwise, skip the rest of this table.</td>
+							</tr>
+							<tr>
+								<td>
+									Do images and symbols have a text
+									alternative?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html"
+										rel="nofollow"
+										>1.1.1 Non-text content</a
+									>.<br /><br />For interactive elements, read
+									the 'Labels and assistive technology
+									support' section.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Is all meaningful text on the page available
+									as text, rather than being embedded in an
+									image?
+								</td>
+								<td>
+									Is it a logo or text which is essential to
+									be provided in this particular way?<br /><br />If
+									not, fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/images-of-text.html"
+										rel="nofollow"
+										>1.4.5 Images of text</a
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="markdown-heading">
+						<h2 class="heading-element">Code</h2>
+						<a
+							id="user-content-code"
+							class="anchor"
+							aria-label="Permalink: Code"
+							href="#code"
+							><svg
+								class="octicon octicon-link"
+								viewBox="0 0 16 16"
+								version="1.1"
+								width="16"
+								height="16"
+								aria-hidden="true"
+							>
+								<path
+									d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"
+								></path></svg
+						></a>
+					</div>
+					<div class="markdown-heading">
+						<h3 class="heading-element">Title and language</h3>
+						<a
+							id="user-content-title-and-language"
+							class="anchor"
+							aria-label="Permalink: Title and language"
+							href="#title-and-language"
+							><svg
+								class="octicon octicon-link"
+								viewBox="0 0 16 16"
+								version="1.1"
+								width="16"
+								height="16"
+								aria-hidden="true"
+							>
+								<path
+									d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"
+								></path></svg
+						></a>
+					</div>
+					<table role="table">
+						<thead>
+							<tr>
+								<th>Check</th>
+								<th>If not</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									Does the page have a
+									<code>&lt;title&gt;</code> tag which
+									uniquely describes the page's topic or
+									purpose?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/page-titled.html"
+										rel="nofollow"
+										>2.4.2 Page titled</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Does the page have a default language set
+									using <code>&lt;html lang&gt;</code>?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html"
+										rel="nofollow"
+										>3.1.1 Language of page</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Is each section that is in a different
+									language from the page default marked up
+									with the correct language?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts.html"
+										rel="nofollow"
+										>3.1.2 Language of parts</a
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="markdown-heading">
+						<h3 class="heading-element">
+							Labels and assistive technology support
+						</h3>
+						<a
+							id="user-content-labels-and-assistive-technology-support"
+							class="anchor"
+							aria-label="Permalink: Labels and assistive technology support"
+							href="#labels-and-assistive-technology-support"
+							><svg
+								class="octicon octicon-link"
+								viewBox="0 0 16 16"
+								version="1.1"
+								width="16"
+								height="16"
+								aria-hidden="true"
+							>
+								<path
+									d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"
+								></path></svg
+						></a>
+					</div>
+					<table role="table">
+						<thead>
+							<tr>
+								<th>Check</th>
+								<th>If not</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									Do elements that require user input have
+									visible labels?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html"
+										rel="nofollow"
+										>3.3.2 Labels or instructions</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Is the purpose of each link understandable
+									from its text or immediate context?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html"
+										rel="nofollow"
+										>2.4.4 Link purpose (in context)</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									If there are headings or labels, are they
+									descriptive? This refers to both visible
+									labels and accessible names.
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html"
+										rel="nofollow"
+										>2.4.6 Headings and labels</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									If a component has a visible text label and
+									an accessible name, does the accessible name
+									include the visible label?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html"
+										rel="nofollow"
+										>2.5.3 Label in name</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Is content (such as headings, lists and
+									tables) coded and structured consistently
+									with how it appears visually?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html"
+										rel="nofollow"
+										>1.3.1 Info and relationships</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Is functionality (such as links, form fields
+									and buttons) coded consistently with how it
+									appears visually and functions?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html"
+										rel="nofollow"
+										>1.3.1 Info and relationships</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Is the accessible name, role and value (or
+									state) of each element clear and correct
+									when using assistive technology?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html"
+										rel="nofollow"
+										>4.1.2 Name, role, value</a
+									>.<br /><br />If there is a visible label
+									which is incorrectly associated with the
+									field, you may wish to fail this for
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html"
+										rel="nofollow"
+										>1.3.1 Info and relationships</a
+									>
+									instead to highlight that visible and
+									programmatic information need to be
+									consistent.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Is content read out in a logical order when
+									using a screen reader?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence.html"
+										rel="nofollow"
+										>1.3.2 Meaningful sequence</a
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="markdown-heading">
+						<h4 class="heading-element">Forms</h4>
+						<a
+							id="user-content-forms"
+							class="anchor"
+							aria-label="Permalink: Forms"
+							href="#forms"
+							><svg
+								class="octicon octicon-link"
+								viewBox="0 0 16 16"
+								version="1.1"
+								width="16"
+								height="16"
+								aria-hidden="true"
+							>
+								<path
+									d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"
+								></path></svg
+						></a>
+					</div>
+					<p>
+						If there are form controls on the page (such as text
+						fields, buttons, radio buttons and checkboxes), also
+						check the following:
+					</p>
+					<table role="table">
+						<thead>
+							<tr>
+								<th>Check</th>
+								<th>If not</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									Do all instructions avoid relying on shape,
+									colour, size, visual location, orientation
+									or sound in order to convey meaning?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/sensory-characteristics.html"
+										rel="nofollow"
+										>1.3.3 Sensory characteristics</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Do form fields have appropriate autocomplete
+									values for
+									<a
+										href="https://www.w3.org/TR/WCAG22/#input-purposes"
+										rel="nofollow"
+										>common input purposes (linked)</a
+									>? This can be tested with
+									<a
+										href="https://racheleditullio.com/blog/2023/11/autocomplete-accessibility-bookmarklet/"
+										rel="nofollow"
+										>Rachele DiTullio's autocomplete
+										bookmarklet</a
+									>.
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html"
+										rel="nofollow"
+										>1.3.5 Identify input purpose</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Does focus stay where you expect it to stay
+									when you focus on each element?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/on-focus.html"
+										rel="nofollow"
+										>3.2.1 On focus</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Does focus stay where you expect it to stay
+									when you input something into a form?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/on-input.html"
+										rel="nofollow"
+										>3.2.2 On input</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									If status changes are shown without
+									reloading the page, are those changes
+									communicated to a screen reader user?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html"
+										rel="nofollow"
+										>4.1.3 Status messages</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									If the form can generate errors, continue.
+								</td>
+								<td>Otherwise, skip the rest of this table.</td>
+							</tr>
+							<tr>
+								<td>Are errors highlighted using text?</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html"
+										rel="nofollow"
+										>3.3.1 Error identification</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Do the errors include suggestions on how to
+									fix them?
+								</td>
+								<td>
+									Would it be a security risk to provide
+									suggestions?<br /><br />If not, fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html"
+										rel="nofollow"
+										>3.3.3 Error suggestion</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Can submissions be undone, confirmed or
+									automatically checked?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html"
+										rel="nofollow"
+										>3.3.4 Error prevention (legal,
+										financial, data)</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									When information needs to be re-entered in a
+									form, is that information either
+									auto-populated or selectable from a list?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry"
+										rel="nofollow"
+										>3.3.7 Redundant entry (WCAG 2.2)</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									When logging in, is this possible without
+									needing to remember or transcribe
+									information, or solve a puzzle?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html"
+										rel="nofollow"
+										>3.3.8 Accessible authentication (WCAG
+										2.2)</a
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="markdown-heading">
+						<h2 class="heading-element">Gestures</h2>
+						<a
+							id="user-content-gestures"
+							class="anchor"
+							aria-label="Permalink: Gestures"
+							href="#gestures"
+							><svg
+								class="octicon octicon-link"
+								viewBox="0 0 16 16"
+								version="1.1"
+								width="16"
+								height="16"
+								aria-hidden="true"
+							>
+								<path
+									d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"
+								></path></svg
+						></a>
+					</div>
+					<p>Test the site using a mobile device. Check that:</p>
+					<table role="table">
+						<thead>
+							<tr>
+								<th>Check</th>
+								<th>If not</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									Is each page readable and usable in both
+									portrait and landscape mode?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/orientation.html"
+										rel="nofollow"
+										>1.3.4 Orientation</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Can functionality be used without relying on
+									motion?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/motion-actuation.html"
+										rel="nofollow"
+										>2.5.4 Motion actuation</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Can functionality be used without relying on
+									path-based or multi-point gestures?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html"
+										rel="nofollow"
+										>2.5.1 Pointer gestures</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Can functionality be used without relying on
+									dragging?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements"
+										rel="nofollow"
+										>2.5.7 Dragging movements (WCAG 2.2)</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Can actions be cancelled after touching a
+									button, for example, by dragging away?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/pointer-cancellation.html"
+										rel="nofollow"
+										>2.5.2 Pointer cancellation</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Is the size of all interactive elements plus
+									the spacing between them at least 24 pixels
+									across?<br /><br />This can be tested with
+									<a
+										href="https://cdpn.io/pen/debug/YzdwWZw"
+										rel="nofollow"
+										>Steve Faulkner's target size
+										bookmarklet</a
+									>.
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
+										rel="nofollow"
+										>2.5.8 Target size (WCAG 2.2)</a
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="markdown-heading">
+						<h2 class="heading-element">Whole site</h2>
+						<a
+							id="user-content-whole-site"
+							class="anchor"
+							aria-label="Permalink: Whole site"
+							href="#whole-site"
+							><svg
+								class="octicon octicon-link"
+								viewBox="0 0 16 16"
+								version="1.1"
+								width="16"
+								height="16"
+								aria-hidden="true"
+							>
+								<path
+									d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"
+								></path></svg
+						></a>
+					</div>
+					<p>
+						Compare similar pages across the whole site and check:
+					</p>
+					<table role="table">
+						<thead>
+							<tr>
+								<th>Check</th>
+								<th>If not</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									Is there more than one way to get to pages
+									which aren't part of a linear process (for
+									example, a navigation bar and search
+									functionality)?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/multiple-ways.html"
+										rel="nofollow"
+										>2.4.5 Multiple ways</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Are any repeated navigational elements laid
+									out in a consistent order across the site?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/consistent-navigation.html"
+										rel="nofollow"
+										>3.2.3 Consistent navigation</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Is similar functionality named consistently
+									across the site (for example, consistent use
+									of 'search' or 'find')?<br /><br />This
+									applies to both visible and accessible
+									names.
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification.html"
+										rel="nofollow"
+										>3.2.4 Consistent identification</a
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Do any help mechanisms appear in the same
+									relative order on each page?
+								</td>
+								<td>
+									Fail:
+									<a
+										href="https://www.w3.org/WAI/WCAG22/Understanding/consistent-help"
+										rel="nofollow"
+										>3.2.6 Consistent help (WCAG 2.2)</a
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="markdown-heading">
+						<h2 class="heading-element">AA compliance</h2>
+						<a
+							id="user-content-aa-compliance"
+							class="anchor"
+							aria-label="Permalink: AA compliance"
+							href="#aa-compliance"
+							><svg
+								class="octicon octicon-link"
+								viewBox="0 0 16 16"
+								version="1.1"
+								width="16"
+								height="16"
+								aria-hidden="true"
+							>
+								<path
+									d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"
+								></path></svg
+						></a>
+					</div>
+					<p>
+						✅ If all of the checks pass then the page is probably
+						accessible to most users up to WCAG 2.2 levels A and AA.
+						This is still however a minimum standard. You should
+						test with people with disabilities to identify other
+						issues, and gain further insight into the accessibility
+						of your site.
+					</p>
+				</div>
+			</div>
+			<!--content-->
+		</div>
+		<!--wrapper-->
+	</body>
+</html>
