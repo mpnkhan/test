@@ -22,7 +22,9 @@
 </head>
 <body>
 		<div id="wrapper">
-			<div id="header"><h1>WCAG Widget Coverage</h1></div>
+			<div id="header">
+				<h1>WCAG Widget Coverage</h1>
+			</div>
 			<div id="content">
 				<table>
 					<tr>
@@ -177,7 +179,154 @@
 
 				</table>	
 
-				<h2> :: More Read::<h2>
+				<h2>What a Custom Site Remediation (CSR) can't fix </h2>	
+				<table>
+					<tr>
+						<th>Checkpoint</th>
+						<th>Summary</th>
+						<th>Comments</th>
+					</tr>
+					<tr>
+						<td>1.1.1 Non-text content</td>
+						<td>Captcha alernatives</td>
+						<td>Can't provide captcha alternatives as this requires layout changes</td>
+					</tr>
+					<tr>
+						<td>Text descriptions for complex images</td>
+						<td>1.1.1 Non-Text Content</td>
+						<td>Can't add huge content</td>
+					</tr>
+					<tr>
+						<td>1.2.1 Audio-only and video-only</td>
+						<td>transcript for audio video</td>
+						<td>Can't add transcripts</td>
+					</tr>
+					<tr>
+						<td>1.2.2 Captions (prerecorded)</td>
+						<td>Prerecorded video should have captions</td>
+						<td>Can't add video captions</td>
+					</tr>
+					<tr>
+						<td>1.2.4 Captions (live)</td>
+						<td>Live video has captions</td>
+						<td>Can't add video captions</td>
+					</tr>
+					<tr>
+						<td>1.2.5 Audio Description (prerecorded)</td>
+						<td>Prerecorded video has audio description</td>
+						<td>Can't add video audio descriptions</td>
+					</tr>
+					<tr>
+						<td>1.4.2 Audio control</td>
+						<td>Autoplaying audio longer than 3 seconds can be stopped or turned down</td>
+						<td>Can't add UI elements</td>
+					</tr>
+					<tr>
+						<td>1.4.4 Resize text</td>
+						<td>Content and functionality work at 200% zoom</td>
+						<td>Layout changes</td>
+					</tr>
+					<tr>
+						<td>1.4.10 Reflow</td>
+						<td>Text reflows at 400% zoom on a 1280 pixel-wide screen, so that two-dimensional scrolling is not required</td>
+						<td>Layout changes</td>
+					</tr>
+					<tr>
+						<td>1.4.12 Text spacing</td>
+						<td>Text is readable at 1.5x default line height and there is reasonable spacing around letters, words and paragraphs</td>
+						<td>Layout changes</td>
+					</tr>
+					<tr>
+						<td>1.4.12 Text spacing</td>
+						<td>Text is readable at 1.5x default line height and there is reasonable spacing around letters, words and paragraphs</td>
+						<td>Layout changes</td>
+					</tr>
+					<tr>
+						<td>1.4.3 Contrast (minimum)</td>
+						<td>Small text has a contrast ratio of at least 4.5:1 to its background. Large text has a ratio of at least 3:1</td>
+						<td>Visible design changes - Possible but needs client confirmation</td>
+					</tr>
+					<tr>
+						<td>1.4.11 Non-text contrast</td>
+						<td>Meaningful user interface components and graphics have a contrast ratio of at least 3:1 to their background</td>
+						<td>Visible design changes - Possible but needs client confirmation</td>
+					</tr>
+					<tr>
+						<td>2.2.1 Timing adjustable</td>
+						<td>
+							For each time limit that is set by the content, user should be able to turn off the limit, or extend it, or adjust the time or time limit is longer than 20 hours
+						</td>
+						<td>Server side code</td>
+					</tr>
+					<tr>
+						<td>2.2.2 Pause, stop, hide</td>
+						<td>Any moving content can be paused if it moves for longer than 5 seconds</td>
+						<td>Visible design changes</td>
+					</tr>
+					<tr>
+						<td>2.3.1 Three Flashes or Below Threshold</td>
+						<td>Media does not flash more than 3 times per second, unless the flash is below a given threshold</td>
+						<td>Visible design changes</td>
+					</tr>
+					<tr>
+						<td>2.1.4 Character Key Shortcuts</td>
+						<td>Keyboard shortcuts can be turned off, re-mapped, or only work when the component has focus.</td>
+						<td>Source code changes</td>
+					</tr>
+					<tr>
+						<td>3.2.3 Consistent navigation</td>
+						<td>Navigation is laid out in a consistent order across the site</td>
+						<td>Source code changes</td>
+					</tr>
+					<tr>
+						<td>1.3.4 Orientation</td>
+						<td>Each page is readable and usable in both portrait and landscape mode</td>
+						<td>Layout changes</td>
+					</tr>
+					<tr>
+						<td>2.5.1 Pointer gestures</td>
+						<td>Functionality does not rely on multipoint or path-based gestures</td>
+						<td>visual changes</td>
+					</tr>
+					<tr>
+						<td>2.5.2 Pointer cancellation</td>
+						<td>Actions are not triggered by the "down" event and can be cancelled, for example by moving away after pressing a button</td>
+						<td>Visual changes for providing alternatives</td>
+					</tr>
+					<tr>
+						<td>2.5.4 Motion actuation</td>
+						<td>Functionality does not rely on motion</td>
+						<td>Visual changes for providing alternatives</td>
+					</tr>			
+					<tr>
+						<td>2.5.7 Dragging movements</td>
+						<td>Functionality does not rely on dragging</td>
+						<td>Visual changes for providing alternatives</td>
+					</tr>
+					<tr>
+						<td>2.5.8 Target size</td>
+						<td>Interactive elements (such as links and buttons), plus their spacing, are at least 24 pixels across</td>
+						<td>Visual changes</td>
+					</tr>
+					<tr>
+						<td>3.2.6 Consistent help</td>
+						<td>If help mechanisms exist, they appear in the same relative place on each page</td>
+						<td>Visual changes</td>
+					</tr>
+					<tr>
+						<td>3.3.4 Error prevention (legal, financial, data)</td>
+						<td>When submitting legal or financial data, the user has a chance to either undo it, confirm it or have their data checked automatically</td>
+						<td>Visual changes</td>
+					</tr>
+					<tr>
+						<td>3.3.7 Redundant entry</td>
+						<td>Users do not need to re-enter the same information within the same process, unless it's essential</td>
+						<td>Visual changes</td>
+					</tr>																							
+
+				</table>	
+
+				<h3> :: More Read::<h3>
 					
 				<ol>
 					<li>
