@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <title>UW slickslder helper</title>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,interactive-widget=resizes-content">
+    <meta name="description" content="Test : testing" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css"> 
+
+
+  <!-- Slick CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 40px;
+    }
+
+    .slider {
+      width: 80%;
+      margin: auto;
+    }
+
+    .slider img {
+      width: 100%;
+      border-radius: 8px;
+    }
+  </style>
+      
+</head>
+<body>
+		<div id="wrapper">
+			<div id="header"><a href="https://www.geartime.co/">Geartime</a></div>
+			<div id="content">
+
+<h2 style="text-align:center">Simple Slick Slider</h2>
+
+  <div class="slider">
+    <div><img src="https://picsum.photos/800/300?1"></div>
+    <div><img src="https://picsum.photos/800/300?2"></div>
+    <div><img src="https://picsum.photos/800/300?3"></div>
+    <div><img src="https://picsum.photos/800/300?4"></div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Slick JS -->
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+  <script>
+    $('.slider').slick({
+      autoplay: true,
+      autoplaySpeed: 2000,
+      dots: true,
+      arrows: true,
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    });
+  </script>
+
+
+
+
+			</div> <!--content-->
+		</div> <!--wrapper-->
+
+<script src="https://cdn.dev.userway.dev/widget.js" data-account="wSZxZcsYl1"></script>
+	
+</body>
+</html>
