@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Number to Words Converter (Indian & International)</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="Beautify JavaScript" />
+    <style type="text/css">
+      @import url("https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&display=swap");
+
+      body {
+        font-family: "Inclusive Sans", sans-serif;
+        width: 80%;
+        margin: 3em;
+        font-weight: 400;
+        background: #fff;
+        font-size: 1.5em;
+        line-height: 1.5em;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        margin: 2em 0 1em 0;
+      }
+
+      h4 {
+        margin: 0 0 0.5em 0;
+      }
+
+      form {
+        margin: 0 0 3em 0;
+      }
+
+      fieldset {
+        margin: 0;
+        padding: 0;
+        border: none;
+      }
+
+      textarea {
+        border: solid 1px gray;
+        box-sizing: border-box;
+        padding: 5px;
+        width: 100%;
+        height: 15em;
+        font-family: monospace;
+        font-size: 0.7em;
+      }
+
+      input[type="text"] {
+        border: solid 1px gray;
+        box-sizing: border-box;
+        font-family: inherit;
+        font-size: 0.7em;
+        margin-bottom: 10px;
+        padding: 3px 5px;
+        width: 100%;
+      }
+
+      input[type="checkbox"] {
+        vertical-align: middle;
+      }
+
+      #InputFields {
+        background: #ccc;
+        padding: 0.5em;
+      }
+
+      #OutputFields {
+        clear: left;
+        background: #cfc;
+        padding: 0.5em;
+      }
+
+      #Labels {
+        padding: 0;
+      }
+
+      #InputLabel {
+        float: left;
+        background: #ccc;
+        padding: 0.25em 0.5em;
+      }
+
+      #OutputLabel {
+        float: right;
+        background: #cfc;
+        padding: 0.25em 0.5em;
+      }
+
+      #OutputLink {
+        font-size: 0.9em;
+      }
+
+      #ErrorOutput {
+        overflow: hidden;
+        padding: 0.25em 0.5em;
+        text-align: center;
+        background-color: #fcc;
+        color: #f00;
+      }
+
+      .options {
+        margin: 2em 0;
+        padding: 1em;
+        border: solid 1px #ccc;
+      }
+
+      .disabled {
+        color: #9c9;
+      }
+
+      .disabled a {
+        color: #9c9;
+        cursor: default;
+      }
+
+      .pointer {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body class="bg">
+    <div id="wrapper">
+      <h1>Number to Words Converter (Indian & International)</h1>
+
+      <form onsubmit="return false;">
+        <fieldset id="InputFields">
+          <label for="input_number_to_words">Input Code</label>
+          <input
+            id="input_number_to_words"
+            type="text"
+            placeholder="Enter number (e.g. 130014.16)"
+          />
+        </fieldset>
+
+      <fieldset id="InputFields">
+        <label for="select_system_to_words">Choose System</label>
+        <select id="select_system_to_words">
+          <option value="indian">Indian System (Lakh/Crore)</option>
+          <option value="international">International (Million/Billion)</option>
+        </select>
+        </fieldset>
+        <fieldset id="InputFields">
+           <label for="select_currency_words">Choose Format</label>
+          <select id="select_currency_words">
+            <option value="none">Plain Words</option>
+            <option value="rs">Indian Rupees Format</option>
+            <option value="usd">US Dollar Format</option>
+          </select>
+        </fieldset>
+
+        <button id="convert">Convert</button>
+        <br />
+
+        <fieldset id="OutputFields">
+          <label for="Output">Output</label>
+          <textarea id="Output" wrap="hard" readonly></textarea>
+        <button
+            id="copy" onclick="navigator.clipboard.writeText(document.getElementById('Output').value)">
+            Copy to clipboard
+          </button>
+        </fieldset>
+      </form>
+    </div>
+    <!--wrapper-->
+
+    <script>
+      // Basic word maps
+      var units = [
+        "",
+        "One",
+        "Two",
+        "Three",
+        "Four",
+        "Five",
+        "Six",
+        "Seven",
+        "Eight",
+        "Nine",
+      ];
+      var teens = [
+        "Ten",
+        "Eleven",
+        "Twelve",
+        "Thirteen",
+        "Fourteen",
+        "Fifteen",
+        "Sixteen",
+        "Seventeen",
+        "Eighteen",
+        "Nineteen",
+      ];
+      var tens = [
+        "",
+        "",
+        "Twenty",
+        "Thirty",
+        "Forty",
+        "Fifty",
+        "Sixty",
+        "Seventy",
+        "Eighty",
+        "Ninety",
+      ];
+      var indianGroups = ["", "Thousand", "Lakh", "Crore", "Arab", "Kharab"];
+      var internationalGroups = [
+        "",
+        "Thousand",
+        "Million",
+        "Billion",
+        "Trillion",
+      ];
+      var zeroTxt = "Zero";
+
+      function numToWordsUK(num) {
+        // Up to 999
+        if (num == 0) return "";
+        if (num < 10) return units[num];
+        if (num < 20) return teens[num - 10];
+        if (num < 100)
+          return (
+            tens[Math.floor(num / 10)] +
+            (num % 10 > 0 ? " " + units[num % 10] : "")
+          );
+        if (num < 1000)
+          return (
+            units[Math.floor(num / 100)] +
+            " Hundred" +
+            (num % 100 > 0 ? " " + numToWordsUK(num % 100) : "")
+          );
+        return "";
+      }
+
+      function formatIndianWords(numStr) {
+        // Accepts max 12 digits, supports crores/kharabs
+        var n = parseInt(numStr, 10),
+          str = "";
+        if (n == 0) return "";
+        var grp = [];
+        grp[0] = n % 1000;
+        n = Math.floor(n / 1000);
+        grp[1] = n % 100;
+        n = Math.floor(n / 100);
+        grp[2] = n % 100;
+        n = Math.floor(n / 100);
+        grp[3] = n % 100;
+        n = Math.floor(n / 100);
+        grp[4] = n % 100;
+        n = Math.floor(n / 100);
+        grp[5] = n; //rest kharab
+        var res = [];
+        for (var i = 5; i >= 0; i--) {
+          if (grp[i]) {
+            var typ = i > 0 ? " " + indianGroups[i] : "";
+            if (i == 0) res.push(numToWordsUK(grp[i]));
+            else res.push(numToWordsUK(grp[i]) + typ);
+          }
+        }
+        return res.join(" ").replace(/\s+/g, " ").trim();
+      }
+
+      function formatInternationalWords(numStr) {
+        var n = parseInt(numStr, 10),
+          str = "";
+        if (n == 0) return "";
+        var groupArr = [];
+        var i = 0;
+        while (n > 0 && i < internationalGroups.length) {
+          groupArr.push(n % 1000);
+          n = Math.floor(n / 1000);
+          i++;
+        }
+        var res = [];
+        for (var j = groupArr.length - 1; j >= 0; j--) {
+          if (groupArr[j]) {
+            var grpWord = numToWordsUK(groupArr[j]);
+            var typ = internationalGroups[j];
+            res.push(grpWord + (typ ? " " + typ : ""));
+          }
+        }
+        return res.join(" ").replace(/\s+/g, " ").trim();
+      }
+
+      // Decimal part to words (throws "point One Six")
+      function decimalToWords(deci) {
+        if (!deci || deci === "0" || deci === "00") return "";
+        // For currency: "Sixteen Paise"/"Sixteen Cents"
+        // For plain: "point One Six" or "point One"
+        if (deci.length > 2) deci = deci.substring(0, 2);
+        var d = parseInt(deci, 10);
+        if (isNaN(d) || d === 0) return "";
+        if (d < 10) return numToWordsUK(d);
+        if (d < 20) return teens[d - 10];
+        if (d < 100)
+          return (
+            tens[Math.floor(d / 10)] + (d % 10 > 0 ? " " + units[d % 10] : "")
+          );
+        return "";
+      }
+
+      function mainConvert(val, system, currency) {
+        if (val === "" || isNaN(Number(val.replace(/,/g, ""))))
+          return "Please enter a valid number.";
+        val = val.replace(/,/g, "").trim();
+        var parts = val.split(".");
+        var intPart = parts[0].replace(/^0+/, "") || "0";
+        var decPart = (parts[1] || "").substring(0, 4);
+        var intNum = parseInt(intPart, 10);
+
+        // Limit check (huge/negative)
+        if (isNaN(intNum) || intNum < 0 || intPart.length > 18)
+          return "Number out of supported range.";
+        var text = "",
+          decText = "",
+          curPrefix = "";
+        // Integer
+        if (system === "indian") {
+          text = formatIndianWords(intPart);
+        } else {
+          text = formatInternationalWords(intPart);
+        }
+        if (!text) text = zeroTxt;
+
+        // Decimal
+        if (currency === "none") {
+          if (decPart && Number(decPart) > 0) {
+            decText =
+              "point " +
+              decPart
+                .split("")
+                .map(function (d) {
+                  return units[Number(d)] || zeroTxt;
+                })
+                .join(" ");
+          }
+        } else if (currency === "rs") {
+          if (decPart && Number(decPart) > 0) {
+            var paise = decimalToWords(decPart);
+            if (paise) decText = " and " + paise + " Paise";
+          }
+          text += " Rupees";
+        } else if (currency === "usd") {
+          if (decPart && Number(decPart) > 0) {
+            var cents = decimalToWords(decPart);
+            if (cents) decText = " and " + cents + " Cents";
+          }
+          text += " Dollars";
+        }
+        // Clean-up redundant
+        if (currency === "none")
+          return (text + (decText ? " " + decText : ""))
+            .replace(/\s+/g, " ")
+            .trim();
+        else
+          return (text + (decText ? decText : "")).replace(/\s+/g, " ").trim();
+      }
+      function convert() {
+        const oP = document.getElementById("Output");
+        var num = document.getElementById("input_number_to_words").value.trim();
+        if (num.length == 0) return;
+        var system = document.getElementById("select_system_to_words").value;
+        var currency = document.getElementById("select_currency_words").value;
+        var out = mainConvert(num, system, currency);
+        oP.value = out;
+      }
+      document.getElementById("convert").addEventListener("click", convert);
+    </script>
+  </body>
+</html>
