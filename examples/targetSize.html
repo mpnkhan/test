@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WCAG Target Size Example</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 16px;
+    line-height: 1.5;
+  }
+
+  h2 {
+    margin-top: 30px;
+  }
+
+  /* BAD: small & tightly packed */
+  .bad button {
+    width: 20px;
+    height: 20px;
+    margin-right: 2px; /* too close */
+    font-size: 12px;
+  }
+
+  /* GOOD: accessible targets */
+  .good button {
+    min-width: 44px;   /* better than minimum */
+    min-height: 44px;  /* mobile friendly */
+    margin: 8px;       /* spacing */
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  /* Responsive grid (nice on phones) */
+  .good {
+    display: flex;
+    flex-wrap: wrap;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>WCAG 2.2 Target Size Example</h1>
+
+<h2>❌ Bad Example (Fails)</h2>
+<div class="bad">
+  <button>+</button>
+  <button>-</button>
+  <button>×</button>
+</div>
+<p>Too small (20×20) and too close → hard to tap.</p>
+
+<h2>✅ Good Example (Passes)</h2>
+<div class="good">
+  <button>+</button>
+  <button>-</button>
+  <button>×</button>
+</div>
+<p>
+Buttons are large and spaced → easy to tap on touch devices.
+</p>
+
+<h2>✅ Pass (Using Spacing via gap)</h2>
+
+<div class="spacing-gap">
+  <button>+</button>
+  <button>-</button>
+  <button>×</button>
+</div>
+
+<p>
+Small buttons, but large spacing between them → meets WCAG 2.2 Target Size (Minimum).
+</p>
+
+<style>
+.spacing-gap {
+  display: flex;
+  gap: 24px; /* critical: creates separation */
+}
+
+.spacing-gap button {
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+}
+</style>
+
+<h2>✅ Pass (Using Spacing via margin)</h2>
+
+<div class="spacing-margin">
+  <button>+</button>
+  <button>-</button>
+  <button>×</button>
+</div>
+
+<p>
+Buttons are small, but margin creates enough space → avoids accidental taps.
+</p>
+
+<style>
+.spacing-margin button {
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  margin: 12px; /* spacing ensures safe touch area */
+}
+</style>
+</body>
+</html>
