@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Animated L-System Tree (Standalone)</title>
+<style>
+html,body{margin:0;overflow:hidden;background:#050505}
+canvas{display:block}
+#msg{position:absolute;top:10px;left:10px;color:#fff;font:14px sans-serif}
+</style>
+</head>
+<body>
+<div id="msg">Standalone Three.js template. Replace or extend with your L-system logic.</div>
+<script type="module">
+import * as THREE from "https://unpkg.com/three@0.172.0/build/three.module.js";
+import {OrbitControls} from "https://unpkg.com/three@0.172.0/examples/jsm/controls/OrbitControls.js";
+
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x050505);
+const camera=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,0.1,100);
+camera.position.set(0,2,8);
+
+const renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(innerWidth,innerHeight);
+document.body.appendChild(renderer.domElement);
+
+const controls=new OrbitControls(camera,renderer.domElement);
+const light=new THREE.PointLight(0xffffff,20);
+light.position.set(5,10,5);
+scene.add(light);
+
+const mat=new THREE.MeshStandardMaterial({color:0x88ff88,emissive:0x226622});
+const group=new THREE.Group();
+for(let i=0;i<120;i++){
+  const h=0.25*Math.pow(0.97,i);
+  const g=new THREE.CylinderGeometry(h*0.12,h*0.16,h,6);
+  const m=new THREE.Mesh(g,mat);
+  m.position.y=i*0.08;
+  m.rotation.z=Math.sin(i)*0.2;
+  group.add(m);
+}
+scene.add(group);
+
+addEventListener('resize',()=>{
+camera.aspect=innerWidth/innerHeight;
+camera.updateProjectionMatrix();
+renderer.setSize(innerWidth,innerHeight);
+});
+
+function animate(t){
+ requestAnimationFrame(animate);
+ group.rotation.y=t*0.0002;
+ renderer.render(scene,camera);
+}
+animate();
+</script>
+</body>
+</html>
